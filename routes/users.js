@@ -5,6 +5,13 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
+
+  router.get("/:userid", (req, res) => {
+    
+
+  });
+
+
   // User's order history
   router.get("/history", (req, res) => {
     // knex
@@ -15,8 +22,6 @@ module.exports = (knex) => {
     // });
 
   });
-
-
 
   return router;
 }

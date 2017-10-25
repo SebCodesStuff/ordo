@@ -29,17 +29,27 @@ module.exports = (knex) => {
 
   // Current open orders page
   router.get("/:id/current-orders", (req, res) => {
-    res.render('restaurant...[cookieid]');
+    const templateVars = {
+      // "current-orders" : restaurant.current
+    };
+    res.render('restaurant_current', templateVars)
   });
 
   // A specific current order
-  router.get("/:id/current-orders/:order-id", (req, res) => {
-    res.render('restaurant...[cookieid]');
+  router.get("/:id/current-orders/:orderId", (req, res) => {
+    const templateVars = {
+      // "current-orders" : restaurant.current
+    };
+    res.render('restaurant_order', templateVars)
   });
 
   // Order history page
   router.get("/:id/history", (req, res) => {
-    res.render('restaurant...[cookieid]');
+    const templateVars = {
+      // "current-orders" : restaurant.current
+      "name": req.params.id
+    };
+    res.render('restaurant_history', templateVars)
   });
   
 
