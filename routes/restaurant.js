@@ -21,7 +21,10 @@ module.exports = (knex) => {
 
   // Restaurant profile page (to edit menu items)
   router.get("/:id", (req, res) => {
-    res.render('restaurant')
+    const templateVars = {
+      // "restaurant-name" : restaurant.name
+    };
+    res.render('restaurant_profile', templateVars)
   });
 
   // Current open orders page
