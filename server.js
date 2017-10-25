@@ -46,6 +46,17 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.post("/user-login", (req, res) => {
+  res.redirect('/');
+});
+
+app.post("/restaurant-login", (req, res) => {
+  res.redirect('restaurant[cookieid]');
+});
+
+
+
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });

@@ -2,40 +2,31 @@
 <html lang="en">
   <head>
     <title>Restaurant</title>
-
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />  
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i,900,900i|Roboto:700" rel="stylesheet">
-
-    <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
-
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+    <% include partials/_head %>
   </head>
 
   <body>
+    <div class="container">
 
-  <div class="container">
 
+      <h1 id="logotype">Ordo</h1>
+        
+      <h1>Welcome to the restaurant sign-in page!</h1>
+    
+    
 
-    <h1 id="logotype">Ordo</h1>
-      
-    <h1>Restaurant sign-in page!</h1>
-  
-  
-
-    <form class="login" action="/restaurant-login" method="POST">
-      <div>
-        <label for="email">Enter your email:</label>
-        <input id="email" type="email" name="email">
-      </div>
-      <div>
-        <label for="password">Enter a password:</label>
-        <input id="password" type="password" name="password">
-      </div>
-      <input type="submit" value="Submit">
-    </form>
-   
-  
+      <form class="login" action="/restaurant/login" method="POST">
+        <div>
+          <label for="email">Email:</label>
+          <input id="email" type="email" name="email">
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input id="password" type="password" name="password">
+        </div>
+        <input type="submit" value="Submit">
+      </form>
+    
 
   </div><!--/container-->
   </body>

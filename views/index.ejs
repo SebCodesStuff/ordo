@@ -2,16 +2,32 @@
 <html lang="en">
   <head>
     <title>Home Page</title>
-
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+    <% include partials/_head %>
   </head>
 
   <body>
-    <h1>Hello World!</h1>
+    <div class="container">
+        
+
+  <h1 id="logotype">Ordo</h1>
+      
+  <h2>Welcome to the restaurant sign-in page!</h2>
+
+
+    <form class="login" action="/user/login" method="POST">
+      <div>
+        <label for="email">Email:</label>
+        <input id="email" type="email" name="email">
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input id="password" type="password" name="password">
+      </div>
+      <input type="submit" value="Submit">
+    </form>
+    
+
+  </div><!--/container-->
+          
   </body>
 </html>
