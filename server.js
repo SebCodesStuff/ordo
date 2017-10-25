@@ -51,9 +51,23 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.post("/time", (req, res) => {
+  console.log("successfully reached time");
+  console.log(req.body.Digits);
+});
+
 app.post("/voice", (req,res) => {
-  var twiml = new VoiceResponse();
-  twiml.say('Hello restaurant, a customer had made an order. Please provide the time they can expect the order to be ready');
+  const twiml = new VoiceResponse();
+  const gather = twiml.gather({
+    timeout: 3,
+    numDigits: 2,
+    action: '/time',
+    method: 'POST'
+  });
+
+  gather.say('Hello restaurant, a customer had made an order. Please provide the time they can expect the order to be ready');
+
+  console.log(twiml.toString());
 
   res.writeHead(200, {'Content-Type':'text/xml'});
   res.end(twiml.toString())
