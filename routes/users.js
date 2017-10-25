@@ -5,14 +5,18 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-  router.get("/", (req, res) => {
-    knex
-      .select("*")
-      .from("users")
-      .then((results) => {
-        res.json(results);
-    });
+  // User's order history
+  router.get("/history", (req, res) => {
+    // knex
+    //   .select("*")
+    //   .from("users")
+    //   .then((results) => {
+    //     res.json(results);
+    // });
+
   });
+
+
 
   return router;
 }
