@@ -4,7 +4,7 @@
     <title>Restaurant</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />  
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i,900,900i|Roboto:700" rel="stylesheet">
 
     <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
 
@@ -13,89 +13,30 @@
   </head>
 
   <body>
+
+  <div class="container">
+
+
+    <h1 id="logotype">Ordo</h1>
+      
     <h1>Restaurant sign-in page!</h1>
+  
+  
 
-    <div class="form">
-      
-      <ul class="tab-group">
-        <li class="tab active"><a href="#signup">Sign Up</a></li>
-        <li class="tab"><a href="#login">Log In</a></li>
-      </ul>
-      
-      <div class="tab-content">
-        <div id="signup">   
-          <h1>Sign Up for Free</h1>
-          
-          <form action="/" method="post">
-          
-          <div class="top-row">
-            <div class="field-wrap">
-              <label>
-                First Name<span class="req">*</span>
-              </label>
-              <input type="text" required autocomplete="off" />
-            </div>
-        
-            <div class="field-wrap">
-              <label>
-                Last Name<span class="req">*</span>
-              </label>
-              <input type="text"required autocomplete="off"/>
-            </div>
-          </div>
+    <form class="login" action="/restaurant-login" method="POST">
+      <div>
+        <label for="email">Enter your email:</label>
+        <input id="email" type="email" name="email">
+      </div>
+      <div>
+        <label for="password">Enter a password:</label>
+        <input id="password" type="password" name="password">
+      </div>
+      <input type="submit" value="Submit">
+    </form>
+   
+  
 
-          <div class="field-wrap">
-            <label>
-              Email Address<span class="req">*</span>
-            </label>
-            <input type="email"required autocomplete="off"/>
-          </div>
-          
-          <div class="field-wrap">
-            <label>
-              Set A Password<span class="req">*</span>
-            </label>
-            <input type="password"required autocomplete="off"/>
-          </div>
-          
-          <button type="submit" class="button button-block"/>Get Started</button>
-          
-          </form>
-
-        </div>
-        
-        <div id="login">   
-          <h1>Welcome Back!</h1>
-          
-          <form action="/" method="post">
-          
-            <div class="field-wrap">
-            <label>
-              Email Address<span class="req">*</span>
-            </label>
-            <input type="email"required autocomplete="off"/>
-          </div>
-          
-          <div class="field-wrap">
-            <label>
-              Password<span class="req">*</span>
-            </label>
-            <input type="password"required autocomplete="off"/>
-          </div>
-          
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
-          
-          <button class="button button-block"/>Log In</button>
-          
-          </form>
-
-        </div>
-        
-      </div><!-- tab-content -->
-      
-</div> <!-- /form -->    
-
-
-
+  </div><!--/container-->
   </body>
 </html>
