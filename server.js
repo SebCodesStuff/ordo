@@ -2,6 +2,9 @@
 
 require('dotenv').config();
 
+const VoiceResponse = require('twilio').twiml.VoiceResponse;
+// const response = new VoiceResponse();
+
 const PORT        = process.env.PORT || 8080;
 const ENV         = process.env.ENV || "development";
 const express     = require("express");
@@ -16,6 +19,11 @@ const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
+
+// ngrok.connect(8080, function (err, url) {
+//
+// });
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -42,6 +50,15 @@ app.use("/api/users", usersRoutes(knex));
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+app.post("/voice", (req,res) => {
+  var twiml = new VoiceResponse();
+  twiml.say('Hello restaurant, a customer had made an order. Please provide the time they can expect the order to be ready');
+
+  res.writeHead(200, {'Content-Type':'text/xml'});
+  res.end(twiml.toString())
+
+})
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

@@ -4,7 +4,7 @@ const Twilio = require('twilio');
 const client = new Twilio(accountSid, authToken);
 
 client.calls.create({
-    url: "http://demo.twilio.com/docs/voice.xml",
+    url: "https://dafb4127.ngrok.io/voice",
     to: "+16132659416",
     from: "+16137776522"
 }, function(err, call) {
