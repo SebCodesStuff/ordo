@@ -15,11 +15,6 @@ module.exports = (knex) => {
     // add rest name variable later
   });
 
-  // Logging in from form in /restaurant
-  router.post("/login", (req, res) => {
-    // redirect with resto's cookie id
-    res.send(200).redirect('/:id');
-  });
 
   // Restaurant profile page (to edit menu items)
   router.get("/:id", (req, res) => {
@@ -28,6 +23,22 @@ module.exports = (knex) => {
     };
     res.render('restaurant_profile', templateVars)
   });
+
+  // Add a menu item
+  router.post("/add-item", (req, res) => {
+    // NEED COOKIE
+
+  // knex
+  // .select("*")
+  // .from("restaurant")
+  // .then((results) => {
+  //   res.render('index', {
+  //     results: results
+  //   });
+  res.sendStatus(200).redirect("/:id");
+});
+
+
 
   // Current open orders page
   router.get("/:id/current-orders", (req, res) => {

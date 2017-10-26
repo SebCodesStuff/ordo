@@ -11,18 +11,18 @@ $(() => {
   // });;
 
 // Show user login form
-  $(".login-btn").click(function(){
-    $("#login-form").fadeOut().toggle();
-    $("#login-form .close").click( function(){
-      $("#login-form").toggle();
+  $(".login-btn").on('click', function(){
+    $(".login-form").addClass('show');
+    $(".login-form .close").on('click', function(){
+        $('.login-form').removeClass('show');
     });
   });
 
   // Show user registration
-  $(".register-btn").click(function(){
-    $("#registration-form").fadeOut().toggle();
-    $("#registration-form .close").click( function(){
-      $("#registration-form").toggle();
+  $(".register-btn").on('click', function(){
+    $(".registration-form").addClass('show');
+    $(".registration-form .close").on('click', function(){
+        $('.registration-form').removeClass('show');
     });
   });
 
