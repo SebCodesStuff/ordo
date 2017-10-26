@@ -50,6 +50,7 @@ app.get("/", (req, res) => {
     .select("*")
     .from("restaurant")
     .then((results) => {
+      console.log(results)
       res.render('index', {
         results: results
       });

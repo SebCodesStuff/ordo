@@ -67,9 +67,11 @@
       <p>Restaurant one info</p>
       
         <h2><%= restaurant.name %></h2>
+        <p><%= restaurant.type %></p>
         <p><%= restaurant.address %></p>
-        <!-- <img src=`images/${id}/> -->
-        <!-- <%= restaurant.address %></img> -->
+        <img src="img/<%= restaurant.picture %>">
+        <!-- <img src="/img/restaurant1.jpg"> -->
+        <p><%= restaurant.description %></p>
   
     </div>
   <% }) %>
