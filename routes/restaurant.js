@@ -16,10 +16,10 @@ module.exports = (knex) => {
   });
 
   // Logging in from form in /restaurant
-  router.post("/login", (req, res) => {
-    // redirect with resto's cookie id
-    res.redirect('/:id');
-  });
+  // router.post("/login", (req, res) => {
+  //   // redirect with resto's cookie id
+  //   res.redirect('/');
+  // });
 
   // Restaurant profile page (to edit menu items)
   router.get("/:id", (req, res) => {

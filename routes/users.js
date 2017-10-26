@@ -3,26 +3,6 @@
 const express = require('express');
 const router  = express.Router();
 
-// var passport = require('passport')
-//   , LocalStrategy = require('passport-local').Strategy;
-//
-//   passport.use(new LocalStrategy(
-//   function(email, password, done) {
-//     console.log(email);
-//     User.findOne({ email: email }, function(err, user) {
-//       if (err) { return done(err); }
-//       if (!user) {
-//         return done(null, false, { message: 'Incorrect username.' });
-//       }
-//       if (!user.validPassword(password)) {
-//         return done(null, false, { message: 'Incorrect password.' });
-//       }
-//       return done(null, user);
-//     });
-//   }
-// ));
-
-
 module.exports = (knex) => {
 
 

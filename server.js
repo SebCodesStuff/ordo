@@ -106,25 +106,26 @@ app.post("/voice", (req,res) => {
 
 // For the authentication part will move to users and restaurant_history
 
-var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
-
-  passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'id'},
-  function(email, password, done) {
-    knex('restaurant').where({ email: email })
-    .then(function(user) {
-      // if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      return done(null, user);
-    })
-    .error(function (error) {
-      return done(error);
-    })
-  }));
+// var passport = require('passport')
+//   , LocalStrategy = require('passport-local').Strategy;
+//
+//   passport.use(new LocalStrategy({
+//     usernameField: 'email',
+//     passwordField: 'id'},
+//   function(email, password, done) {
+//     console.log("top");
+//     knex('restaurant').where({ email: email })
+//     .then(function(user) {
+//       // if (err) { return done(err); }
+//       if (!user) {
+//         return done(null, false, { message: 'Incorrect username.' });
+//       }
+//       return done(null, user);
+//     })
+//     .error(function (error) {
+//       return done(error);
+//     })
+//   }));
 
 // For user login
 
@@ -135,7 +136,7 @@ var passport = require('passport')
     usernameField: 'email',
     passwordField: 'password'},
   function(email, password, done) {
-    knex('users').where({ email: email })
+    knex('restaurant').where({ email: email })
     .then(function(user) {
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
@@ -152,6 +153,7 @@ var passport = require('passport')
 passport.serializeUser(function(user, done) {
   done(null, user[0].id);
 });
+
 
 
 // Not quite working yet
