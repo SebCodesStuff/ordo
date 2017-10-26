@@ -5,7 +5,8 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-  // ------- All routes in this file will be prepended with '/restaurant/ ----------'
+
+// ------- All routes in this file will be prepended with /restaurant -------
 
 
   // If not logged in, show the login page...
@@ -14,9 +15,10 @@ module.exports = (knex) => {
     // add rest name variable later
   });
 
-  // Restaurant login
+  // Logging in from form in /restaurant
   router.post("/login", (req, res) => {
-    res.redirect('restaurant...[cookieid]');
+    // redirect with resto's cookie id
+    res.send(200).redirect('/:id');
   });
 
   // Restaurant profile page (to edit menu items)

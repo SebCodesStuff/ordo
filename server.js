@@ -41,18 +41,17 @@ app.use(express.static("public"));
 app.use("/api/users", usersRoutes(knex));
 app.use("/restaurant", restRoutes(knex));
 
+
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.post("/user-login", (req, res) => {
+// User login form with jQuery....
+app.post("/login", (req, res) => {
   res.redirect('/');
 });
 
-app.post("/restaurant-login", (req, res) => {
-  res.redirect('restaurant[cookieid]');
-});
 
 
 
