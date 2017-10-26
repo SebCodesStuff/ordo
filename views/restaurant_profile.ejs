@@ -13,7 +13,33 @@
       
   <h2>PROFILE page for restaurant </h2>
 
-
+    <section id="add-item">
+      <p>Add an item to your menu</p>
+      <form action="/restaurant/add-item" method="post">
+        <div class="item">
+          <label>Name:</label>
+          <input type="text" name="name">
+        </div>
+        <div class="item">
+          <label>Description:</label>
+          <input type="text" name="description">
+        </div>
+        <div class="item">
+          <label>Price:</label>
+          <input type="text" name="price">
+        </div>
+        <label for="dropdown">Category:</label>
+        <select name="category">
+          <option value="Snacks">Snacks</option>
+          <option value="Snacks">Appetizer</option>
+          <option value="Snacks">Main Dish</option>
+          <option value="Snacks">Dessert</option>
+          <option value="Snacks">Drinks</option>
+        </select>
+        <input type='submit' value="Save">
+      </form>
+    </section>
+    
     <!--loop through restaurant menu -->
     <div class="menu-item">
       <p>Restaurant one info</p>

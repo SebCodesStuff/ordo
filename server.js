@@ -24,7 +24,7 @@ const knexLogger  = require('knex-logger');
 // const passport    = require('passport')
 
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
+const userRoutes = require("./routes/users");
 const restRoutes = require("./routes/restaurant");
 
 
@@ -52,7 +52,8 @@ app.use(express.static("public"));
 // app.use(passport.session());
 
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
+// app.use("/api/users", usersRoutes(knex));
+app.use("/user", userRoutes(knex));
 app.use("/restaurant", restRoutes(knex));
 
 
@@ -131,7 +132,7 @@ var passport = require('passport')
 //    res.redirect('/');
 //   });
 
-  router.post('/login',
+  app.post('/login',
     passport.authenticate('local', {
       successRedirect: '/',
       failureRedirect: '/login',
