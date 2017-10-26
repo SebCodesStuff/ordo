@@ -36,15 +36,16 @@
 
 
     <!--loop through restaurant db -->
+  <% results.forEach((restaurant) =>{ %>
     <div class="restaurant-preview">
       <p>Restaurant one info</p>
-      <% results.forEach((restaurant) =>{ %>
+      
         <h2><%= restaurant.name %></h2>
         <p><%= restaurant.address %></p>
         <!-- <img><%= restaurant.picture%></img> -->
-      <% }) %>
+  
     </div>
-
+  <% }) %>
 
   </div><!--/container-->
           
