@@ -10,10 +10,6 @@ const authToken = '5e09260a26c7e7c22ad97f06240426ab';
 const Twilio = require('twilio');
 const client = new Twilio(accountSid, authToken);
 
-
-
-
-
 const PORT        = process.env.PORT || 8080;
 const ENV         = process.env.ENV || "development";
 const express     = require("express");
@@ -57,7 +53,16 @@ app.use("/restaurant", restRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+
+  knex
+    .select("*")
+    .from("restaurant")
+    .then((results) => {
+      res.render('index', {
+        results: results
+      });
+  });
+
 });
 
 app.post("/text", (req, res) => {
@@ -87,14 +92,6 @@ app.post("/voice", (req,res) => {
   res.end(twiml.toString())
 
 })
-// User login form with jQuery....
-app.post("/login", (req, res) => {
-  res.redirect('/');
-});
-
-
-
-
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
