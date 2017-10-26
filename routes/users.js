@@ -3,23 +3,24 @@
 const express = require('express');
 const router  = express.Router();
 
-var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
-
-  passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username }, function(err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-  }
-));
+// var passport = require('passport')
+//   , LocalStrategy = require('passport-local').Strategy;
+//
+//   passport.use(new LocalStrategy(
+//   function(email, password, done) {
+//     console.log(email);
+//     User.findOne({ email: email }, function(err, user) {
+//       if (err) { return done(err); }
+//       if (!user) {
+//         return done(null, false, { message: 'Incorrect username.' });
+//       }
+//       if (!user.validPassword(password)) {
+//         return done(null, false, { message: 'Incorrect password.' });
+//       }
+//       return done(null, user);
+//     });
+//   }
+// ));
 
 
 module.exports = (knex) => {
@@ -39,27 +40,20 @@ module.exports = (knex) => {
 
 
   router.get("/:userid", (req, res) => {
-    console.log("made it to userid");
-
+    console.log("successful");
+    console.log(req.params.userid);
+    res.redirect('/');
   });
 
 
-  // router.post("/login", (req, res) => {
-  //   console.log("post route successful");
-  //   var email = req.body.email;
-  //   var password = req.body.password;
-  //   console.log(email, password);
-  //    res.redirect('users/');
-  //   });
-  //
-  //
-  router.post('/user-login',
-    passport.authenticate('local', {
-      successRedirect: '/',
-      failureRedirect: '/login',
-      failureFlash: true
-    })
-  );
+// The failure redirects to the same page so use another way to handle auth errors
+
+  // router.post('/login',
+  //   passport.authenticate('local', {
+  //     successRedirect: '/',
+  //     failureRedirect: '/restaurant',
+  //   })
+  // );
 
 
 

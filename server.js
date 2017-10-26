@@ -17,6 +17,7 @@ const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
 
+
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
@@ -46,6 +47,8 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+app.use(require("cookie-parser")());
+app.use(require("express-session")({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 
 //Passport initilization
 // app.use(passport.initialize());
@@ -106,23 +109,41 @@ app.post("/voice", (req,res) => {
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
 
-  app.use(passport.initialize());
-  app.use(passport.session());
-
-  passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username }, function(err, user) {
-      if (err) { return done(err); }
+  passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'},
+  function(email, password, done) {
+    console.log("here")
+    knex('users').where({ email: email })
+    .then(function(user) {
+      // if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
       }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
+      // We aren't checking the password here just seeing if object exists
+      // if (!user.validPassword(password)) {
+      // if (user) {
+        // return done(null, false, { message: 'Incorrect password.' });
+      // }
+      console.log(user[0].id);
       return done(null, user);
-    });
-  }
-));
+    })
+    .error(function (error) {
+      return done(error);
+    })
+    // function(err, user) {
+  }));
+  // }
+// ));
+
+
+passport.serializeUser(function(user, done) {
+  done(null, user[0].id);
+});
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+
 
 // app.post("/login", (req, res) => {
 //   console.log("post route successful");
@@ -135,12 +156,11 @@ var passport = require('passport')
   app.post('/login',
     passport.authenticate('local', {
       successRedirect: '/',
-      failureRedirect: '/login',
-      failureFlash: true
+      failureRedirect: '/user/login',
     })
   );
 
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
-});
+})
