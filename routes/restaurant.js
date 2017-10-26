@@ -18,7 +18,7 @@ module.exports = (knex) => {
   // Logging in from form in /restaurant
   router.post("/login", (req, res) => {
     // redirect with resto's cookie id
-    res.send(200).redirect('/:id');
+    res.redirect('/:id');
   });
 
   // Restaurant profile page (to edit menu items)
@@ -53,7 +53,7 @@ module.exports = (knex) => {
     };
     res.render('restaurant_history', templateVars)
   });
-  
+
 
   return router;
 }

@@ -111,52 +111,70 @@ var passport = require('passport')
 
   passport.use(new LocalStrategy({
     usernameField: 'email',
-    passwordField: 'password'},
+    passwordField: 'id'},
   function(email, password, done) {
-    console.log("here")
-    knex('users').where({ email: email })
+    knex('restaurant').where({ email: email })
     .then(function(user) {
       // if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
       }
-      // We aren't checking the password here just seeing if object exists
-      // if (!user.validPassword(password)) {
-      // if (user) {
-        // return done(null, false, { message: 'Incorrect password.' });
-      // }
-      console.log(user[0].id);
       return done(null, user);
     })
     .error(function (error) {
       return done(error);
     })
-    // function(err, user) {
   }));
-  // }
-// ));
+
+// For user login
+
+var passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
+
+  passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'},
+  function(email, password, done) {
+    knex('users').where({ email: email })
+    .then(function(user) {
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      return done(null, user);
+    })
+    .error(function (error) {
+      return done(error);
+    })
+  }
+));
 
 
 passport.serializeUser(function(user, done) {
   done(null, user[0].id);
 });
 
+
+// Not quite working yet
+// passport.deserializeUser(function(id, done) {
+//   knex('users').where({ email: email })(id, function(err, user) {
+//     done(err, user);
+//   });
+// });
+
   app.use(passport.initialize());
   app.use(passport.session());
-
-
-// app.post("/login", (req, res) => {
-//   console.log("post route successful");
-//   var email = req.body.email;
-//   var password = req.body.password;
-//   console.log(email, password);
-//    res.redirect('/');
-//   });
 
   app.post('/login',
     passport.authenticate('local', {
       successRedirect: '/',
       failureRedirect: '/user/login',
+    })
+  );
+
+  app.post('/restaurant/login',
+    passport.authenticate('local', {
+      successRedirect: '/restaurant',
+      failureRedirect: '/restaurant',
     })
   );
 
