@@ -21,6 +21,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+// const passport    = require('passport')
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -46,9 +47,14 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+//Passport initilization
+// app.use(passport.initialize());
+// app.use(passport.session());
+
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 app.use("/restaurant", restRoutes(knex));
+
 
 
 // Home page
@@ -92,6 +98,47 @@ app.post("/voice", (req,res) => {
   res.end(twiml.toString())
 
 })
+
+
+// For the authentication part will move to users and restaurant_history
+
+var passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function(err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
+
+// app.post("/login", (req, res) => {
+//   console.log("post route successful");
+//   var email = req.body.email;
+//   var password = req.body.password;
+//   console.log(email, password);
+//    res.redirect('/');
+//   });
+
+  router.post('/login',
+    passport.authenticate('local', {
+      successRedirect: '/',
+      failureRedirect: '/login',
+      failureFlash: true
+    })
+  );
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
