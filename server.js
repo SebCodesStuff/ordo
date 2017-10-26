@@ -28,6 +28,7 @@ const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
+const restRoutes = require("./routes/restaurant");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -41,8 +42,9 @@ app.use(knexLogger(knex));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
-  src: __dirname + "/styles",
+  src: __dirname + "/styles/styles",
   dest: __dirname + "/public/styles",
+  indentedSyntax : true,
   debug: true,
   outputStyle: 'expanded'
 }));
@@ -50,6 +52,8 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
+app.use("/restaurant", restRoutes(knex));
+
 
 // Home page
 app.get("/", (req, res) => {
@@ -83,6 +87,14 @@ app.post("/voice", (req,res) => {
   res.end(twiml.toString())
 
 })
+// User login form with jQuery....
+app.post("/login", (req, res) => {
+  res.redirect('/');
+});
+
+
+
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
