@@ -42,7 +42,7 @@ app.use("/api/users", usersRoutes(knex));
 app.use("/restaurant", restRoutes(knex));
 
 
-// Home page
+// Home page/for map function
 app.get("/", (req, res) => {
   res.render("index");
 });

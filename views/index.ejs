@@ -7,7 +7,7 @@
 
   <body>
     <div class="container">
-        
+
     <div id="login-form">
       <div class="close">X</div>
       <form class="login" action="/user-login" method="POST">
@@ -22,9 +22,9 @@
         <input type="submit" value="Submit">
       </form>
     </div><!--/user-login-->
-      
 
-  <header>  
+
+  <header>
     <h1 id="logotype">Ordo</h1>
     <div class="login-btn">
       <input type="button" id="show-login" value="Login"></header>
@@ -41,7 +41,20 @@
     </div>
 
 
+      <h3>My Google Maps Demo</h3>
+    <div id="map" style="width:70%;height:300px;"></div>
+
+
+   <script type="text/javascript" src="/scripts/map.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDri5VzKdWxHuq8mQGVTt49oDxdqb_rasE&callback=initMap">
+    </script>
+
+
+
+
+
   </div><!--/container-->
-          
+
   </body>
 </html>
