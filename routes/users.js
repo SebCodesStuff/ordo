@@ -8,6 +8,12 @@ module.exports = (knex) => {
 
 // ------- All routes in this file will be prepended with /user -------
 
+  // User login form on the homepage
+  router.post("/login", (req, res) => {
+    res.send(200).redirect('/');
+  });
+
+
   router.get("/:userid", (req, res) => {
     
 

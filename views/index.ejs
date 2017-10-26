@@ -10,7 +10,7 @@
         
     <div id="login-form">
       <div class="close">X</div>
-      <form class="login" action="/user-login" method="POST">
+      <form class="login" action="/user/login" method="POST">
         <div>
           <label for="email">Email:</label>
           <input id="email" type="email" name="email">
@@ -21,7 +21,7 @@
         </div>
         <input type="submit" value="Submit">
       </form>
-    </div><!--/user-login-->
+    </div><!-- /login-form -->
       
 
   <header>  
@@ -36,13 +36,13 @@
 
 
     <!--loop through restaurant db -->
-  <% results.forEach((restaurant) =>{ %>
+  <% results.forEach((restaurant) => { %>
     <div class="restaurant-preview">
       <p>Restaurant one info</p>
       
         <h2><%= restaurant.name %></h2>
         <p><%= restaurant.address %></p>
-        <!-- <img><%= restaurant.picture%></img> -->
+        
   
     </div>
   <% }) %>
