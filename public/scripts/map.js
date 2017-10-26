@@ -1,5 +1,5 @@
 function initMap() {
-        var address = ['20 Dundas St W, Toronto, ON M5G 2C2', `469 King St W, Toronto, ON M5V 1K4`];
+        var address = ['20 Dundas St W, Toronto, ON M5G 2C2', `469 King St W, Toronto, ON M5V 1K4`, '515 Jarvis St, Toronto, ON M4Y 2H7', '421 Dundas St W, Toronto, ON M5T 2W4'];
         var geocoder = new google.maps.Geocoder();
 
         var center = {lat: 43.6718, lng: -79.4668};
