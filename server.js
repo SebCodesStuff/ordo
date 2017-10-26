@@ -44,7 +44,16 @@ app.use("/restaurant", restRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  
+  knex
+    .select("*")
+    .from("restaurant")
+    .then((results) => {
+      res.render('index', {
+        results: results
+      });
+  });
+
 });
 
 // User login form with jQuery....
