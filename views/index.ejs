@@ -8,9 +8,9 @@
   <body>
     <div class="container">
         
-      <% include partials/_header %>
+      <% include partials/_nav %>
       
-      
+
     <div class="login-form">
       <div class="close">X</div>
       <p>Login</p>
@@ -53,7 +53,7 @@
       <input type="button" class="show-login" value="Login">
     </div>
     <div class="register-btn">
-        <input type="button" class="show-register" value="Sign-up">
+      <input type="button" class="show-register" value="Sign-up">
     </div>   
   </header>
 
@@ -68,7 +68,8 @@
       
         <h2><%= restaurant.name %></h2>
         <p><%= restaurant.address %></p>
-        
+        <!-- <img src=`images/${id}/> -->
+        <!-- <%= restaurant.address %></img> -->
   
     </div>
   <% }) %>

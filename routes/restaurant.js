@@ -18,16 +18,31 @@ module.exports = (knex) => {
 
   // Restaurant profile page (to edit menu items)
   router.get("/:id", (req, res) => {
-    const templateVars = {
-      // "restaurant-name" : restaurant.name
-    };
-    res.render('restaurant_profile', templateVars)
+    // knex
+    //   .select("*")
+    //   .from("restaurant")
+    //   .join("menuitems")
+
+    res.render('restaurant_profile')
   });
 
-  // Add a menu item
+  // Add a menu item 34
   router.post("/add-item", (req, res) => {
+    const menuItem = {
+      name: req.body.name,
+      description: req.body.description,
+      price: req.body.price,
+      // category: 
+    };
+    console.log(req.body);
     // NEED COOKIE
-
+    // Insert into db
+    knex('menuitem')
+      .insert(menuItem, '*')
+      .then(menuitems => {
+        menuItem = menuitems[0];
+        res.redirect('/:id')
+      })
   // knex
   // .select("*")
   // .from("restaurant")
