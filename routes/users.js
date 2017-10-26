@@ -13,6 +13,11 @@ module.exports = (knex) => {
     res.send(200).redirect('/');
   });
 
+  // User login form on the homepage
+  router.post("/register", (req, res) => {
+    res.send(200).redirect('/');
+  });
+
 
   router.get("/:userid", (req, res) => {
     
