@@ -26,7 +26,7 @@ const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
 const userRoutes = require("./routes/users");
-// const restRoutes = require("./routes/restaurant");
+const restRoutes = require("./routes/restaurant");
 
 
 
@@ -53,9 +53,9 @@ app.use(require("cookie-parser")());
 app.use(require("express-session")({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 
 
-// Mount routes with the userID
-app.use("/user/:userID", userRoutes(knex));
-
+// Mount routes
+app.use("/user", userRoutes(knex));
+app.use("/restaurant", restRoutes(knex));
 
 
 // Home page
@@ -72,6 +72,13 @@ app.get("/", (req, res) => {
       });
   });
 
+});
+
+// User login form on the homepage
+app.post("/register", (req, res) => {
+  // if restaurant, ejs show link to their resto pg
+  // use cookie to get their name to greet them 
+  res.redirect('/');
 });
 
 // Twilio Routes

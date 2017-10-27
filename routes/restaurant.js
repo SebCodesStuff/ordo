@@ -13,10 +13,12 @@ module.exports = (knex) => {
   router.get("/", (req, res) => {
     res.render('restaurant');
     // add rest name variable later
+    // if logged in,
+    //res.redirect(303, "/:id")
   });
 
 
-  // Restaurant profile page (to edit menu items)
+  // Restaurant profile page (to see and edit menu items)
   router.get("/:id", (req, res) => {
     // knex
     //   .select("*")
@@ -50,26 +52,21 @@ module.exports = (knex) => {
   //   res.render('index', {
   //     results: results
   //   });
-  res.sendStatus(200).redirect("/:id");
+  res.redirect(303, "/:id");
 });
+
+// PUT update menu id
 
 
 
   // Current open orders page
-  router.get("/:id/current-orders", (req, res) => {
+  router.get("/:id/current", (req, res) => {
     const templateVars = {
       // "current-orders" : restaurant.current
     };
-    res.render('restaurant_current', templateVars)
+    res.render('current', templateVars)
   });
 
-  // A specific current order
-  router.get("/:id/current-orders/:orderId", (req, res) => {
-    const templateVars = {
-      // "current-orders" : restaurant.current
-    };
-    res.render('restaurant_order', templateVars)
-  });
 
   // Order history page
   router.get("/:id/history", (req, res) => {
@@ -77,7 +74,7 @@ module.exports = (knex) => {
       // "current-orders" : restaurant.current
       "name": req.params.id
     };
-    res.render('restaurant_history', templateVars)
+    res.render('history', templateVars)
   });
 
 
