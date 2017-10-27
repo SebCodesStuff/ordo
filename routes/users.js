@@ -2,10 +2,11 @@
 
 const express = require('express');
 const router  = express.Router();
+// const passport = require('./../server.')
 
-module.exports = (knex) => {
+module.exports = (knex, passport) => {
 
-  // ------------------ /user is prepended to the urls below ----
+  // ----------- /user is prepended to the urls below ----
 
   router.get("/", (req, res) => {
     //check cookie , if not logged in    
@@ -45,13 +46,12 @@ module.exports = (knex) => {
   });
   
   
+
   // Past orders page
   router.get("/:id/history", (req, res) => {
     const id = req.params.id;
     res.render("history")
   });
-
-
   
   
   return router;
