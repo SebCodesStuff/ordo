@@ -47,16 +47,12 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
+
 app.use(express.static("public"));
 app.use(require("cookie-parser")());
 app.use(require("express-session")({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 
-//Passport initilization
-// app.use(passport.initialize());
-// app.use(passport.session());
 
-// Mount all resource routes
-// app.use("/api/users", usersRoutes(knex));
 app.use("/user", userRoutes(knex));
 app.use("/restaurant", restRoutes(knex));
 
@@ -119,88 +115,6 @@ const User = require('./db/user/userData')(knex);
 
 app.use(flash());
 
-// knex
-// .select('*')
-// .from('users')
-// .where('id',5)
-// .then(function(rows) {
-//   var user = rows[0];
-//   console.log("my user",user);
-// });
-
-// function find (key, value, userType) {
-//   return new Promise ((resolve, reject) => {
-//       knex
-//       .select('*')
-//       .from(userType)
-//       .where(key, value)
-//       .limit(1)
-//       .then((rows) => {
-//         var user = rows[0];
-//         if (user) {
-//           console.log("returned user: ",user);
-//           return resolve(user)
-//         } else {
-//           return reject()
-//         }
-//       })
-//       .catch((error) => reject(error));
-//   })
-// }
-//
-// function checkEmailUniqueness(email, userType) {
-//     return new Promise((resolve, reject) => {
-//       find('email', email, userType)
-//       .then((user) => {
-//         if (user) {
-//           console.log('invalid email');
-//           return reject({
-//             type: 409,
-//             message: 'email has already been used'
-//           })
-//         }
-//         else {
-//           console.log('unique email');
-//           return resolve(email)
-//         }
-//       })
-//     })
-//   }
-//
-// // Temporarily put require bcrypt here will remove once modular
-// const bcrypt = require('bcrypt');
-//
-//   function authenticate(email, password, userType) {
-//       return new Promise((resolve, reject) => {
-//         find('email',email, userType)
-//         .then((user) => {
-//           if (!user) {
-//             return reject({
-//               type: 409,
-//               message: 'bad credentials'
-//             })
-//           }
-//           bcrypt.compare(password, user.password)
-//           .then((passwordsMatch) => {
-//             if (passwordsMatch) {
-//               return resolve(user)
-//             }
-//             else {
-//               // If the passwords don't match, return a rejected promise with an
-//               // error.
-//               console.log('reject');
-//               return reject({
-//                 type: 409,
-//                 message: 'bad credentials'
-//               })
-//             }
-//           })
-//         })
-//         .catch((error) => reject(error));
-//       })
-//     }
-
-
 passport.use(
   new LocalStrategy(
     {usernameField: 'email', passwordField: 'password'},
@@ -218,51 +132,20 @@ passport.deserializeUser((id, done) => {
   .then((user) => done(null, user))
   .catch((error) => done(err, null))
 })
+
 // Use passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
 
-//   passport.use(new LocalStrategy({
-//     usernameField: 'email',
-//     passwordField: 'password'},
-//   function(email, password, done) {
-//     knex('restaurant').where({ email: email })
-//     .then(function(user) {
-//       if (!user) {
-//         return done(null, false, { message: 'Incorrect username.' });
-//       }
-//       return done(null, user);
-//     })
-//     .error(function (error) {
-//       return done(error);
-//     })
-//   }
-// ));
 
 
-// passport.serializeUser(function(user, done) {
-//   done(null, user[0].id);
-// });
+app.post('/user/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/none',
 
-
-
-// Not quite working yet
-// passport.deserializeUser(function(id, done) {
-//   knex('users').where({ email: email })(id, function(err, user) {
-//     done(err, user);
-//   });
-// });
-
-  app.use(passport.initialize());
-  app.use(passport.session());
-
-  app.post('/user/login',
-    passport.authenticate('local', {
-      successRedirect: '/',
-      failureRedirect: '/none',
-
-    })
-  );
+  })
+);
 
 
 app.listen(PORT, () => {

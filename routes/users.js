@@ -15,7 +15,7 @@ module.exports = (knex) => {
   // });
   // User login form on the homepage
   router.post("/register", (req, res) => {
-    res.send(200).redirect('/');
+    res.redirect('/');
   });
 
 
