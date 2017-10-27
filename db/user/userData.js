@@ -70,7 +70,7 @@ module.exports = function(knex) {
             }
             // Change to password_digest
             // Removed bcrypt so that I could test without making a new user
-            if (password === user.password)
+            if (password === user.password_digest)
               return resolve(user);
             // bcrypt.compare(password, user.password)
             // .then((passwordsMatch) => {
@@ -134,7 +134,7 @@ module.exports = function(knex) {
 
       const updatedUser = {}
       if (email) updatedUser.email = email
-      if (passwordDigest) updatedUser.password = passwordDigest
+      if (passwordDigest) updatedUser.password_digest = passwordDigest
 
       return knex('users')
       .update(updatedUser)
