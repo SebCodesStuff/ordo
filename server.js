@@ -26,7 +26,7 @@ const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
 const userRoutes = require("./routes/users");
-// const restRoutes = require("./routes/restaurant");
+const restRoutes = require("./routes/restaurant");
 
 
 
