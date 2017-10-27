@@ -31,6 +31,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^6.4.2",
+    "stripe": "^5.2.0",
     "twilio": "^3.9.0"
   },
   "devDependencies": {

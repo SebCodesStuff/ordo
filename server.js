@@ -39,7 +39,7 @@ app.use(morgan('dev'));
 app.use(knexLogger(knex));
 
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/styles", sass({
   src: __dirname + "/styles/styles",
   dest: __dirname + "/public/styles",
@@ -170,6 +170,39 @@ app.post('/user/login',
 
   })
 );
+
+
+
+
+
+
+
+// STRIPES
+
+const keyPublishable = process.env.PUBLISHABLE_KEY;
+const keySecret = process.env.SECRET_KEY;
+
+const stripe = require("stripe")(keySecret);
+
+app.get("/user/:id/current/payment", (req, res) =>
+res.render("payment", {keyPublishable}));
+
+app.post("/charge", (req, res) => {
+let amount = 500;
+
+stripe.customers.create({
+   email: req.body.stripeEmail,
+  source: req.body.stripeToken
+})
+.then(customer =>
+  stripe.charges.create({
+    amount,
+    description: "Sample Charge",
+       currency: "cad",
+       customer: customer.id
+  }))
+.then(charge => res.render("charge"));
+});
 
 
 app.listen(PORT, () => {

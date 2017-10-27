@@ -16,36 +16,28 @@
 
       <div class="payment-page">
         <p>Your total: $30</p>
-        <form action="/user/payment" method="POST">
-          <div>
-            <label>Card Holder Name:</label>
-            <input type="text" name="email">
-          </div>
-          <div>
-            <label>Address:</label>
-            <input type="text" name="address">
-          </div>
-          <div>
-            <label>Credit Card Number:</label>
-            <input type="text" name="card-number">
-          </div>
-          <div class="expiration-date">
-            <div>
-                <label>Expiration Month:</label>
-                <input type="text" name="month">
-            </div>
-            <div>
-                <label>Expiration Year:</label>
-                <input type="text" name="year">
-            </div>
-          </div>          
-          <div>
-            <label>CVC</label>
-            <input type="text" name="cvc">
-          </div>      
-          <input type="submit" value="Submit">
-        </form>
 
+        <!-- <form action="/user-payment" method="POST">
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_PpxAH1VnSC9taAZmvXO4v4Mx"
+            data-amount="999"
+            data-name="Ordo"
+            data-description="Widget"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto">
+          </script>
+        </form> -->
+        <form action="/charge" method="POST">
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key=keyPublishable
+            data-amount="500"
+            data-description="Sample Charge"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto">
+          </script>
+        </form>
       </div><!--/container-->
           
   </body>
