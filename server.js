@@ -15,7 +15,7 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
+const userRoutes = require("./routes/users");
 const restRoutes = require("./routes/restaurant");
 const googlemapRoutes = require("./routes/googlemap");
 
@@ -39,7 +39,8 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
+// app.use("/api/users", usersRoutes(knex));
+app.use("/user", userRoutes(knex));
 app.use("/restaurant", restRoutes(knex));
 app.use("/api/map", googlemapRoutes(knex));
 
@@ -47,13 +48,20 @@ app.use("/api/map", googlemapRoutes(knex));
 // Home page/for map functiont
 app.get("/", (req, res) => {
 
-  res.render("index");
+
+  knex
+    .select("*")
+    .from("restaurant")
+    .then((results) => {
+      console.log(results)
+      res.render('index', {
+        results: results
+      });
+  });
+
+
 });
 
-// User login form with jQuery....
-app.post("/login", (req, res) => {
-  res.redirect('/');
-});
 
 
 

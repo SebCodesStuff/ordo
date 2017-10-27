@@ -1,0 +1,61 @@
+.restaurant-preview
+  background: white
+  padding: 1em
+  margin: 1em
+  background: white
+
+#header
+  background: url("/img/splash.jpg") center 33% no-repeat
+  background-size: cover
+  width: 100%
+  height: 300px
+  font-family: $serif
+  color: white
+  text-align: center    
+  &:before 
+    content: ''
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    height: 300px
+    background-color: black
+    // background-image: linear-gradient(to bottom right,#002f4b,#dc4225)
+    opacity: .7
+  // position: fixed
+  // box-shadow: -6px -6px 6px 8px rgba(0, 0, 0, 0.25)
+  // z-index: 100
+  // width: 100%
+  // background: rgba(black, .2)
+  // text-align: center
+  h1
+    font-size: 500%
+    padding: .75em 0 0
+    position: relative
+    z-index: 100
+    font-weight: bold
+    text-shadow: 0px 1px 0px rgba(black, .85)
+    // text-shadow: 2px 5px 6px rgba(255, 255, 255, .7), 0px -5px 35px rgba(255, 255, 255, 0.9)
+  p
+    position: relative
+    z-index: 88
+    margin-top: 1em
+    font-size: 106%
+    text-shadow: 0px 1px 0px rgba(black, 1)
+
+.front-logins
+  position: absolute
+  z-index: 200
+  cursor: pointer
+  margin: 1em
+  top: 0
+  right: 0
+  input
+    background: transparent
+    margin: .15em .5em
+    color: white
+    border: transparent
+    font-size: 100%
+    font-family: $sans-serif
+    font-weight: 600

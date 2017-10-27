@@ -6,39 +6,103 @@
   </head>
 
   <body>
+      <div id='header'>
+          <h1>Ordo</h1>
+          <p>Quick & easy food orders</p>
+          <div class="front-logins">
+          <div class="login-btn">
+              <input type="button" class="show-login" value="Login">
+            </div>
+            <div class="register-btn">
+              <input type="button" class="show-register" value="Register">
+            </div>
+          </div>
+      </div>
+
+  <!-- <% include partials/_nav %> -->
+
+
     <div class="container">
 
-    <div id="login-form">
+
+    <!-- <div id="login-form"> -->
+
+
+
+    <div class="login-form">
+
       <div class="close">X</div>
-      <form class="login" action="/user-login" method="POST">
+      <h3>Login</h3>
+      <form class="login" action="/user/login" method="POST">
         <div>
           <label for="email">Email:</label>
-          <input id="email" type="email" name="email">
+          <input type="email" name="email">
         </div>
         <div>
           <label for="password">Password:</label>
-          <input id="password" type="password" name="password">
+          <input type="password" name="password">
         </div>
         <input type="submit" value="Submit">
       </form>
-    </div><!--/user-login-->
+
+    <!-- </div>/user-login -->
 
 
-  <header>
+  <!-- <header>
     <h1 id="logotype">Ordo</h1>
     <div class="login-btn">
       <input type="button" id="show-login" value="Login"></header>
-    </div>
+ -->
+    </div><!-- /login-form -->
+
+    <div class="registration-form">
+      <div class="close">X</div>
+      <h3>Register</h3>
+      <form class="register" action="/user/register" method="POST">
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" name="email">
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" name="password">
+        </div>
+        <div>
+          <label for="confirm-password">Confirm password:</label>
+          <input type="password" name="confirm-password">
+        </div>
+        <input type="submit" value="Submit">
+      </form>
+    </div>/registration-form
+
+  <header>
+
+
   </header>
 
 
   <h2>This HOMEPAGE shows restaurant list</h2>
 
 
-    <!--loop through restaurant db -->
+    loop through restaurant db
+  <% results.forEach((restaurant) => { %>
     <div class="restaurant-preview">
       <p>Restaurant one info</p>
+
+        <h2><%= restaurant.name %></h2>
+        <p><%= restaurant.type %></p>
+        <p><%= restaurant.address %></p>
+        <img src="/img/<%=restaurant.picture %>">
+         <img src="/img/restaurant1.jpg">
+        <p><%= restaurant.description %></p>
+
     </div>
+  <% }) %>
+
+
+
+
+
 
 
       <h3>My Google Maps Demo</h3>
@@ -46,21 +110,6 @@
 
 
     <script type="text/javascript" src="/scripts/map.js"></script>
-
-
-
-    <!-- <script type="text/javascript">
-      function initMap() {
-
-
-      var center = {lat: 43.6718, lng: -79.4668};
-      var map = new google.maps.Map(document.getElementById('map'), {
-                  zoom: 12,
-                  center: center
-                });
-        }
-
-    </script> -->
 
 
 
@@ -74,7 +123,7 @@
 
 
 
-  </div><!--/container-->
+  </div><!-- /container -->
 
   </body>
 </html>
