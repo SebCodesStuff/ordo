@@ -92,7 +92,7 @@ module.exports = function(knex) {
         })
       }
 
-      function add(email, password) {
+      function add(email, password_digest) {
         return (
           checkEmailUniqueness(email) // First check if email already exists
           .then((email) => {
@@ -101,7 +101,7 @@ module.exports = function(knex) {
           .then((passwordDigest) => {
             return knex('users').insert({
               email: email,
-              password: password
+              password_digest: password_digest
             })
           })
         )

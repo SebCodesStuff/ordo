@@ -2,24 +2,51 @@
 
 const express = require('express');
 const router  = express.Router();
-// const passport = require('./../server.')
+const knex = require('knex');
 
 module.exports = (knex, passport) => {
+
+
+// user type found with
+// result[0].type;
 
   // ----------- /user is prepended to the urls below ----
 
   router.get("/", (req, res) => {
-    //check cookie , if not logged in    
-    knex
-      .select("*")
-      .from("restaurant")
-      .then((results) => {
-        console.log(results)
-        res.render('index', {
-          results: results
-          
-        });
-    });
+    var cookieID = req.session.passport.user;
+    console.log(cookieID);
+      knex('users')
+      .select('type')
+      .where('id', cookieID)
+      .then((result)=>{
+       if (result[0].type === 'customer') {
+         knex
+         .select("*")
+         .from("users")
+         .innerJoin("restaurant", "users.id", "restaurant.user_id")
+         .orderBy("user_id")
+         .then((results) => {
+           res.render('index', {
+             results: results
+           });
+         });
+       } else {
+         knex("users")
+         .select("*")
+         .innerJoin("restaurant", "users.id", "restaurant.user_id")
+         .where('user_id', cookieID)
+         .then((results) => {
+           res.render('restaurant_profile', {
+             results: results
+           });
+         });
+       }
+      })
+
+
+
+
+
     // else redirect to their user profile pg
     // res.redirect(303, '/:id')
 
@@ -44,15 +71,15 @@ module.exports = (knex, passport) => {
     // only users see stripe page
     res.render("payment")
   });
-  
-  
+
+
 
   // Past orders page
   router.get("/:id/history", (req, res) => {
     const id = req.params.id;
     res.render("history")
   });
-  
-  
+
+
   return router;
 }

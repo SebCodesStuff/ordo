@@ -53,12 +53,6 @@ app.use(cookieSession({
   name: 'session',
   keys: ['key1']
 }));
-//
-// app.use(require("express-session")({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
-
-// Seb's
-// app.use("/user", userRoutes(knex));
-// app.use("/restaurant", restRoutes(knex));
 
 // Mount routes
 app.use("/user", userRoutes(knex));
@@ -72,7 +66,7 @@ app.use("/restaurant", restRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  // const cookie = cookie
+
 
   knex
     .select("*")
@@ -80,7 +74,7 @@ app.get("/", (req, res) => {
     .innerJoin("restaurant", "users.id", "restaurant.user_id")
     .orderBy("user_id")
     .then((results) => {
-      // console.log(results)
+      console.log(results)
       res.render('index', {
         results: results
 
@@ -92,7 +86,7 @@ app.get("/", (req, res) => {
 // User login form on the homepage
 app.post("/register", (req, res) => {
   // if restaurant, ejs show link to their resto pg
-  // use cookie to get their name to greet them 
+  // use cookie to get their name to greet them
   res.redirect('/');
 });
 
