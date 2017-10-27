@@ -9,6 +9,7 @@ module.exports = (knex) => {
     knex
       .select("address")
       .from("restaurant")
+      .orderBy("user_id")
       .then((results) => {
         res.json(results);
     });
