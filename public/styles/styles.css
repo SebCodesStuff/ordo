@@ -102,8 +102,7 @@ body {
 
 .login-btn,
 .register-btn {
-  float: right;
-  cursor: pointer; }
+  float: right; }
 
 .login-form,
 .registration-form {
@@ -118,12 +117,9 @@ body {
   background: rgba(88, 12, 67, 0.95);
   color: white;
   padding: 2em;
-  border-radius: 6px;
-  cursor: pointer;
+  border-radius: 6px div;
+    border-radius-margin: 1em 0;
   box-shadow: 0 0px 20px 4px rgba(0, 0, 0, 0.35); }
-  .login-form div,
-  .registration-form div {
-    margin: 1em 0; }
   .login-form input,
   .registration-form input {
     width: 100%; }
@@ -201,7 +197,8 @@ body {
     border: transparent;
     font-size: 100%;
     font-family: "Catamaran", sans-serif;
-    font-weight: 600; }
+    font-weight: 600;
+    cursor: pointer; }
 
 #add-item {
   background: skyblue;
