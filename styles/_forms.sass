@@ -1,33 +1,52 @@
+
+
 .login
   max-width: 600px
   margin: 0 auto
   input
     width: 100%
 
-
 .login-btn, 
 .register-btn
   float: right
   cursor: pointer
 
-#login-form,
-#registration-form
+.login-form,
+.registration-form
   display: none
-  position: absolute
+  position: fixed
   left: 0
   right: 0
-  margin: 5em auto
+  margin: -4.5em auto
   z-index: 100
   width: 600px
-  height: auto
-  background: skyblue
+  height: 320px
+  background: rgba($purple,.95)
   color: white
   padding: 2em
   border-radius: 6px
   cursor: pointer
+  div
+    margin: 1em 0
+  input 
+    width: 100%
+  h3
+    font-weight: 400
+    margin: 0
+    font-size: 110%
+    text-align: center
+  box-shadow: 0 0px 20px 4px rgba(black, .35)  
   .close
     top: 0
     right: 0
-    margin: 1em
+    margin: .5em
+    display: block
     position: absolute
     cursor: pointer
+    font-size: 115%
+    font-family: sans-serif
+    background: white
+    color: $purple
+    font-weight: bold
+    border-radius: 4px
+    padding: .1em .25em

@@ -29,6 +29,7 @@ const userRoutes = require("./routes/users");
 const restRoutes = require("./routes/restaurant");
 
 
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -68,12 +69,16 @@ app.get("/", (req, res) => {
     .select("*")
     .from("restaurant")
     .then((results) => {
+      console.log(results)
       res.render('index', {
         results: results
       });
   });
 
 });
+
+// Twilio Routes
+
 
 app.post("/text", (req, res) => {
   var time = req.body.Digits;
@@ -103,34 +108,61 @@ app.post("/voice", (req,res) => {
 
 })
 
-
-// For the authentication part will move to users and restaurant_history
-
-// var passport = require('passport')
-//   , LocalStrategy = require('passport-local').Strategy;
-//
-//   passport.use(new LocalStrategy({
-//     usernameField: 'email',
-//     passwordField: 'id'},
-//   function(email, password, done) {
-//     console.log("top");
-//     knex('restaurant').where({ email: email })
-//     .then(function(user) {
-//       // if (err) { return done(err); }
-//       if (!user) {
-//         return done(null, false, { message: 'Incorrect username.' });
-//       }
-//       return done(null, user);
-//     })
-//     .error(function (error) {
-//       return done(error);
-//     })
-//   }));
-
 // For user login
 
-var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
+
+
+const flash = require('connect-flash');
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy;
+// const User = require('./db/user/user')(knex);
+
+// function find(id) {
+//     return new Promise((resolve, reject) => {
+//       knex('users')
+//       .select('*')
+//       .where({id: id})
+//       .limit(1)
+//       .then((rows) => {
+//         user = rows[0]
+//         if (user) {
+//           return resolve(user)
+//         }
+//         else {
+//           return reject()
+//         }
+//       })
+//       .catch((error) => reject(error));
+//     })
+//   }
+
+knex
+.select('*')
+.from('users')
+.where('id',5)
+.then(function(rows) {
+  var user = rows[0];
+  console.log("my user",user);
+});
+
+function find (id, type) {
+  return new Promise ((resolve, reject) => {
+      knex
+      .select('*')
+      .from(type)
+      .where('id',id)
+      .limit(1)
+      .then((rows) => {
+        var user = rows[0];
+        if (user) {
+          return resolve(user)
+        } else {
+          return reject()
+        }
+      })
+      .catch((error) => reject(error));
+  })
+}
 
   passport.use(new LocalStrategy({
     usernameField: 'email',

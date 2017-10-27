@@ -8,12 +8,14 @@
     "start": "node server.js",
     "local": "./node_modules/.bin/nodemon --ignore public/",
     "knex": "./node_modules/.bin/knex",
-    "compile-sass": "./node_modules/node-sass/bin/node-sass  --recursive --output public/styles styles"
+    "compile-sass": "./node_modules/node-sass/bin/node-sass  --recursive --watch --output public/styles styles"
   },
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "dotenv": "^2.0.0",
     "ejs": "^2.5.7",
