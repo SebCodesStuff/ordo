@@ -115,76 +115,134 @@ app.post("/voice", (req,res) => {
 const flash = require('connect-flash');
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
-// const User = require('./db/user/user')(knex);
+const User = require('./db/user/userData')(knex);
 
-// function find(id) {
-//     return new Promise((resolve, reject) => {
-//       knex('users')
+app.use(flash());
+
+// knex
+// .select('*')
+// .from('users')
+// .where('id',5)
+// .then(function(rows) {
+//   var user = rows[0];
+//   console.log("my user",user);
+// });
+
+// function find (key, value, userType) {
+//   return new Promise ((resolve, reject) => {
+//       knex
 //       .select('*')
-//       .where({id: id})
+//       .from(userType)
+//       .where(key, value)
 //       .limit(1)
 //       .then((rows) => {
-//         user = rows[0]
+//         var user = rows[0];
 //         if (user) {
+//           console.log("returned user: ",user);
 //           return resolve(user)
-//         }
-//         else {
+//         } else {
 //           return reject()
 //         }
 //       })
 //       .catch((error) => reject(error));
+//   })
+// }
+//
+// function checkEmailUniqueness(email, userType) {
+//     return new Promise((resolve, reject) => {
+//       find('email', email, userType)
+//       .then((user) => {
+//         if (user) {
+//           console.log('invalid email');
+//           return reject({
+//             type: 409,
+//             message: 'email has already been used'
+//           })
+//         }
+//         else {
+//           console.log('unique email');
+//           return resolve(email)
+//         }
+//       })
 //     })
 //   }
-
-knex
-.select('*')
-.from('users')
-.where('id',5)
-.then(function(rows) {
-  var user = rows[0];
-  console.log("my user",user);
-});
-
-function find (id, type) {
-  return new Promise ((resolve, reject) => {
-      knex
-      .select('*')
-      .from(type)
-      .where('id',id)
-      .limit(1)
-      .then((rows) => {
-        var user = rows[0];
-        if (user) {
-          return resolve(user)
-        } else {
-          return reject()
-        }
-      })
-      .catch((error) => reject(error));
-  })
-}
-
-  passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password'},
-  function(email, password, done) {
-    knex('restaurant').where({ email: email })
-    .then(function(user) {
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      return done(null, user);
-    })
-    .error(function (error) {
-      return done(error);
-    })
-  }
-));
+//
+// // Temporarily put require bcrypt here will remove once modular
+// const bcrypt = require('bcrypt');
+//
+//   function authenticate(email, password, userType) {
+//       return new Promise((resolve, reject) => {
+//         find('email',email, userType)
+//         .then((user) => {
+//           if (!user) {
+//             return reject({
+//               type: 409,
+//               message: 'bad credentials'
+//             })
+//           }
+//           bcrypt.compare(password, user.password)
+//           .then((passwordsMatch) => {
+//             if (passwordsMatch) {
+//               return resolve(user)
+//             }
+//             else {
+//               // If the passwords don't match, return a rejected promise with an
+//               // error.
+//               console.log('reject');
+//               return reject({
+//                 type: 409,
+//                 message: 'bad credentials'
+//               })
+//             }
+//           })
+//         })
+//         .catch((error) => reject(error));
+//       })
+//     }
 
 
-passport.serializeUser(function(user, done) {
-  done(null, user[0].id);
-});
+passport.use(
+  new LocalStrategy(
+    {usernameField: 'email', passwordField: 'password'},
+    (email, password, done) => {
+      User.authenticate(email, password)
+      .then((user) => done(null, user))
+      .catch((error) => done(null, false, error))
+    }
+  )
+)
+
+passport.serializeUser((user, done) => done(null, user.id))
+passport.deserializeUser((id, done) => {
+  User.find(id)
+  .then((user) => done(null, user))
+  .catch((error) => done(err, null))
+})
+// Use passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
+
+//   passport.use(new LocalStrategy({
+//     usernameField: 'email',
+//     passwordField: 'password'},
+//   function(email, password, done) {
+//     knex('restaurant').where({ email: email })
+//     .then(function(user) {
+//       if (!user) {
+//         return done(null, false, { message: 'Incorrect username.' });
+//       }
+//       return done(null, user);
+//     })
+//     .error(function (error) {
+//       return done(error);
+//     })
+//   }
+// ));
+
+
+// passport.serializeUser(function(user, done) {
+//   done(null, user[0].id);
+// });
 
 
 
@@ -198,17 +256,11 @@ passport.serializeUser(function(user, done) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  app.post('/login',
+  app.post('/user/login',
     passport.authenticate('local', {
       successRedirect: '/',
-      failureRedirect: '/user/login',
-    })
-  );
+      failureRedirect: '/none',
 
-  app.post('/restaurant/login',
-    passport.authenticate('local', {
-      successRedirect: '/restaurant',
-      failureRedirect: '/restaurant',
     })
   );
 

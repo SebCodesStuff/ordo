@@ -26,16 +26,6 @@ module.exports = (knex) => {
   });
 
 
-// The failure redirects to the same page so use another way to handle auth errors
-
-  // router.post('/login',
-  //   passport.authenticate('local', {
-  //     successRedirect: '/',
-  //     failureRedirect: '/restaurant',
-  //   })
-  // );
-
-
 
   // User's order history
   router.get("/history", (req, res) => {
