@@ -5,26 +5,67 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
+  // ------------------ /user/:userID is prepended to the urls below ----
 
-// ------- All routes in this file will be prepended with /user -------
-
-
-  router.get("/:userid", (req, res) => {
-    
+  router.get("/", (req, res) => {
+    //check cookie 
+    res.render('user_profile')
+    //if restaurant, 
+    // res.render('restaurant_profile')
 
   });
 
+  // Add a menu item 34
+  router.post("/add-item", (req, res) => {
+    const menuItem = {
+      name: req.body.name,
+      description: req.body.description,
+      price: req.body.price,
+      // category: 
+    };
+    console.log(req.body);
+    // NEED COOKIE
+    // Insert into db
+    knex('menuitem')
+      .insert(menuItem, '*')
+      .then(menuitems => {
+        menuItem = menuitems[0];
+        res.redirect('/:id')
+      })
+  // knex
+  // .select("*")
+  // .from("restaurant")
+  // .then((results) => {
+  //   res.render('index', {
+  //     results: results
+  //   });
+    res.sendStatus(303).redirect("/:id");
+  });
 
-  // User's order history
+
+
+  // Current open orders page
+  router.get("/current", (req, res) => {
+    const templateVars = {
+      // "current-orders" : restaurant.current
+    };
+    res.render('current', templateVars)
+  });
+
+
+
+  // Past orders page
   router.get("/history", (req, res) => {
-    // knex
-    //   .select("*")
-    //   .from("users")
-    //   .then((results) => {
-    //     res.json(results);
-    // });
-
+    const id = req.params.id;
+    res.render("history")
   });
 
+  // Stripe validation checkout page
+  router.get("/payment", (req, res) => {
+    // only users see stripe page
+    res.render("payment")
+  });
+  
+  
   return router;
 }

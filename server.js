@@ -37,15 +37,13 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
-// Mount all resource routes
-// app.use("/api/users", usersRoutes(knex));
-app.use("/user", userRoutes(knex));
-app.use("/restaurant", restRoutes(knex));
+// Mount routes with the userID
+app.use("/user/:userID", restRoutes(knex));
 
 
 // Home page
 app.get("/", (req, res) => {
-  
+  // const cookie = cookie
   knex
     .select("*")
     .from("restaurant")
@@ -53,6 +51,7 @@ app.get("/", (req, res) => {
       console.log(results)
       res.render('index', {
         results: results
+        
       });
   });
 
