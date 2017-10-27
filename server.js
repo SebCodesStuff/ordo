@@ -16,7 +16,7 @@ const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
-
+const cookieSession = require("cookie-session");
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -26,7 +26,7 @@ const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
 const userRoutes = require("./routes/users");
-const restRoutes = require("./routes/restaurant");
+// const restRoutes = require("./routes/restaurant");
 
 
 
@@ -49,13 +49,22 @@ app.use("/styles", sass({
 }));
 
 app.use(express.static("public"));
-app.use(require("cookie-parser")());
-app.use(require("express-session")({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1']
+}));
+//
+// app.use(require("express-session")({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+
+// Seb's
+// app.use("/user", userRoutes(knex));
+// app.use("/restaurant", restRoutes(knex));
 
 
-app.use("/user", userRoutes(knex));
-app.use("/restaurant", restRoutes(knex));
-
+// Mount routes with the userID
+// Corina's
+// app.use("/user/:userID", userRoutes(knex));
+// For testing
 
 
 // Home page
@@ -65,9 +74,10 @@ app.get("/", (req, res) => {
     .select("*")
     .from("restaurant")
     .then((results) => {
-      console.log(results)
+      // console.log(results)
       res.render('index', {
         results: results
+
       });
   });
 
@@ -137,11 +147,12 @@ passport.deserializeUser((id, done) => {
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use("/user/", userRoutes(knex, passport));
 
 
 app.post('/user/login',
   passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/user/',
     failureRedirect: '/none',
 
   })

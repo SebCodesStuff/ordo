@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home Page</title>
+    <% include partials/_head %>
+  </head>
+
+  <body>
+
+  <!-- <% include partials/_nav %> -->
+
+    <div class="container">
+
+      <h2>This is the PAYMENT page</h2>
+        
+
+      <div class="payment-page">
+        <p>Your total: $30</p>
+        <form action="/user/payment" method="POST">
+          <div>
+            <label>Card Holder Name:</label>
+            <input type="text" name="email">
+          </div>
+          <div>
+            <label>Address:</label>
+            <input type="text" name="address">
+          </div>
+          <div>
+            <label>Credit Card Number:</label>
+            <input type="text" name="card-number">
+          </div>
+          <div class="expiration-date">
+            <div>
+                <label>Expiration Month:</label>
+                <input type="text" name="month">
+            </div>
+            <div>
+                <label>Expiration Year:</label>
+                <input type="text" name="year">
+            </div>
+          </div>          
+          <div>
+            <label>CVC</label>
+            <input type="text" name="cvc">
+          </div>      
+          <input type="submit" value="Submit">
+        </form>
+
+      </div><!--/container-->
+          
+  </body>
+</html>
