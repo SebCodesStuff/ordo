@@ -12,10 +12,10 @@ module.exports = function(knex) {
         .then((rows) => {
           var user = rows[0];
           if (user) {
-            console.log("returned user: ",user);
+            // console.log("returned user: ",user);
             return resolve(user)
           } else {
-            console.log('rejected at usr.js 18');
+            // console.log('rejected at usr.js 18');
             return reject()
           }
         })
