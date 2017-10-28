@@ -38,10 +38,17 @@ module.exports = (knex, passport) => {
          .innerJoin("restaurant", "users.id", "restaurant.user_id")
          .where('user_id', cookieID)
          .then((results) => {
-           var restID = "restaurant/"+cookieID;
-           res.render('restaurant_profile', {
-             results: results
-           });
+           knex
+             .select("*")
+             .from("restaurant")
+             .innerJoin("menuitem", "restaurant.id", "menuitem.restaurant_id")
+             .where('restaurant_id', results[0].id)
+             .then((results) => {
+               console.log(results);
+               res.render('restaurant_profile', {
+                 results: results
+               });
+             })
          });
        }
       })

@@ -19,11 +19,13 @@ module.exports = (knex) => {
 
 
   // Restaurant profile page (to see and edit menu items)
-  router.get("/restaurant/profile", (req, res) => {
-    // knex
-    //   .select("*")
-    //   .from("restaurant")
-    //   .innerJoin("menuitems", "restaurant.id", "menu.items.restaurant_id")
+  router.get("/profile", (req, res) => {
+    console.log(req.body);
+    knex
+      .select("*")
+      .from("restaurant")
+      .innerJoin("menuitem", "restaurant.id", "menuitem.restaurant_id")
+      .where('restaurant_id', req.session.passport.user)
 
 
     res.render('restaurant_profile')
@@ -45,9 +47,13 @@ module.exports = (knex) => {
     // Insert into db
     knex('menuitem')
       .insert(menuItem)
-      .then(menuitems => {
-        // menuItem = menuitems[0];
-        res.render('restaurant_profile');
+      .then((menuItems) => {
+        console.log(menuItems);
+        res.render('restaurant_profile', {
+          menuItems: menuItems
+        });
+
+        // From Corina not sure if we need this
         // res.redirect('/profiles/' + req.session.c)
       })
   // knex
