@@ -79,7 +79,8 @@ h1, h2, h3, h4, h5 {
   font-weight: 700; }
 
 body {
-  color: #333; }
+  color: #333;
+  overflow: hidden; }
 
 #nav-header,
 #front-nav {
@@ -103,7 +104,7 @@ body {
 
 .container {
   max-width: 90%;
-  margin: 0 auto;
+  margin: 3em auto 0;
   padding: 1em; }
 
 footer {
@@ -136,51 +137,64 @@ footer {
   float: right; }
 
 .login-form,
-.registration-form {
+.registration-form,
+.restaurant-login {
   display: none;
   position: fixed;
   left: 0;
   right: 0;
   margin: -4.5em auto;
   z-index: 100;
-  width: 600px;
-  height: 320px;
+  max-width: 600px;
+  min-height: 320px;
   background: rgba(88, 12, 67, 0.95);
   color: white;
   padding: 1em 2em;
   border-radius: 6px;
   box-shadow: 0 0px 20px 4px rgba(0, 0, 0, 0.35); }
+  @media (max-width: 600px) {
+    .login-form,
+    .registration-form,
+    .restaurant-login {
+      padding: 1em; } }
   .login-form div,
-  .registration-form div {
+  .registration-form div,
+  .restaurant-login div {
     margin: 1em 0; }
   .login-form input,
-  .registration-form input {
+  .registration-form input,
+  .restaurant-login input {
     width: 100%;
     border-radius: 3px;
     padding: .5em;
     border: #630d4b; }
   .login-form label,
-  .registration-form label {
+  .registration-form label,
+  .restaurant-login label {
     font-size: 80%; }
   .login-form input[type="submit"],
-  .registration-form input[type="submit"] {
+  .registration-form input[type="submit"],
+  .restaurant-login input[type="submit"] {
     padding: .6em;
     width: 100px;
     color: #630d4b;
     font-weight: bold;
     cursor: pointer; }
     .login-form input[type="submit"]:hover,
-    .registration-form input[type="submit"]:hover {
+    .registration-form input[type="submit"]:hover,
+    .restaurant-login input[type="submit"]:hover {
       color: white;
       background: rgba(41, 10, 32, 0.8); }
   .login-form h3,
-  .registration-form h3 {
+  .registration-form h3,
+  .restaurant-login h3 {
     font-weight: 400;
     margin: 0;
     font-size: 130%;
     text-align: center; }
   .login-form .close,
-  .registration-form .close {
+  .registration-form .close,
+  .restaurant-login .close {
     top: 0;
     right: 0;
     margin: .75em;
@@ -194,12 +208,20 @@ footer {
     border-radius: 4px;
     padding: 0 .4em 0.1em; }
     .login-form .close:hover,
-    .registration-form .close:hover {
+    .registration-form .close:hover,
+    .restaurant-login .close:hover {
       color: white;
       background: rgba(41, 10, 32, 0.8); }
 
 .login-form h3 {
   margin: 0 0 2em; }
+
+.restaurant-login {
+  display: block;
+  position: static;
+  box-shadow: 0 0px 20px 4px rgba(0, 0, 0, 0.2);
+  margin: 3em auto;
+  min-height: 250px; }
 
 .restaurant-preview {
   background: white;

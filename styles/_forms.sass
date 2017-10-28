@@ -9,19 +9,22 @@
   float: right
 
 .login-form,
-.registration-form
+.registration-form,
+.restaurant-login
   display: none
   position: fixed
   left: 0
   right: 0
   margin: -4.5em auto
   z-index: 100
-  width: 600px
-  height: 320px
+  max-width: 600px
+  min-height: 320px
   background: rgba(#580C43,.95)
   color: white
   padding: 1em 2em
   border-radius: 6px  
+  @media (max-width: 600px)
+    padding: 1em
   div
     margin: 1em 0
   input 
@@ -64,3 +67,10 @@
       background: rgba(#290a20, .8)
 .login-form h3
   margin: 0 0 2em
+
+.restaurant-login
+  display: block
+  position: static
+  box-shadow: 0 0px 20px 4px rgba(0, 0, 0, 0.2)
+  margin: 3em auto
+  min-height: 250px
