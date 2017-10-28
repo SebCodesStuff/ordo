@@ -95,24 +95,13 @@ module.exports = (knex, passport) => {
   });
 
 
-  // router.get("/register", (req, res) => {
-  //   res.status(200);
-  // });
-
-
-
-
-
-
-
-
   // router.get("/:id", (req, res) => {
   //   res.render('user_profile');
   // });
 
 
   // Current open orders page
-  router.get("/:id/current", (req, res) => {
+  router.get("/:id/menu", (req, res) => {
     const templateVars = {
       // "current-orders" : restaurant.current
     };
