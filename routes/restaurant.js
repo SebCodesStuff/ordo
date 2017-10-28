@@ -56,7 +56,31 @@ module.exports = (knex) => {
 });
 
 // PUT update menu id
-
+router.post("/update", (req, res) => {
+  const menuItem = {
+    name: req.body.name,
+    description: req.body.description,
+    price: req.body.price,
+    // category:
+  };
+  console.log(req.body);
+  // NEED COOKIE
+  // Insert into db
+  knex('menuitem')
+    .insert(menuItem, '*')
+    .then(menuitems => {
+      menuItem = menuitems[0];
+      res.redirect('/:id')
+    })
+// knex
+// .select("*")
+// .from("restaurant")
+// .then((results) => {
+//   res.render('index', {
+//     results: results
+//   });
+res.redirect(303, "/:id");
+});
 
 
   // Current open orders page
