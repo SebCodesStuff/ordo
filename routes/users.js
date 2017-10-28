@@ -14,11 +14,13 @@ module.exports = (knex, passport) => {
 
   router.get("/", (req, res) => {
     var cookieID = req.session.passport.user;
-    console.log(cookieID);
+
+// Finds the user
       knex('users')
       .select('type')
       .where('id', cookieID)
       .then((result)=>{
+// Checks if they're a restaurant or customer
        if (result[0].type === 'customer') {
          knex
          .select("*")
@@ -36,6 +38,7 @@ module.exports = (knex, passport) => {
          .innerJoin("restaurant", "users.id", "restaurant.user_id")
          .where('user_id', cookieID)
          .then((results) => {
+           var restID = "restaurant/"+cookieID;
            res.render('restaurant_profile', {
              results: results
            });

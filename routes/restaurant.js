@@ -19,31 +19,36 @@ module.exports = (knex) => {
 
 
   // Restaurant profile page (to see and edit menu items)
-  router.get("/:id", (req, res) => {
+  router.get("/restaurant/profile", (req, res) => {
     // knex
     //   .select("*")
     //   .from("restaurant")
-    //   .join("menuitems")
+    //   .innerJoin("menuitems", "restaurant.id", "menu.items.restaurant_id")
+
 
     res.render('restaurant_profile')
   });
 
   // Add a menu item 34
   router.post("/add-item", (req, res) => {
+    var cookieID = req.session.passport.user;
     const menuItem = {
-      name: req.body.name,
-      description: req.body.description,
+      restaurant_id: cookieID,
+      category: req.body.category,
+      item_name: req.body.name,
+      decription: req.body.description,
       price: req.body.price,
-      // category:
     };
     console.log(req.body);
+    console.log(menuItem);
     // NEED COOKIE
     // Insert into db
     knex('menuitem')
-      .insert(menuItem, '*')
+      .insert(menuItem)
       .then(menuitems => {
-        menuItem = menuitems[0];
-        res.redirect('/:id')
+        // menuItem = menuitems[0];
+        res.render('restaurant_profile');
+        // res.redirect('/profiles/' + req.session.c)
       })
   // knex
   // .select("*")
@@ -52,7 +57,7 @@ module.exports = (knex) => {
   //   res.render('index', {
   //     results: results
   //   });
-  res.redirect(303, "/:id");
+  res.render('restaurant_profile');
 });
 
 // PUT update menu id

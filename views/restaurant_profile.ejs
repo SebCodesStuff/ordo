@@ -9,13 +9,13 @@
       <% include partials/_header %>
   <% include partials/_nav %>
     <div class="container">
-        
+
 
   <h2>PROFILE page for restaurant </h2>
 
     <section id="add-item">
       <p>Add an item to your menu</p>
-      <form action="/add-item" method="post">
+      <form action="/restaurant/add-item" method="POST">
         <div class="item">
           <label>Name:</label>
           <input type="text" name="name">
@@ -39,17 +39,17 @@
         <input type='submit' value="Save">
       </form>
     </section>
-    
+
     <!-- loop through the restaurant's menu -->
-    
+
     <div class="menu-item">
       <p>Restaurant one info</p>
     </div>
 
     <a class="edit-menu" href="">Edit</a>
 
-    
+
   </div><!--/container-->
-          
+
   </body>
 </html>
