@@ -11,26 +11,17 @@
 
     <div class="container">
 
-      <h2>This is the PAYMENT page</h2>
-        
-
       <div class="payment-page">
-        <p>Your total: $30</p>
 
-        <!-- <form action="/user-payment" method="POST">
-          <script
-            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="pk_test_PpxAH1VnSC9taAZmvXO4v4Mx"
-            data-amount="999"
-            data-name="Ordo"
-            data-description="Widget"
-            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-            data-locale="auto">
-          </script>
-        </form> -->
+
+      <h2>This is the PAYMENT page</h2>
+      <br>
+      <p>Amount: $15.00</p>
+      <br>
+      <p>Pay at the counter or </p>
+      
         <form action="/user/charge" method="POST">
           <article>
-            <label>Amount: $15.00</label>
           </article>
           <script
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"

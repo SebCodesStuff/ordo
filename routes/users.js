@@ -53,7 +53,7 @@ return res.render("payment", {keyPublishable})
 
 
 router.post("/charge", (req, res) => {
-  let amount = 500;
+  let amount = 1500;
 
   
   stripe.customers.create({
@@ -63,7 +63,7 @@ router.post("/charge", (req, res) => {
   .then(customer =>
     stripe.charges.create({
       amount,
-      description: "Sample Charge",
+      description: "Ordo Charge",
         currency: "cad",
         customer: customer.id
     }))
