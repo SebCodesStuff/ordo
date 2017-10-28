@@ -1,6 +1,21 @@
 
 exports.up = function(knex, Promise) {
   return Promise.all([
+
+    knex.schema.dropTable('order'),
+    knex.schema.dropTable('lineitem'),
+    knex.schema.dropTable('menuitem'),
+    knex.schema.dropTable('restaurant'),
+    knex.schema.dropTable('users')
+
+    ])
+
+
+};
+
+exports.down = function(knex, Promise) {
+
+  return Promise.all([
       knex.schema.createTable('order', function (table) {
         table.increments();
         table.integer('user_id')
@@ -19,7 +34,7 @@ exports.up = function(knex, Promise) {
         table.integer('restaurant_id')
         table.string('category');
         table.string('item_name');
-        table.string('decription');
+        table.string('item_description');
         table.float('price');
       }),
 
@@ -29,7 +44,7 @@ exports.up = function(knex, Promise) {
         table.integer('user_id');
         table.string('schedule');
         table.string('type');
-        table.string('item_description');
+        table.string('description');
       }),
 
       knex.schema.createTable('users', function (table) {
@@ -46,17 +61,13 @@ exports.up = function(knex, Promise) {
 
   ])
 
-};
 
-exports.down = function(knex, Promise) {
-  return Promise.all([
 
-    knex.schema.dropTable('order'),
-    knex.schema.dropTable('lineitem'),
-    knex.schema.dropTable('menuitem'),
-    knex.schema.dropTable('restaurant'),
-    knex.schema.dropTable('users')
 
-    ])
+
+
+
+
+
 
 };

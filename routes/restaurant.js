@@ -40,7 +40,7 @@ module.exports = (knex) => {
       restaurant_id: cookieID,
       category: req.body.category,
       item_name: req.body.name,
-      decription: req.body.description,
+      item_description: req.body.description,
       price: req.body.price,
     };
     console.log(req.body);

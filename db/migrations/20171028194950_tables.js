@@ -19,8 +19,8 @@ exports.up = function(knex, Promise) {
         table.integer('restaurant_id')
         table.string('category');
         table.string('item_name');
-        table.string('decription');
-        table.float('price');
+        table.string('item_description');
+        table.string('price');
       }),
 
       knex.schema.createTable('restaurant', function (table) {
@@ -29,7 +29,7 @@ exports.up = function(knex, Promise) {
         table.integer('user_id');
         table.string('schedule');
         table.string('type');
-        table.string('item_description');
+        table.string('description');
       }),
 
       knex.schema.createTable('users', function (table) {

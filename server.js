@@ -27,6 +27,7 @@ const knexLogger  = require('knex-logger');
 // Seperated Routes for each Resource
 const userRoutes = require("./routes/users");
 const restRoutes = require("./routes/restaurant");
+const googlemapRoutes = require("./routes/googlemap");
 
 
 
@@ -57,6 +58,8 @@ app.use(cookieSession({
 // Mount routes
 app.use("/user", userRoutes(knex));
 app.use("/restaurant", restRoutes(knex));
+app.use("/api/map", googlemapRoutes(knex));
+
 
 // Mount routes with the userID
 // Corina's
