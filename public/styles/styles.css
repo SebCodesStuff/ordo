@@ -113,7 +113,9 @@ body {
     color: #90146c; }
   #nav-header nav,
   #front-nav nav {
-    float: right; }
+    float: right;
+    font-size: 85%;
+    margin: 1em; }
 
 .container {
   max-width: 90%;
