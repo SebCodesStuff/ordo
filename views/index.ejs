@@ -47,6 +47,15 @@
       <h3>Register</h3>
       <form class="register" action="/user/register" method="POST">
         <div>
+          <label for="name">Name:</label>
+          <input type="text" name="name">
+        </div>
+        <div>
+          <label for="phone_number">Phone Number:</label>
+          <input type="text" name="phone_number">
+        </div>
+
+        <div>
           <label for="email">Email:</label>
           <input type="email" name="email">
         </div>
@@ -55,8 +64,8 @@
           <input type="password" name="password">
         </div>
         <div>
-          <label for="confirm-password">Confirm password:</label>
-          <input type="password" name="confirm-password">
+          <label for="confirm_password">Confirm password:</label>
+          <input type="password" name="confirm_password">
         </div>
         <input type="submit" value="Submit">
       </form>
@@ -80,6 +89,7 @@
 
     </div>
   <% }) %>
+
 
   <h3>My Google Maps Demo</h3>
     <div id="map" style="width:70%;height:300px;"></div>

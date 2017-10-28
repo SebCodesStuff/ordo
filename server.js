@@ -92,12 +92,12 @@ app.get("/", (req, res) => {
 
 });
 
-// User login form on the homepage
-app.post("/register", (req, res) => {
-  // if restaurant, ejs show link to their resto pg
-  // use cookie to get their name to greet them
-  res.redirect('/');
-});
+// // User login form on the homepage
+// app.post("/register", (req, res) => {
+//   // if restaurant, ejs show link to their resto pg
+//   // use cookie to get their name to greet them
+//   res.redirect('/');
+// });
 
 // Twilio Routes
 
