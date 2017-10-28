@@ -69,12 +69,20 @@ router.post("/add-item", (req, res) => {
 
 
   // Current open orders page
-  router.get("/:id/current", (req, res) => {
-    const templateVars = {
-      // "current-orders" : restaurant.current
-    };
-    res.render('current', templateVars)
-  });
+  // formerly router.get("/:id/current", (req,res) => {
+  router.get("/:id/menu", (req, res) => {
+    knex('restaurant')
+    .innerJoin("menuitem", "restaurant.id","menuitem.restaurant_id")
+    .select('*')
+    .where('restaurant_id',req.params.id)
+    .then((results) => {
+      console.log("my results",results);
+      res.render('restaurant_menu', {
+        results : results
+      })
+      // res.render('current', templateVars)
+    });
+  })
 
 
   // Order history page
