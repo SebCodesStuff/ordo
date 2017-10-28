@@ -46,7 +46,7 @@
       <p>Restaurant one info</p>
       <% for (items in results) {%>
       <li><%= results[items].item_name %>: <%=results[items].item_description%></li>
-      <li>Price: <%=results[items].price%></li>
+      <li>Price: $<%=results[items].price%></li>
       <a class="edit-menu" href="">Edit</a>
       <% } %>
     </div>
