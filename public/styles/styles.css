@@ -106,6 +106,25 @@ body {
   margin: 0 auto;
   padding: 1em; }
 
+footer {
+  background: #630d4b;
+  color: white;
+  font-size: 85%;
+  width: 100%;
+  padding: 1em 1.5em 1em;
+  overflow: hidden;
+  text-align: center; }
+  footer li {
+    display: inline-block;
+    margin: 1.5em 1em 1em;
+    font-style: italic; }
+  footer p {
+    margin-top: 1em;
+    font-size: 90%; }
+  footer .fa {
+    font-size: 160%;
+    margin: 0em .5em; }
+
 .login {
   max-width: 600px;
   margin: 0 auto; }
