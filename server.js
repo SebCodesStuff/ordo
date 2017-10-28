@@ -14,6 +14,7 @@ const PORT        = process.env.PORT || 8080;
 const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");
+const methodOverride = require('method-override')
 const sass        = require("node-sass-middleware");
 const app         = express();
 const cookieSession = require("cookie-session");
@@ -40,7 +41,7 @@ app.use(morgan('dev'));
 app.use(knexLogger(knex));
 
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/styles", sass({
   src: __dirname + "/styles/styles",
   dest: __dirname + "/public/styles",
@@ -54,12 +55,13 @@ app.use(cookieSession({
   name: 'session',
   keys: ['key1']
 }));
+
+// override with POST having ?_method=DELETE, ?_method=UPDATE
+app.use(methodOverride('_method'));
+
 //
 // app.use(require("express-session")({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
 
-// Seb's
-// app.use("/user", userRoutes(knex));
-// app.use("/restaurant", restRoutes(knex));
 
 // Mount routes
 app.use("/user", userRoutes(knex));
