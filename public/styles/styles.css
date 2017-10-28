@@ -147,34 +147,59 @@ footer {
   height: 320px;
   background: rgba(88, 12, 67, 0.95);
   color: white;
-  padding: 2em;
-  border-radius: 6px div;
-    border-radius-margin: 1em 0;
+  padding: 1em 2em;
+  border-radius: 6px;
   box-shadow: 0 0px 20px 4px rgba(0, 0, 0, 0.35); }
+  .login-form div,
+  .registration-form div {
+    margin: 1em 0; }
   .login-form input,
   .registration-form input {
-    width: 100%; }
+    width: 100%;
+    border-radius: 3px;
+    padding: .5em;
+    border: #630d4b; }
+  .login-form label,
+  .registration-form label {
+    font-size: 80%; }
+  .login-form input[type="submit"],
+  .registration-form input[type="submit"] {
+    padding: .6em;
+    width: 100px;
+    color: #630d4b;
+    font-weight: bold;
+    cursor: pointer; }
+    .login-form input[type="submit"]:hover,
+    .registration-form input[type="submit"]:hover {
+      color: white;
+      background: rgba(41, 10, 32, 0.8); }
   .login-form h3,
   .registration-form h3 {
     font-weight: 400;
     margin: 0;
-    font-size: 110%;
+    font-size: 130%;
     text-align: center; }
   .login-form .close,
   .registration-form .close {
     top: 0;
     right: 0;
-    margin: .5em;
+    margin: .75em;
     display: block;
     position: absolute;
     cursor: pointer;
-    font-size: 115%;
+    font-size: 80%;
     font-family: sans-serif;
-    background: white;
+    background: #ddd;
     color: #580C43;
-    font-weight: bold;
     border-radius: 4px;
-    padding: .1em .25em; }
+    padding: 0 .4em 0.1em; }
+    .login-form .close:hover,
+    .registration-form .close:hover {
+      color: white;
+      background: rgba(41, 10, 32, 0.8); }
+
+.login-form h3 {
+  margin: 0 0 2em; }
 
 .restaurant-preview {
   background: white;

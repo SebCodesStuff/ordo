@@ -20,28 +20,47 @@
   height: 320px
   background: rgba(#580C43,.95)
   color: white
-  padding: 2em
-  border-radius: 6px  div
+  padding: 1em 2em
+  border-radius: 6px  
+  div
     margin: 1em 0
   input 
     width: 100%
+    border-radius: 3px
+    padding: .5em
+    border: $darkPurple
+  label
+    font-size: 80%
+  input[type="submit"]
+    padding: .6em 
+    width: 100px
+    color: $darkPurple
+    font-weight: bold
+    cursor: pointer
+    &:hover
+      color: white
+      background: rgba(#290a20, .8)
   h3
     font-weight: 400
     margin: 0
-    font-size: 110%
+    font-size: 130%
     text-align: center
   box-shadow: 0 0px 20px 4px rgba(black, .35)  
   .close
     top: 0
     right: 0
-    margin: .5em
+    margin: .75em
     display: block
     position: absolute
     cursor: pointer
-    font-size: 115%
+    font-size: 80%
     font-family: sans-serif
-    background: white
+    background: #ddd
     color: #580C43
-    font-weight: bold
     border-radius: 4px
-    padding: .1em .25em
+    padding: 0 .4em 0.1em
+    &:hover
+      color: white
+      background: rgba(#290a20, .8)
+.login-form h3
+  margin: 0 0 2em
