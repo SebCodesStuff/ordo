@@ -29,7 +29,7 @@ exports.up = function(knex, Promise) {
         table.integer('user_id');
         table.string('schedule');
         table.string('type');
-        table.string('description');
+        table.string('item_description');
       }),
 
       knex.schema.createTable('users', function (table) {
