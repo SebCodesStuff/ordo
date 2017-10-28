@@ -44,13 +44,14 @@
 
     <div class="menu-item">
       <p>Restaurant one info</p>
-      <li><%= results[0].item_name %>: <%=results[0].description%></li>
-      <li><%=results[0].price%></li>
-
+      <% for (items in results) {%>
+      <li><%= results[items].item_name %>: <%=results[items].description%></li>
+      <li>Price: <%=results[items].price%></li>
+      <a class="edit-menu" href="">Edit</a>
+      <% } %>
     </div>
 
      <!-- Id of res is results[0].id -->
-    <a class="edit-menu" href="">Edit</a>
 
 
   </div><!--/container-->

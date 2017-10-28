@@ -25,15 +25,17 @@ module.exports = (knex) => {
       .select("*")
       .from("restaurant")
       .innerJoin("menuitem", "restaurant.id", "menuitem.restaurant_id")
-      .where('restaurant_id', req.session.passport.user)
-
-
-    res.render('restaurant_profile')
+      .where('restaurant_id', req.session.passport.user - 1)
+      .then((results) => {
+        res.render('restaurant_profile', {
+          results: results
+        });
+      })
   });
 
   // Add a menu item 34
   router.post("/add-item", (req, res) => {
-    var cookieID = req.session.passport.user;
+    var cookieID = req.session.passport.user-1;
     const menuItem = {
       restaurant_id: cookieID,
       category: req.body.category,
@@ -47,15 +49,23 @@ module.exports = (knex) => {
     // Insert into db
     knex('menuitem')
       .insert(menuItem)
-      .then((menuItems) => {
-        console.log(menuItems);
-        res.render('restaurant_profile', {
-          menuItems: menuItems
+      .then((results) => {
+        knex
+          .select("*")
+          .from("restaurant")
+          .innerJoin("menuitem", "restaurant.id", "menuitem.restaurant_id")
+          .where('restaurant_id', cookieID)
+          .then((results) => {
+            console.log(results);
+            res.render('restaurant_profile', {
+              results: results
+            });
+          })
         });
 
         // From Corina not sure if we need this
         // res.redirect('/profiles/' + req.session.c)
-      })
+
   // knex
   // .select("*")
   // .from("restaurant")
@@ -63,7 +73,7 @@ module.exports = (knex) => {
   //   res.render('index', {
   //     results: results
   //   });
-  res.render('restaurant_profile');
+  // res.render('restaurant_profile');
 });
 
 // PUT update menu id
