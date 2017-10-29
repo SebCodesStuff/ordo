@@ -94,7 +94,6 @@ res.redirect(303, "/:id");
 
 
   // Current open orders page
-<<<<<<< HEAD
   // formerly router.get("/:id/current", (req,res) => {
   router.get("/:id/menu", (req, res) => {
     console.log(knex('order').insert({user_id: 1, submit_time: '1990-10-26'}).toString());
@@ -112,7 +111,6 @@ res.redirect(303, "/:id");
       // res.render('current', templateVars)
     });
   })
-=======
   router.get("/:id/current", (req, res) => {
     const cookieID = req.session.passport.user;
 
@@ -147,7 +145,6 @@ res.redirect(303, "/:id");
     })
 
   });
->>>>>>> 83486c2541322751091d991e6643a5941902b31a
 
 
   router.post("/:id/current", (req, res)=>{

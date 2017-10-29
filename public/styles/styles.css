@@ -412,15 +412,20 @@ footer {
     top: 0;
     position: absolute; }
     .restaurant .image img {
-      width: 100%; }
+      width: 100%;
+      transform: scale(1);
+      transition: transform 0.5s ease; }
+      .restaurant .image img:hover {
+        transform: scale(1.1); }
   .restaurant .info {
     float: right;
-    width: 50%;
-    background: rgba(144, 20, 108, 0.9);
+    width: 100%;
+    background: rgba(99, 13, 75, 0.8);
     z-index: 2;
     position: absolute;
     color: white;
-    padding: .5em;
+    text-shadow: 0px 1px 0px black;
+    padding: .65em .75em;
     top: 0; }
   .restaurant .name {
     font-size: 120%;
@@ -428,10 +433,26 @@ footer {
     font-family: "Playfair Display", serif; }
   .restaurant header p {
     display: inline-block; }
-  .restaurant .type {
+  .restaurant form {
+    float: right; }
+  .restaurant button {
+    background: transparent;
+    border: transparent;
+    font-family: "Lato", sans-serif;
     font-style: italic;
-    font-size: 80%;
-    margin-left: .75em; }
+    color: white;
+    text-shadow: 0px 1px 0px black;
+    font-size: 100%; }
+    .restaurant button:hover {
+      color: #009970;
+      cursor: pointer; }
+  .restaurant .type {
+    font-size: 69%;
+    margin-left: 1.25em;
+    text-transform: uppercase;
+    letter-spacing: 1px; }
+  .restaurant .description {
+    padding-top: .25em; }
 
 #front-map {
   float: left;

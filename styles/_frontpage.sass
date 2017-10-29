@@ -97,14 +97,19 @@
     position: absolute
     img
       width: 100%
+      transform: scale(1)
+      transition: transform 0.5s ease
+      &:hover
+        transform: scale(1.1)
   .info
     float: right
-    width: 50%
-    background: rgba($purple, .9)
+    width: 100%
+    background: rgba($darkPurple, .8)
     z-index: 2
     position: absolute
     color: white
-    padding: .5em
+    text-shadow: 0px 1px 0px rgba(black, 1)
+    padding: .65em .75em
     top: 0
   .name
     font-size: 120%
@@ -112,10 +117,26 @@
     font-family: $serif
   header p
     display: inline-block
-  .type
+  form
+    float: right
+  button
+    background: transparent
+    border: transparent 
+    font-family: $sans-serif
     font-style: italic
-    font-size: 80%
-    margin-left: .75em
+    color: white
+    text-shadow: 0px 1px 0px rgba(black, 1)
+    font-size: 100%
+    &:hover
+      color: $green
+      cursor: pointer
+  .type
+    font-size: 69%
+    margin-left: 1.25em
+    text-transform: uppercase
+    letter-spacing: 1px
+  .description
+    padding-top: .25em
 
 
 #front-map    
