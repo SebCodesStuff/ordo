@@ -65,14 +65,12 @@ router.post("/add-item", (req, res) => {
 });
 
 router.post("/new/lineitem", (req, res) => {
-  var cookieID = req.session.passport.user;
-  // knex('lineitem')
-  // .insert({order_id: cookieID, item_id: submit_time: '1990-10-26'})
-  // .then((results) => {
-  // })
-  console.log(req.body);
-  console.log("my cookie ID", cookieID);
-  console.log("hello it worked*******************************************************************************");
+  var results = req.body
+  console.log(results);
+  knex('lineitem')
+  .insert({order_id: results.order_id, item_id: results.item_id, quantity: results.quantity , status: 1})
+  .then((results) => {
+  })
 })
 
 // PUT update menu id
