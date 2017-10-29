@@ -169,9 +169,7 @@ footer {
 .register-btn {
   float: right; }
 
-.login-form,
-.registration-form,
-.restaurant-login {
+.login-form {
   display: none;
   position: fixed;
   left: 0;
@@ -186,50 +184,34 @@ footer {
   border-radius: 6px;
   box-shadow: 0 0px 20px 4px rgba(0, 0, 0, 0.35); }
   @media (max-width: 600px) {
-    .login-form,
-    .registration-form,
-    .restaurant-login {
+    .login-form {
       padding: 1em; } }
-  .login-form div,
-  .registration-form div,
-  .restaurant-login div {
+  .login-form div {
     margin: 1em 0; }
-  .login-form input,
-  .registration-form input,
-  .restaurant-login input {
+  .login-form input {
     width: 100%;
     border-radius: 3px;
     padding: .5em;
     border: #630d4b;
     margin-top: .5em; }
-  .login-form label,
-  .registration-form label,
-  .restaurant-login label {
+  .login-form label {
     font-size: 80%; }
-  .login-form input[type="submit"],
-  .registration-form input[type="submit"],
-  .restaurant-login input[type="submit"] {
+  .login-form input[type="submit"] {
     padding: .6em;
     width: 100px;
     color: #630d4b;
     font-weight: bold;
     cursor: pointer; }
-    .login-form input[type="submit"]:hover,
-    .registration-form input[type="submit"]:hover,
-    .restaurant-login input[type="submit"]:hover {
+    .login-form input[type="submit"]:hover {
       color: white;
       background: rgba(41, 10, 32, 0.8);
       background: #009970; }
-  .login-form h3,
-  .registration-form h3,
-  .restaurant-login h3 {
+  .login-form h3 {
     font-weight: 400;
     margin: 0;
     font-size: 130%;
     text-align: center; }
-  .login-form .close,
-  .registration-form .close,
-  .restaurant-login .close {
+  .login-form .close {
     top: 0;
     right: 0;
     margin: .75em;
@@ -242,27 +224,27 @@ footer {
     color: #580C43;
     border-radius: 4px;
     padding: 0 .4em 0.2em; }
-    .login-form .close:hover,
-    .registration-form .close:hover,
-    .restaurant-login .close:hover {
+    .login-form .close:hover {
       color: white;
       background: #009970; }
 
-.login-form h3 {
-  margin: 0 0 2em; }
-
-.restaurant-login {
+.login-form {
   display: block;
   position: static;
   box-shadow: 0 0px 85px 20px rgba(0, 0, 0, 0.75);
-  margin: 8em auto 0;
-  min-height: 275px;
+  margin: 6.5em auto 0;
   background: #630d4b; }
-  .restaurant-login h1 {
+  .login-form p {
     text-align: center;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.75);
-    font-family: "Lato", sans-serif;
-    margin: .25em 0 -.25em; }
+    margin: .25em 0 -.25em;
+    font-weight: bold; }
+  .login-form a {
+    float: right;
+    font-style: italic;
+    margin-top: 1em;
+    font-size: 90%;
+    color: white; }
 
 .restaurant-preview {
   background: white;
@@ -332,12 +314,12 @@ footer {
     color: #90146c;
     font-size: 90%; }
 
-#restaurant-login-page {
+#login-page {
   background: url("/img/splash2.jpg") 90% 32% no-repeat;
   background-size: cover;
   height: 100%;
   flex: 1 0 auto; }
-  #restaurant-login-page:before {
+  #login-page:before {
     content: '';
     position: absolute;
     top: 0;
