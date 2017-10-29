@@ -27,7 +27,7 @@
         <form class="insertLineItem" method="POST" action="/restaurant/new/lineitem">
           <input type="text" name='quantity' placeholer="0"></input>
           <input type="text" name='order_id' value='<%=results[0].order_id%>'></input>
-          <input type="text" name='item_id' value='<%=results[0].item_id%>'></input>
+          <input type="text" name='item_id' value='<%=restaurant.item_id%>'></input>
           <input type="submit" value="Quantity" ></input>
         </form>
       </div>
