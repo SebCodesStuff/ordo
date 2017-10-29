@@ -86,7 +86,9 @@
         <p><%= restaurant.address %></p>
         <img src="/img/<%=restaurant.picture %>">
         <p><%= restaurant.description %></p>
-
+        <form method="GET" action="/restaurant/<%=restaurant.id%>/menu">
+          <button type="submit"><%=restaurant.name%></button>
+        </form>
     </div>
   <% }) %>
 

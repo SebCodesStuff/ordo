@@ -42,7 +42,6 @@ module.exports = (knex, passport) => {
              .innerJoin("menuitem", "restaurant.id", "menuitem.restaurant_id")
              .where('restaurant_id', results[0].id)
              .then((results) => {
-               console.log(results);
                res.render('restaurant_profile', {
                  results: results
                });
@@ -95,23 +94,21 @@ module.exports = (knex, passport) => {
   });
 
 
-  // router.get("/register", (req, res) => {
-  //   res.status(200);
-  // });
-
-
-
-
-
-
-
-
   // router.get("/:id", (req, res) => {
   //   res.render('user_profile');
   // });
 
 
+
   // Current open orders page
+  router.get("/:id/menu", (req, res) => {
+    const templateVars = {
+      // "current-orders" : restaurant.current
+    };
+    res.render('current', templateVars)
+  });
+
+
   router.get("/:id/current", (req, res) => {
 
     const cookieID = req.session.passport.user;

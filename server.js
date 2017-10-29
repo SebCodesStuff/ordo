@@ -28,8 +28,6 @@ const knexLogger  = require('knex-logger');
 const userRoutes = require("./routes/users");
 const restRoutes = require("./routes/restaurant");
 const googlemapRoutes = require("./routes/googlemap");
-// const dataInput = require("./routes/data");
-
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -61,7 +59,6 @@ app.use("/user", userRoutes(knex));
 app.use("/restaurant", restRoutes(knex));
 app.use("/api/map", googlemapRoutes(knex));
 // app.use("/data", dataInput(knex));
-
 
 // Mount routes with the userID
 // Corina's
