@@ -30,7 +30,7 @@ module.exports = function(knex) {
       .where('email', email)
       .limit(1)
       .then((rows) => {
-        user = rows[0]
+        let user = rows[0]
         return resolve(user)
       })
       .catch((error) => reject(error));
@@ -40,18 +40,18 @@ module.exports = function(knex) {
 
   function checkEmailUniqueness(email) {
       return new Promise((resolve, reject) => {
-        find({email: email})
+        findByEmail(email)
         .then((user) => {
           if (user) {
             console.log('invalid email');
-            return reject({
+            reject({
               type: 409,
               message: 'email has already been used'
             })
           }
           else {
             console.log('unique email');
-            return resolve(user)
+            resolve(user)
           }
         })
       })
@@ -92,20 +92,26 @@ module.exports = function(knex) {
         })
       }
 
-      function add(email, password) {
+      function add(newUser) {
         return (
-          checkEmailUniqueness(email) // First check if email already exists
-          .then((email) => {
-            return bcrypt.hash(password, 10);
+          checkEmailUniqueness(newUser.email) // First check if email already exists
+          .then(() => {
+            return bcrypt.hash(newUser.password, 10);
           })
           .then((passwordDigest) => {
             return knex('users').insert({
-              email: email,
-              password: password
+              picture:'user1.jpg',
+              name: newUser.name,
+              phone_number: newUser.phone_number,
+              email: newUser.email,
+              password_digest: passwordDigest,
+              type:'customer'
             })
           })
         )
       }
+
+
 
       function update(id, newEmail, newPassword) {
        // We have multiple promises running here, so we'll use a slightly

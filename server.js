@@ -77,13 +77,15 @@ app.use("/api/map", googlemapRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
+
+
   knex
     .select("*")
     .from("users")
     .innerJoin("restaurant", "users.id", "restaurant.user_id")
     .orderBy("user_id")
     .then((results) => {
-      // console.log(results)
+      console.log(results)
       res.render('index', {
         results: results
 

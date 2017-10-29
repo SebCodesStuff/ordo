@@ -1,15 +1,5 @@
 $(() => {
 
-  // default code from lhl
-  // $.ajax({
-  //   method: "GET",
-  //   url: "/api/users"
-  // }).done((users) => {
-  //   for(user of users) {
-  //     $("<div>").text(user.name).appendTo($("body"));
-  //   }
-  // });;
-
 // Show user login form
   $(".login-btn").on('click', function(){
     $(".login-form").addClass('show');
@@ -49,7 +39,20 @@ $(() => {
   });
   
 
+  $(".registration-form form").submit(function(event){
+      event.preventDefault();
+      const regData = $( this ).serialize()
+      $.post("/user/register",regData)
+        .done(()=>{
+          $('.registration-form').removeClass('show');
+          $(".login-form").addClass('show');
+          $(".login-form .close").on('click', function(){
+            $('.login-form').removeClass('show');
+          });
+        })
+    });
 
+  });
 
 });
 

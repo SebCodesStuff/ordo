@@ -10,11 +10,12 @@
       <% include partials/_nav %>
     <div class="container">
 
+
   <h2>PROFILE page for restaurant </h2>
 
     <section id="add-item">
       <p>Add an item to your menu</p>
-      <form action="/add-item" method="post">
+      <form action="/restaurant/add-item" method="POST">
         <div class="item">
           <label>Name:</label>
           <input type="text" name="name">
@@ -38,18 +39,24 @@
         <input type='submit' value="Save">
       </form>
     </section>
-    
+
     <!-- loop through the restaurant's menu -->
-    
+
     <div class="menu-item">
       <p>Restaurant one info</p>
+      <% for (items in results) {%>
+      <li><%= results[items].item_name %>: <%=results[items].item_description%></li>
+      <li>Price: $<%=results[items].price%></li>
+      <a class="edit-menu" href="">Edit</a>
+      <% } %>
     </div>
 
-    <a class="edit-menu" href="">Edit</a>
+     <!-- Id of res is results[0].id -->
 
-    
+
   </div><!--/container-->
   
   <% include partials/_footer %>
+
   </body>
 </html>
