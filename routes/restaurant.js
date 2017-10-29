@@ -71,17 +71,18 @@ router.post("/add-item", (req, res) => {
   // Current open orders page
   // formerly router.get("/:id/current", (req,res) => {
   router.get("/:id/menu", (req, res) => {
+    console.log(knex('order').insert({user_id: 1, submit_time: '1990-10-26'}).toString());
     knex('users')
     .innerJoin("restaurant", "users.id", "restaurant.user_id")
     .innerJoin("menuitem", "restaurant.id","menuitem.restaurant_id")
     .select('*')
     .where('restaurant_id',req.params.id)
     .then((results) => {
-      console.log("my results",results);
+      console.log("runs the insert script");
+      console.log(req.session.passport.user);
       res.render('restaurant_menu', {
         results : results
       })
-      // knex('order').insert({user_id:req.session.passport.user, submit_time: '1990-10-26'})
       // res.render('current', templateVars)
     });
   })
