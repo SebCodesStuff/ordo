@@ -108,6 +108,39 @@ module.exports = (knex, passport) => {
     res.render('current', templateVars)
   });
 
+
+  router.get("/:id/current", (req, res) => {
+
+    const cookieID = req.session.passport.user;
+
+    console.log(cookieID);
+
+      if(!cookieID){
+      res.send("your don't have authority");
+      }else{
+
+        knex.select("order.id","address", "item_name", "price", "restaurant.name", "quantity")
+        .from("users")
+        .innerJoin("order", "users.id", "order.user_id")
+        .innerJoin("lineitem", "order.id", "lineitem.order_id")
+        .innerJoin("menuitem", "lineitem.item_id", "menuitem.id")
+        .innerJoin("restaurant", "menuitem.restaurant_id", "restaurant.id")
+        .where("users.id", cookieID)
+
+        .then((table)=>{
+
+          res.render('current', {
+            table: table
+          })
+            console.log(table);
+
+        })
+
+      }
+  });
+
+
+
 // Stripe validation checkout page
   router.get("/:id/current/payment", (req, res) => {
     // only users see stripe page

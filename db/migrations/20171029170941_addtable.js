@@ -9,9 +9,11 @@ exports.up = function(knex, Promise) {
 
       knex.schema.createTable('lineitem', function (table) {
         table.increments();
-        table.integer('order_id')
-        table.integer('item_id')
-        table.integer('quantily');
+        table.integer('order_id');
+        table.integer('item_id');
+        table.integer('quantity');
+        table.integer('status');
+
       }),
 
       knex.schema.createTable('menuitem', function (table) {
