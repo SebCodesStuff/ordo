@@ -29,6 +29,17 @@ $(() => {
       $("#map").removeClass('map-padding');      
     }
   });
+
+  $(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+    if (scroll >= 380) {
+      $(".fixed-name").addClass('show');
+    }
+    else {
+      $(".fixed-name").removeClass('show');    
+    }
+  });
+
   
 // FRONT MAP
   // $(window).scroll(function() {

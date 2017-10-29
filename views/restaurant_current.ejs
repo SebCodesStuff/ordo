@@ -8,24 +8,21 @@
   </head>
 
   <body>
-      <% include partials/_header %>
-    <div class="container">
+      <% include partials/_nav %>
+    <div class="container restaurant-current">
 
-
-  <h1 id="logotype">Ordo</h1>
-
-  <h2>INDIVIDUAL order page for the restaurant: current </h2>
+    <h2>Current open orders for RESTAURANT NAME</h2>
 
   <table style="width:100%">
   <tr>
-    <th>Order Number</th>
-    <th>Picture</th>
+    <th>Order #</th>
+    <th>Customer</th>
     <th>Name</th>
-    <th>Phone Number</th>
+    <th>Phone</th>
     <th>Dish</th>
-    <th>Quantily</th>
+    <th>Quantity</th>
     <th>Price</th>
-    <th>Mark as Finished</th>
+    <th>Order Status</th>
   </tr>
 
 
@@ -41,7 +38,7 @@
         <td><form class="markFinish" method="POST">
           <input type="text" name="order_id", value="<%=obj.order_id %>">
           <input type="text" name="item_id", value="<%=obj.item_id %>">
-          <input type="submit" value="Submit">
+          <input type="submit" value="Completed">
         </form></td>
     </tr>
   <% }) %>
@@ -50,7 +47,7 @@
 
 <form class="history", action="history", method="GET" >
 
-  <input type="submit" value="History Order">
+  <input type="submit" value="Order History">
 
 </form>
 
@@ -60,6 +57,6 @@
 
 
   </div><!--/container-->
-
+  <% include partials/_footer %>
   </body>
 </html>
