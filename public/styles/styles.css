@@ -93,7 +93,7 @@ body {
 #front-nav {
   width: 100%;
   height: 50px;
-  box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.125);
+  box-shadow: 2px 0px 8px 1px rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 0;
   background: rgba(255, 255, 255, 0.97);
@@ -128,7 +128,7 @@ body {
 .container {
   max-width: 90%;
   margin: 3em auto 0;
-  padding: 1em;
+  padding: 1em 0;
   flex: 1 0 auto; }
 
 footer {
@@ -136,11 +136,11 @@ footer {
   color: white;
   font-size: 85%;
   width: 100%;
-  padding: 1em 1.5em 1em;
+  padding: 1.15em 1.5em;
   overflow: hidden;
   text-align: center; }
   footer ul {
-    margin: 1em 0 1.25em; }
+    margin: .8em 0 1.15em; }
   footer li {
     display: inline-block;
     margin: 0.5em 1em;
@@ -149,11 +149,10 @@ footer {
       color: #009970;
       cursor: pointer; }
   footer p {
-    margin-top: 1em;
     font-size: 90%; }
   footer .fa {
     font-size: 160%;
-    margin: 0.1em .5em;
+    margin: 0 .5em;
     transform: scale(1);
     transition: transform 0.5s ease; }
     footer .fa:hover {
@@ -177,7 +176,7 @@ footer {
   position: fixed;
   left: 0;
   right: 0;
-  margin: -7em auto;
+  margin: -7.25em auto;
   z-index: 100;
   max-width: 600px;
   min-height: 320px;
@@ -201,7 +200,8 @@ footer {
     width: 100%;
     border-radius: 3px;
     padding: .5em;
-    border: #630d4b; }
+    border: #630d4b;
+    margin-top: .5em; }
   .login-form label,
   .registration-form label,
   .restaurant-login label {
@@ -254,10 +254,15 @@ footer {
 .restaurant-login {
   display: block;
   position: static;
-  box-shadow: 0 0px 20px 4px rgba(0, 0, 0, 0.25);
-  margin: 5em auto 0;
-  min-height: 250px;
+  box-shadow: 0 0px 85px 20px rgba(0, 0, 0, 0.75);
+  margin: 8em auto 0;
+  min-height: 275px;
   background: #630d4b; }
+  .restaurant-login h1 {
+    text-align: center;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.75);
+    font-family: "Lato", sans-serif;
+    margin: .25em 0 -.25em; }
 
 .restaurant-preview {
   background: white;
@@ -298,6 +303,10 @@ footer {
     margin-top: 1em;
     font-size: 130%;
     text-shadow: 0px 1px 0px black; }
+  @media (max-width: 500px) {
+    .front-header h1 {
+      font-size: 400%;
+      padding: 1.25em 0 0.75em; } }
 
 .front-logins {
   position: absolute;
@@ -323,9 +332,20 @@ footer {
     color: #90146c;
     font-size: 90%; }
 
-.restaurant-login-page h1 {
-  margin-top: 4em;
-  text-align: center; }
+#restaurant-login-page {
+  background: url("/img/splash2.jpg") 90% 32% no-repeat;
+  background-size: cover;
+  height: 100%;
+  flex: 1 0 auto; }
+  #restaurant-login-page:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: auto;
+    background-color: black;
+    opacity: .7; }
 
 #add-item {
   background: skyblue;
