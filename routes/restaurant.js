@@ -71,7 +71,8 @@ router.post("/add-item", (req, res) => {
   // Current open orders page
   // formerly router.get("/:id/current", (req,res) => {
   router.get("/:id/menu", (req, res) => {
-    knex('restaurant')
+    knex('users')
+    .innerJoin("restaurant", "users.id", "restaurant.user_id")
     .innerJoin("menuitem", "restaurant.id","menuitem.restaurant_id")
     .select('*')
     .where('restaurant_id',req.params.id)
