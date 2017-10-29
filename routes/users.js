@@ -122,7 +122,7 @@ module.exports = (knex, passport) => {
       res.send("your don't have authority");
       }else{
 
-        knex.select("order.id","address", "item_name", "price", "restaurant.name", "quantily")
+        knex.select("order.id","address", "item_name", "price", "restaurant.name", "quantity")
         .from("users")
         .innerJoin("order", "users.id", "order.user_id")
         .innerJoin("lineitem", "order.id", "lineitem.order_id")
@@ -140,10 +140,9 @@ module.exports = (knex, passport) => {
         })
 
       }
-
-
-
   });
+
+
 
 // Stripe validation checkout page
   router.get("/:id/current/payment", (req, res) => {

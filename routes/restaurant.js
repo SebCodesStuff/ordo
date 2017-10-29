@@ -96,15 +96,73 @@ module.exports = (knex) => {
       res.send("your don't have authority");
       }else{
 
-        knex.select("picture", 'name', 'phone_number', 'item_name', 'quantily', 'price')
+        knex.select("order_id","picture", 'name', 'phone_number', 'item_name', 'quantity', 'price', "status", "item_id")
         .from("users")
         .innerJoin("order", "users.id", "order.user_id")
         .innerJoin("lineitem", "order.id", "lineitem.order_id")
         .innerJoin("menuitem", "lineitem.item_id", "menuitem.id")
-        .where("restaurant_id", result[0].id)
+        .where({"restaurant_id": result[0].id, "status":0})
         .then((table)=>{
 
-          res.render('restaurant_order', {
+          res.render('restaurant_current', {
+            table:table
+          })
+
+          console.log(table);
+        })
+
+      }
+
+    })
+
+  });
+
+
+  router.post("/:id/current", (req, res)=>{
+
+    const order_id = req.body.order_id;
+    const item_id = req.body.item_id;
+
+    console.log("work");
+
+    console.log(order_id, item_id);
+
+    res.status(200);
+
+
+
+
+
+
+    // console.log("hello")
+
+  });
+
+
+
+router.get("/:id/history", (req, res) => {
+    const cookieID = req.session.passport.user;
+
+    knex.select("id")
+    .from("restaurant")
+    .where("user_id", cookieID)
+    .then((result)=>{
+
+      console.log(result[0].id);
+
+      if(!result[0].id){
+      res.send("your don't have authority");
+      }else{
+
+        knex.select("order_id","picture", 'name', 'phone_number', 'item_name', 'quantity', 'price', "status", "item_id")
+        .from("users")
+        .innerJoin("order", "users.id", "order.user_id")
+        .innerJoin("lineitem", "order.id", "lineitem.order_id")
+        .innerJoin("menuitem", "lineitem.item_id", "menuitem.id")
+        .where({"restaurant_id": result[0].id, "status":1})
+        .then((table)=>{
+
+          res.render('restaurant_history', {
             table:table
           })
 
@@ -120,19 +178,6 @@ module.exports = (knex) => {
 
 
 
-
-
-
-
-
-  // Order history page
-  router.get("/:id/history", (req, res) => {
-    const templateVars = {
-      // "current-orders" : restaurant.current
-      "name": req.params.id
-    };
-    res.render('history', templateVars)
-  });
 
 
   return router;
