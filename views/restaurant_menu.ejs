@@ -18,22 +18,21 @@
     <!--loop through current orders -->
     <p><%= results[0].name %></p>
     <img src="/img/<%=results[0].picture%>">
-    <form method="POST" action="">
     <% results.forEach((restaurant) => { %>
       <div class=" ">
         <h2><%=restaurant.item_name%></h2>
         <p><%=restaurant.item_description%></p>
         <h3>Price: <%=restaurant.price%></h3>
         <!-- Ajax is going to do the insert to line item and the order button at the bottom will connect that to the order ajax will also trigger twilio -->
-        <form name='<%=restaurant.item_name%>' method="POST" action="/restaurant/new/lineitem">
-          <input type="text" name=<%=restaurant.item_name%> placeholder="0"></input>
-          <button type="submit" name=<%=restaurant.item_name%>>Quantity</button>
+        <form class="insertLineItem" name='<%=restaurant.item_id%>' method="POST" action="/restaurant/new/lineitem">
+          <input type="text" name=<%=restaurant.item_id%> placeholer="0"></input>
+          <button type="submit" name=<%=restaurant.item_id%>>Quantity</button>
         </form>
       </div>
     <% }) %>
+    <form method="POST" action="">
     <button type="submit" name="quantity">Order</button>
-  </form>
-
+    </form>
 
   </div><!--/container-->
 

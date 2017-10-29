@@ -56,13 +56,23 @@ router.post("/add-item", (req, res) => {
     .innerJoin("menuitem", "restaurant.id", "menuitem.restaurant_id")
     .where('restaurant_id', cookieID)
     .then((results) => {
-      console.log(results);
       res.render('restaurant_profile', {
         results: results
       });
     })
   });
 });
+
+router.post("/new/lineitem", (req, res) => {
+  var cookieID = req.session.passport.user;
+  // knex('lineitem')
+  // .insert({order_id: cookieID, item_id: submit_time: '1990-10-26'})
+  // .then((results) => {
+  // })
+  console.log(req.body);
+  console.log("my cookie ID", cookieID);
+  console.log("hello it worked*******************************************************************************");
+})
 
 // PUT update menu id
 
@@ -78,9 +88,12 @@ router.post("/add-item", (req, res) => {
       knex('users')
       .innerJoin("restaurant", "users.id", "restaurant.user_id")
       .innerJoin("menuitem", "restaurant.id","menuitem.restaurant_id")
+      .innerJoin("lineitem", "menuitem.id", "lineitem.item_id")
+      .innerJoin("order", "lineitem.order_id", "order.id")
       .select('*')
       .where('restaurant_id',req.params.id)
       .then((results) => {
+        console.log(results);
         res.render('restaurant_menu', {
           results : results
         })
