@@ -12,16 +12,17 @@ footer
     display: inline-block
     margin: 0.5em 1em
     font-style: italic
+    &:hover
+      color: $green
+      cursor: pointer
   p
     margin-top: 1em
     font-size: 90%
   .fa
     font-size: 160%
-    margin: 0em .5em
-
-.restaurant-login-page 
-  position: relative
-  overflow: hidden
-.restaurant-login-page footer
-  position: fixed
-  bottom: 0
+    margin: 0.1em .5em  
+    transform: scale(1)
+    transition: transform 0.5s ease
+    &:hover
+      transform: scale(1.6)
+      cursor: pointer
