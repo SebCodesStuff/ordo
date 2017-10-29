@@ -253,7 +253,7 @@ footer {
 
 .login-page {
   box-shadow: 0 0px 85px 20px rgba(0, 0, 0, 0.8);
-  margin: 6.45em auto 0;
+  margin: 6.15em auto 0;
   background: #630d4b;
   background: rgba(99, 13, 75, 0.96);
   color: white;
@@ -371,6 +371,17 @@ footer {
     font-size: 90%;
     cursor: pointer; }
     .front-logins input:hover {
+      color: #009970; }
+  .front-logins nav {
+    float: right;
+    font-size: 80%;
+    margin: 1.1em; }
+    .front-logins nav li {
+      display: inline-block;
+      margin-left: 1.5em; }
+    .front-logins nav a {
+      color: white; }
+    .front-logins nav a:hover {
       color: #009970; }
 
 #front-nav {
