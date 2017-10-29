@@ -59,6 +59,7 @@ app.use(cookieSession({
 app.use("/user", userRoutes(knex));
 app.use("/restaurant", restRoutes(knex));
 app.use("/api/map", googlemapRoutes(knex));
+// app.use("/data", dataInput(knex));
 
 // Mount routes with the userID
 // Corina's

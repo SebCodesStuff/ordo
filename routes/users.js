@@ -101,12 +101,37 @@ module.exports = (knex, passport) => {
 
 
   // Current open orders page
-  router.get("/:id/menu", (req, res) => {
-    const templateVars = {
-      // "current-orders" : restaurant.current
-    };
-    res.render('current', templateVars)
+  router.get("/:id/current", (req, res) => {
+
+    const cookieID = req.session.passport.user;
+
+    console.log(cookieID);
+
+      if(!cookieID){
+      res.send("your don't have authority");
+      }else{
+
+        knex.select("order.id","address", "item_name", "price", "restaurant.name", "quantity", "status")
+        .from("users")
+        .innerJoin("order", "users.id", "order.user_id")
+        .innerJoin("lineitem", "order.id", "lineitem.order_id")
+        .innerJoin("menuitem", "lineitem.item_id", "menuitem.id")
+        .innerJoin("restaurant", "menuitem.restaurant_id", "restaurant.id")
+        .where({"users.id": cookieID, "status": 0})
+
+        .then((table)=>{
+
+          res.render('user_current', {
+            table: table
+          })
+            console.log(table);
+
+        })
+
+      }
   });
+
+
 
 // Stripe validation checkout page
   router.get("/:id/current/payment", (req, res) => {
@@ -118,8 +143,33 @@ module.exports = (knex, passport) => {
 
   // Past orders page
   router.get("/:id/history", (req, res) => {
-    const id = req.params.id;
-    res.render("history")
+    const cookieID = req.session.passport.user;
+
+    console.log(cookieID);
+
+      if(!cookieID){
+      res.send("your don't have authority");
+      }else{
+
+        knex.select("order.id","address", "item_name", "price", "restaurant.name", "quantity", "status")
+        .from("users")
+        .innerJoin("order", "users.id", "order.user_id")
+        .innerJoin("lineitem", "order.id", "lineitem.order_id")
+        .innerJoin("menuitem", "lineitem.item_id", "menuitem.id")
+        .innerJoin("restaurant", "menuitem.restaurant_id", "restaurant.id")
+        .where({"users.id": cookieID, "status": 1})
+
+        .then((table)=>{
+
+          res.render('user_history', {
+            table: table
+          })
+            console.log(table);
+
+        })
+
+      }
+
   });
 
 

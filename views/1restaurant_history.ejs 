@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/_head %>
+    <title>Home Page</title>
+    <script type="text/javascript" src="/scripts/update.js"></script>
+
+  </head>
+
+  <body>
+      <% include partials/_header %>
+    <div class="container">
+
+
+  <h1 id="logotype">Ordo</h1>
+
+  <h2>INDIVIDUAL order page for the restaurant: history </h2>
+
+  <table style="width:100%">
+  <tr>
+    <th>Order Number</th>
+    <th>Picture</th>
+    <th>Name</th>
+    <th>Phone Number</th>
+    <th>Dish</th>
+    <th>Quantily</th>
+    <th>Price</th>
+  </tr>
+
+
+  <% table.forEach((obj) => { %>
+    <tr class="order">
+        <td><%= obj.order_id%></td>
+        <td ><img style="height:30px" src="/img/<%=obj.picture %>"></td>
+        <td><%= obj.name %></td>
+        <td><%= obj.phone_number %></td>
+        <td><%= obj.item_name %></td>
+        <td><%= obj.quantity %></td>
+        <td><%= obj.price %></td>
+    </tr>
+  <% }) %>
+
+</table>
+
+
+
+
+
+
+  </div><!--/container-->
+
+  </body>
+</html>
