@@ -12,14 +12,14 @@
 
   <h1 id="logotype">Ordo</h1>
 
-  <h2>CURRENT ORDERS for user </h2>
+  <h2>History ORDERS for user </h2>
 
 
   <table style="width:100%">
   <tr>
     <th>Order Number</th>
     <th>Dish</th>
-    <th>Quantily</th>
+    <th>Quantity</th>
     <th>Price</th>
     <th>Restaurant Name</th>
     <th>Restaurant Address</th>
@@ -30,7 +30,7 @@
 
         <td><%= obj.id %></td>
         <td><%= obj.item_name %></td>
-        <td><%= obj.quantily %></td>
+        <td><%= obj.quantity %></td>
         <td><%= obj.price %></td>
         <td><%= obj.name %></td>
         <td><%= obj.address %></td>
@@ -41,6 +41,12 @@
 
 
 </table>
+
+<form class="current", action="current", method="GET" >
+
+  <input type="submit" value="Current Order">
+
+</form>
 
   </div><!--/container-->
 

@@ -123,20 +123,19 @@ module.exports = (knex) => {
     const order_id = req.body.order_id;
     const item_id = req.body.item_id;
 
-    console.log("work");
+    knex.select("*")
+        .from("lineitem")
+        .where({"order_id": order_id, "item_id": item_id})
+        .update({"status": 1})
+        .then((result)=>{
 
-    console.log(order_id, item_id);
+          console.log(result);
 
-    res.status(200);
+          res.status(200);
 
+        })
 
-
-
-
-
-    // console.log("hello")
-
-  });
+    });
 
 
 
