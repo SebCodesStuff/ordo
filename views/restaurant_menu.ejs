@@ -25,7 +25,7 @@
         <p><%=restaurant.item_description%></p>
         <h3>Price: <%=restaurant.price%></h3>
         <!-- Ajax is going to do the insert to line item and the order button at the bottom will connect that to the order ajax will also trigger twilio -->
-        <form name='<%=restaurant.item_name%>' method="POST" action="">
+        <form name='<%=restaurant.item_name%>' method="POST" action="/restaurant/new/lineitem">
           <input type="text" name=<%=restaurant.item_name%> placeholder="0"></input>
           <button type="submit" name=<%=restaurant.item_name%>>Quantity</button>
         </form>

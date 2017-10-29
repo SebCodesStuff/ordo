@@ -81,6 +81,7 @@ router.post("/add-item", (req, res) => {
       res.render('restaurant_menu', {
         results : results
       })
+      // knex('order').insert({user_id:req.session.passport.user, submit_time: '1990-10-26'})
       // res.render('current', templateVars)
     });
   })

@@ -42,7 +42,6 @@ module.exports = (knex, passport) => {
              .innerJoin("menuitem", "restaurant.id", "menuitem.restaurant_id")
              .where('restaurant_id', results[0].id)
              .then((results) => {
-               console.log(results);
                res.render('restaurant_profile', {
                  results: results
                });
@@ -98,6 +97,7 @@ module.exports = (knex, passport) => {
   // router.get("/:id", (req, res) => {
   //   res.render('user_profile');
   // });
+
 
 
   // Current open orders page
