@@ -12,6 +12,7 @@
   z-index: 90
   color: white
   text-align: center    
+  // box-shadow: 2px 0px 8px 1px rgba(black, .35)     
   &:before 
     content: ''
     position: absolute
@@ -76,3 +77,56 @@
     margin: .15em .5em
     color: $purple
     font-size: 90%
+
+.front-container
+  overflow: hidden
+  position: relative
+
+#rest-list
+  float: left
+  width: 60%
+.restaurant
+  margin: .5em .5em .5em 0
+  overflow: hidden
+  position: relative
+  height: 400px
+  .image
+    float: left
+    z-index: 1
+    top: 0
+    position: absolute
+    img
+      width: 100%
+  .info
+    float: right
+    width: 50%
+    background: rgba($purple, .9)
+    z-index: 2
+    position: absolute
+    color: white
+    padding: .5em
+    top: 0
+  .name
+    font-size: 120%
+    font-weight: bold
+    font-family: $serif
+  header p
+    display: inline-block
+  .type
+    font-style: italic
+    font-size: 80%
+    margin-left: .75em
+
+
+#front-map    
+  float: left  
+  width: 40%
+  position: relative
+
+#map
+  width: 100%
+  height: 810px
+
+.map-padding
+  top: 50px !important
+  position: fixed !important

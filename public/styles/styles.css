@@ -141,6 +141,8 @@ footer {
   width: 100%;
   padding: 1.15em 1.5em;
   overflow: hidden;
+  position: relative;
+  z-index: 6;
   text-align: center; }
   footer ul {
     margin: .8em 0 1.15em; }
@@ -390,6 +392,59 @@ footer {
     margin: .15em .5em;
     color: #90146c;
     font-size: 90%; }
+
+.front-container {
+  overflow: hidden;
+  position: relative; }
+
+#rest-list {
+  float: left;
+  width: 60%; }
+
+.restaurant {
+  margin: .5em .5em .5em 0;
+  overflow: hidden;
+  position: relative;
+  height: 400px; }
+  .restaurant .image {
+    float: left;
+    z-index: 1;
+    top: 0;
+    position: absolute; }
+    .restaurant .image img {
+      width: 100%; }
+  .restaurant .info {
+    float: right;
+    width: 50%;
+    background: rgba(144, 20, 108, 0.9);
+    z-index: 2;
+    position: absolute;
+    color: white;
+    padding: .5em;
+    top: 0; }
+  .restaurant .name {
+    font-size: 120%;
+    font-weight: bold;
+    font-family: "Playfair Display", serif; }
+  .restaurant header p {
+    display: inline-block; }
+  .restaurant .type {
+    font-style: italic;
+    font-size: 80%;
+    margin-left: .75em; }
+
+#front-map {
+  float: left;
+  width: 40%;
+  position: relative; }
+
+#map {
+  width: 100%;
+  height: 810px; }
+
+.map-padding {
+  top: 50px !important;
+  position: fixed !important; }
 
 #login-page {
   background: url("/img/splash2.jpg") 90% 32% no-repeat;

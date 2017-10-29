@@ -22,11 +22,27 @@ $(() => {
     var scroll = $(window).scrollTop();
     if (scroll >= 325) {
       $("#front-nav").addClass('show');
-    } else {
+      $("#map").addClass('map-padding');
+    }
+    else {
       $("#front-nav").removeClass('show');
+      $("#map").removeClass('map-padding');      
     }
   });
   
+// FRONT MAP
+  // $(window).scroll(function() {
+  //   var scroll = $(window).scrollTop();
+  //   if (scroll >= 325) {
+  //     $("#map").addClass('map-padding');
+  //   } else {
+  //     $("#map").removeClass('map-padding');
+  //   }
+  // });
+  // Frontpage effect: shrink lead image after scrolling past its length
+
+
+
 
   $(".registration-form form").submit(function(event){
       event.preventDefault();

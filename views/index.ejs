@@ -59,11 +59,9 @@
     </nav>
   </div>
 
+  <div class="front-container">
 
-    <div class="container">
-
-
-    <div class="login-form">
+    <!-- <div class="login-form">
       <div class="close">x</div>
       <h3>Login</h3>
       <form class="login" action="/user/login" method="POST">
@@ -77,9 +75,7 @@
         </div>
         <input type="submit" value="Submit">
       </form>
-    </div><!--/user-login-->
-
-
+    </div><!--/user-login
     <div class="registration-form">
       <div class="close">x</div>
       <h3>Register</h3>
@@ -107,40 +103,41 @@
         </div>
         <input type="submit" value="Submit">
       </form>
-    </div><!-- /registration-form -->
+    </div>/registration-form -->
 
-
-  <h2>This HOMEPAGE shows restaurant list</h2>
-
-
+  <section id="rest-list">
     <!--loop through restaurant db -->
-  <% results.forEach((restaurant) => { %>
-    <div class="restaurant-preview">
-      <p>Restaurant one info</p>
+      <% results.forEach((restaurant) => { %>
+        <div class="restaurant">
+          <div class="image">
+            <img src="/img/<%=restaurant.picture %>">
+          </div>
+          <div class="info">
+            <header>
+            <p class="name"><%= restaurant.name %></p>
+            <p class="type"><%= restaurant.type %></p>
+            </header>
+            <!-- <p class="address"><%= restaurant.address %></p> -->
+            <p class="description"><%= restaurant.description %></p>
+          </div>
 
-        <h2><%= restaurant.name %></h2>
-        <p><%= restaurant.type %></p>
-        <p><%= restaurant.address %></p>
-        <img src="/img/<%=restaurant.picture %>">
-        <p><%= restaurant.description %></p>
-        <form method="GET" action="/restaurant/<%=restaurant.id%>/menu">
-          <button type="submit"><%=restaurant.name%></button>
-        </form>
-    </div>
-  <% }) %>
+          <form method="GET" action="/restaurant/<%=restaurant.id%>/menu">
+            <button type="submit">View menu</button>
+          </form>
+        </div>
+      <% }) %>
+  </section>
 
-
-  <h3>My Google Maps Demo</h3>
-    <div id="map" style="width:70%;height:300px;"></div>
-
+  <section id="front-map"> 
+    <div id="map"></div>
 
     <script type="text/javascript" src="/scripts/map.js"></script>
-
-
 
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDri5VzKdWxHuq8mQGVTt49oDxdqb_rasE&callback=initMap">
     </script>
+
+  </section>
 
   </div><!--/container-->
 
