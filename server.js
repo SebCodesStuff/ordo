@@ -28,7 +28,6 @@ const knexLogger  = require('knex-logger');
 const userRoutes = require("./routes/users");
 const restRoutes = require("./routes/restaurant");
 const googlemapRoutes = require("./routes/googlemap");
-const newLineItem = require(".")
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT

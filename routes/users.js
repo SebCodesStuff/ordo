@@ -101,6 +101,14 @@ module.exports = (knex, passport) => {
 
 
   // Current open orders page
+  router.get("/:id/menu", (req, res) => {
+    const templateVars = {
+      // "current-orders" : restaurant.current
+    };
+    res.render('current', templateVars)
+  });
+
+
   router.get("/:id/current", (req, res) => {
 
     const cookieID = req.session.passport.user;
