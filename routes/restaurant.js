@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const knex = require('knex');
 
 module.exports = (knex) => {
 
@@ -93,6 +94,7 @@ res.redirect(303, "/:id");
 
 
   // Current open orders page
+<<<<<<< HEAD
   // formerly router.get("/:id/current", (req,res) => {
   router.get("/:id/menu", (req, res) => {
     console.log(knex('order').insert({user_id: 1, submit_time: '1990-10-26'}).toString());
@@ -110,16 +112,103 @@ res.redirect(303, "/:id");
       // res.render('current', templateVars)
     });
   })
+=======
+  router.get("/:id/current", (req, res) => {
+    const cookieID = req.session.passport.user;
 
+    knex.select("id")
+    .from("restaurant")
+    .where("user_id", cookieID)
+    .then((result)=>{
 
-  // Order history page
-  router.get("/:id/history", (req, res) => {
-    const templateVars = {
-      // "current-orders" : restaurant.current
-      "name": req.params.id
-    };
-    res.render('history', templateVars)
+      console.log(result[0].id);
+
+      if(!result[0].id){
+      res.send("your don't have authority");
+      }else{
+
+        knex.select("order_id","picture", 'name', 'phone_number', 'item_name', 'quantity', 'price', "status", "item_id")
+        .from("users")
+        .innerJoin("order", "users.id", "order.user_id")
+        .innerJoin("lineitem", "order.id", "lineitem.order_id")
+        .innerJoin("menuitem", "lineitem.item_id", "menuitem.id")
+        .where({"restaurant_id": result[0].id, "status":0})
+        .then((table)=>{
+
+          res.render('restaurant_current', {
+            table:table
+          })
+
+          console.log(table);
+        })
+
+      }
+
+    })
+
   });
+>>>>>>> 83486c2541322751091d991e6643a5941902b31a
+
+
+  router.post("/:id/current", (req, res)=>{
+
+    const order_id = req.body.order_id;
+    const item_id = req.body.item_id;
+
+    knex.select("*")
+        .from("lineitem")
+        .where({"order_id": order_id, "item_id": item_id})
+        .update({"status": 1})
+        .then((result)=>{
+
+          console.log(result);
+
+          res.status(200);
+
+        })
+
+    });
+
+
+
+router.get("/:id/history", (req, res) => {
+    const cookieID = req.session.passport.user;
+
+    knex.select("id")
+    .from("restaurant")
+    .where("user_id", cookieID)
+    .then((result)=>{
+
+      console.log(result[0].id);
+
+      if(!result[0].id){
+      res.send("your don't have authority");
+      }else{
+
+        knex.select("order_id","picture", 'name', 'phone_number', 'item_name', 'quantity', 'price', "status", "item_id")
+        .from("users")
+        .innerJoin("order", "users.id", "order.user_id")
+        .innerJoin("lineitem", "order.id", "lineitem.order_id")
+        .innerJoin("menuitem", "lineitem.item_id", "menuitem.id")
+        .where({"restaurant_id": result[0].id, "status":1})
+        .then((table)=>{
+
+          res.render('restaurant_history', {
+            table:table
+          })
+
+          console.log(table);
+        })
+
+      }
+
+    })
+
+  });
+
+
+
+
 
 
   return router;

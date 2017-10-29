@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/_head %>
+    <title>Home Page</title>
+  </head>
+
+  <body>
+      <% include partials/_header %>
+    <div class="container">
+
+
+  <h1 id="logotype">Ordo</h1>
+
+  <h2>History ORDERS for user </h2>
+
+
+  <table style="width:100%">
+  <tr>
+    <th>Order Number</th>
+    <th>Dish</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Restaurant Name</th>
+    <th>Restaurant Address</th>
+  </tr>
+
+  <% table.forEach((obj) => { %>
+    <tr class="order">
+
+        <td><%= obj.id %></td>
+        <td><%= obj.item_name %></td>
+        <td><%= obj.quantity %></td>
+        <td><%= obj.price %></td>
+        <td><%= obj.name %></td>
+        <td><%= obj.address %></td>
+    </tr>
+  <% }) %>
+
+
+
+
+</table>
+
+<form class="current", action="current", method="GET" >
+
+  <input type="submit" value="Current Order">
+
+</form>
+
+  </div><!--/container-->
+
+  </body>
+</html>
