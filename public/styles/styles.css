@@ -115,11 +115,14 @@ body {
     #nav-header a:hover,
     #front-nav a:hover {
       color: #009970; }
+  #nav-header a.selected,
+  #front-nav a.selected {
+    color: #009970; }
   #nav-header nav,
   #front-nav nav {
     float: right;
     font-size: 80%;
-    margin: 1.2em; }
+    margin: 1.1em; }
     #nav-header nav li,
     #front-nav nav li {
       display: inline-block;
@@ -169,7 +172,9 @@ footer {
 .register-btn {
   float: right; }
 
-.login-form {
+.login-form,
+.registration-form,
+.restaurant-login {
   display: none;
   position: fixed;
   left: 0;
@@ -184,34 +189,50 @@ footer {
   border-radius: 6px;
   box-shadow: 0 0px 20px 4px rgba(0, 0, 0, 0.35); }
   @media (max-width: 600px) {
-    .login-form {
+    .login-form,
+    .registration-form,
+    .restaurant-login {
       padding: 1em; } }
-  .login-form div {
+  .login-form div,
+  .registration-form div,
+  .restaurant-login div {
     margin: 1em 0; }
-  .login-form input {
+  .login-form input,
+  .registration-form input,
+  .restaurant-login input {
     width: 100%;
     border-radius: 3px;
     padding: .5em;
     border: #630d4b;
     margin-top: .5em; }
-  .login-form label {
+  .login-form label,
+  .registration-form label,
+  .restaurant-login label {
     font-size: 80%; }
-  .login-form input[type="submit"] {
+  .login-form input[type="submit"],
+  .registration-form input[type="submit"],
+  .restaurant-login input[type="submit"] {
     padding: .6em;
     width: 100px;
     color: #630d4b;
     font-weight: bold;
     cursor: pointer; }
-    .login-form input[type="submit"]:hover {
+    .login-form input[type="submit"]:hover,
+    .registration-form input[type="submit"]:hover,
+    .restaurant-login input[type="submit"]:hover {
       color: white;
       background: rgba(41, 10, 32, 0.8);
       background: #009970; }
-  .login-form h3 {
+  .login-form h3,
+  .registration-form h3,
+  .restaurant-login h3 {
     font-weight: 400;
     margin: 0;
     font-size: 130%;
     text-align: center; }
-  .login-form .close {
+  .login-form .close,
+  .registration-form .close,
+  .restaurant-login .close {
     top: 0;
     right: 0;
     margin: .75em;
@@ -224,27 +245,72 @@ footer {
     color: #580C43;
     border-radius: 4px;
     padding: 0 .4em 0.2em; }
-    .login-form .close:hover {
+    .login-form .close:hover,
+    .registration-form .close:hover,
+    .restaurant-login .close:hover {
       color: white;
       background: #009970; }
 
-.login-form {
-  display: block;
-  position: static;
-  box-shadow: 0 0px 85px 20px rgba(0, 0, 0, 0.75);
-  margin: 6.5em auto 0;
-  background: #630d4b; }
-  .login-form p {
+.login-page {
+  box-shadow: 0 0px 85px 20px rgba(0, 0, 0, 0.8);
+  margin: 6.45em auto 0;
+  background: #630d4b;
+  background: rgba(99, 13, 75, 0.96);
+  color: white;
+  padding: 1.5em 2em 1.75em;
+  max-width: 600px;
+  border-radius: 6px;
+  box-shadow: 0 0px 20px 4px rgba(0, 0, 0, 0.35); }
+  @media (max-width: 600px) {
+    .login-page {
+      padding: 1em; } }
+  .login-page div {
+    margin: 1em 0; }
+  .login-page input {
+    width: 100%;
+    border-radius: 3px;
+    padding: .75em;
+    border: #630d4b;
+    margin-top: .5em; }
+  .login-page label {
+    font-size: 80%; }
+  .login-page input[type="submit"] {
+    padding: .6em;
+    width: 100px;
+    color: #630d4b;
+    font-weight: bold;
+    cursor: pointer; }
+    .login-page input[type="submit"]:hover {
+      color: white;
+      background: #009970; }
+  .login-page .close {
+    top: 0;
+    right: 0;
+    margin: .75em;
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    font-size: 80%;
+    font-family: sans-serif;
+    background: #ddd;
+    color: #630d4b;
+    border-radius: 4px;
+    padding: 0 .4em 0.2em; }
+    .login-page .close:hover {
+      color: white;
+      background: #009970; }
+  .login-page p {
     text-align: center;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.75);
-    margin: .25em 0 -.25em;
     font-weight: bold; }
-  .login-form a {
+  .login-page a {
     float: right;
     font-style: italic;
-    margin-top: 1em;
+    margin: 1em .2em 0 0;
     font-size: 90%;
     color: white; }
+  .login-page a:hover {
+    color: #009970; }
 
 .restaurant-preview {
   background: white;

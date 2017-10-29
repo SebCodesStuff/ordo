@@ -11,7 +11,6 @@
 .login-form,
 .registration-form,
 .restaurant-login
-.login-form
   display: none
   position: fixed
   left: 0
@@ -71,20 +70,62 @@
 // .login-form h3
 //   margin: 0 0 2em
 
-.login-form
-  display: block
-  position: static
-  box-shadow: 0 0px 85px 20px rgba(0, 0, 0, 0.75)
-  margin: 6.5em auto 0
+.login-page
+  box-shadow: 0 0px 85px 20px rgba(0, 0, 0, 0.8)
+  margin: 6.45em auto 0
   background: $darkPurple
+  background: rgba($darkPurple,.96)
+  color: white
+  padding: 1.5em 2em 1.75em
+  max-width: 600px
+  border-radius: 6px  
+  @media (max-width: 600px)
+    padding: 1em
+  div
+    margin: 1em 0
+  input 
+    width: 100%
+    border-radius: 3px
+    padding: .75em
+    border: $darkPurple
+    margin-top: .5em
+  label
+    font-size: 80%
+  input[type="submit"]
+    padding: .6em 
+    width: 100px
+    color: $darkPurple
+    font-weight: bold
+    cursor: pointer
+    &:hover
+      color: white
+      background: $green
+  box-shadow: 0 0px 20px 4px rgba(black, .35)  
+  .close
+    top: 0
+    right: 0
+    margin: .75em
+    display: block
+    position: absolute
+    cursor: pointer
+    font-size: 80%
+    font-family: sans-serif
+    background: #ddd
+    color: $darkPurple
+    border-radius: 4px
+    padding: 0 .4em 0.2em
+    &:hover
+      color: white
+      background: $green
   p
     text-align: center
     text-shadow: 0px 1px 0px rgba(black, .75)
-    margin: .25em 0 -.25em
     font-weight: bold
   a
     float: right
     font-style: italic
-    margin-top: 1em
+    margin: 1em .2em 0 0
     font-size: 90%
     color: white
+  a:hover
+    color: $green
