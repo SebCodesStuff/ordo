@@ -30,6 +30,7 @@ exports.up = function(knex, Promise) {
         table.string('schedule');
         table.string('type');
         table.string('description');
+        table.string('name');
       }),
 
       knex.schema.createTable('users', function (table) {

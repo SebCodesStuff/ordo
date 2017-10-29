@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const knex = require('knex');
 
 module.exports = (knex) => {
 
@@ -82,11 +83,46 @@ module.exports = (knex) => {
 
   // Current open orders page
   router.get("/:id/current", (req, res) => {
-    const templateVars = {
-      // "current-orders" : restaurant.current
-    };
-    res.render('current', templateVars)
+    const cookieID = req.session.passport.user;
+
+    knex.select("id")
+    .from("restaurant")
+    .where("user_id", cookieID)
+    .then((result)=>{
+
+      console.log(result[0].id);
+
+      if(!result[0].id){
+      res.send("your don't have authority");
+      }else{
+
+        knex.select("picture", 'name', 'phone_number', 'item_name', 'quantily', 'price')
+        .from("users")
+        .innerJoin("order", "users.id", "order.user_id")
+        .innerJoin("lineitem", "order.id", "lineitem.order_id")
+        .innerJoin("menuitem", "lineitem.item_id", "menuitem.id")
+        .where("restaurant_id", result[0].id)
+        .then((table)=>{
+
+          res.render('restaurant_order', {
+            table:table
+          })
+
+          console.log(table);
+        })
+
+      }
+
+    })
+
   });
+
+
+
+
+
+
+
 
 
   // Order history page

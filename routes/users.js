@@ -113,10 +113,36 @@ module.exports = (knex, passport) => {
 
   // Current open orders page
   router.get("/:id/current", (req, res) => {
-    const templateVars = {
-      // "current-orders" : restaurant.current
-    };
-    res.render('current', templateVars)
+
+    const cookieID = req.session.passport.user;
+
+    console.log(cookieID);
+
+      if(!cookieID){
+      res.send("your don't have authority");
+      }else{
+
+        knex.select("order.id","address", "item_name", "price", "restaurant.name", "quantily")
+        .from("users")
+        .innerJoin("order", "users.id", "order.user_id")
+        .innerJoin("lineitem", "order.id", "lineitem.order_id")
+        .innerJoin("menuitem", "lineitem.item_id", "menuitem.id")
+        .innerJoin("restaurant", "menuitem.restaurant_id", "restaurant.id")
+        .where("users.id", cookieID)
+
+        .then((table)=>{
+
+          res.render('current', {
+            table: table
+          })
+            console.log(table);
+
+        })
+
+      }
+
+
+
   });
 
 // Stripe validation checkout page
