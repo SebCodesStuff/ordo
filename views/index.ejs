@@ -1,47 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Welcome to Ordo!</title>
     <% include partials/_head %>
   </head>
 
   <body>
-    <div class="container">
-        
-    <div id="login-form">
-      <div class="close">X</div>
-      <form class="login" action="/user-login" method="POST">
+    <div class="front-header">
+      <h1>Ordo</h1>
+      <p>Quick & easy way to eat</p>
+      <div class="front-logins">
+      <!-- <div class="login-btn">
+          <input type="button" class="show-login" value="Login">
+        </div>
+        <div class="register-btn">
+          <input type="button" class="show-register" value="Register">
+        </div> -->
+        <nav>
+          <ul>
+            <li>
+              <a href="/login">Login</a>
+            </li>
+            <li>
+              <a href="/register">Register</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+  <!-- <div id="front-nav">
+    <h1>Ordo</h1>
+    <div class="front-logins">
+    <div class="login-btn">
+        <input type="button" class="show-login" value="Login">
+      </div>
+      <div class="register-btn">
+        <input type="button" class="show-register" value="Register">
+      </div>
+    </div>
+  </div> -->
+
+  <div id="front-nav">
+    <a href="/">
+      <h1 id="logotype">
+        Ordo
+      </h1>
+    </a>
+    <nav>
+      <ul>
+        <li>
+          <a href="/login">Login</a>
+        </li>
+        <li>
+          <a href="/register">Register</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="front-container">
+
+    <!-- <div class="login-form">
+      <div class="close">x</div>
+      <h3>Login</h3>
+      <form class="login" action="/user/login" method="POST">
         <div>
           <label for="email">Email:</label>
-          <input id="email" type="email" name="email">
+          <input type="email" name="email">
         </div>
         <div>
           <label for="password">Password:</label>
-          <input id="password" type="password" name="password">
+          <input type="password" name="password">
         </div>
         <input type="submit" value="Submit">
       </form>
-    </div><!--/user-login-->
-      
+    </div><!--/user-login
+    <div class="registration-form">
+      <div class="close">x</div>
+      <h3>Register</h3>
+      <form class="register" action="/user/register" method="POST">
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" name="name">
+        </div>
+        <div>
+          <label for="phone_number">Phone Number:</label>
+          <input type="text" name="phone_number">
+        </div>
 
-  <header>  
-    <h1 id="logotype">Ordo</h1>
-    <div class="login-btn">
-      <input type="button" id="show-login" value="Login"></header>
-    </div>
-  </header>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" name="email">
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" name="password">
+        </div>
+        <div>
+          <label for="confirm_password">Confirm password:</label>
+          <input type="password" name="confirm_password">
+        </div>
+        <input type="submit" value="Submit">
+      </form>
+    </div>/registration-form -->
 
-
-  <h2>This HOMEPAGE shows restaurant list</h2>
-
-
+  <section id="rest-list">
     <!--loop through restaurant db -->
-    <div class="restaurant-preview">
-      <p>Restaurant one info</p>
-    </div>
+      <% results.forEach((restaurant) => { %>
+        <div class="restaurant">
+          <div class="image">
+            <img src="/img/<%=restaurant.picture %>">
+          </div>
+          <div class="info">
+            <header>
+            <p class="name"><%= restaurant.name %></p>
+            <p class="type"><%= restaurant.type %></p>
+            <form method="GET" action="/user/<%=restaurant.id%>/menu">
+              <button type="submit">View menu</button>
+            </form>
+            </header>
+            <p class="address"><%= restaurant.address %></p>
+            <p class="description"><%= restaurant.description %></p>
 
+          </div>
+
+        </div>
+      <% }) %>
+  </section>
+
+  <section id="front-map">
+    <div id="map"></div>
+
+    <script type="text/javascript" src="/scripts/map.js"></script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDri5VzKdWxHuq8mQGVTt49oDxdqb_rasE&callback=initMap">
+    </script>
+
+  </section>
 
   </div><!--/container-->
-          
+
+
+  <% include partials/_footer %>
+
   </body>
 </html>

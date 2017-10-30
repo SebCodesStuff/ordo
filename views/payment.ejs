@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Payment Page | Ordo</title>
+    <% include partials/_head %>
+  </head>
+
+  <body id="pay-pg">
+
+      <% include partials/_nav %>
+
+    <div class="container">
+
+      <div class="payment-page">
+<h2>Payment Page</h2>
+
+      <p>Your order amount is: <em>$15.00</em></p>
+      <br>
+      <p>Please pay at the counter or </p>
+      
+        <form action="/user/charge" method="POST">
+          <article>
+          </article>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= keyPublishable %>"
+            data-amount="1500"
+            data-description="Ordo Payment"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto">
+          </script>
+        </form>
+      </div>  
+    </div>
+    <% include partials/_footer %>
+  </body>
+</html>

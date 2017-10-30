@@ -1,15 +1,28 @@
 html 
   box-sizing: border-box
+  height: 100%
+  width: 100%
 
 *, *:before, *:after 
   box-sizing: inherit
 
+body
+  background: white
+
+
+// Variables
+$purple: #90146c
+$darkPurple: #630d4b
+// $green: #1ab188
+$green: #009970
 
 a
   text-decoration: none
-  color: #1ab188
+  color: $green
   transition: .5s ease
   &:hover
-    color: #179b77
+    color: $purple
 
-// Variables
+
+.show
+  display: block !important

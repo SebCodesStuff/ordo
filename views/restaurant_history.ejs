@@ -2,21 +2,57 @@
 <html lang="en">
   <head>
     <% include partials/_head %>
-    <title>Home Page</title>
+    <title>Past Orders | Ordo</title>
+    <script type="text/javascript" src="/scripts/update.js"></script>
+
   </head>
 
-  <body>
-    <div class="container">
-        
+  <body id="resto-history">
+      <% include partials/_nav %>
+    <div class="container restaurant-past">
 
-  <h1 id="logotype">Ordo</h1>
-      
-  <h2>LIST OF HISTORY of past orders for the restaurant named <%= name %> </h2>
+      <h2><%= restName %></h2>
+      <h3>Past Orders</h3>
+
+  <table style="width:100%">
+  <tr>
+    <th>Order Number</th>
+    <th>Picture</th>
+    <th>Name</th>
+    <th>Phone Number</th>
+    <th>Dish</th>
+    <th>Quantily</th>
+    <th>Price</th>
+  </tr>
+
+
+  <% table.forEach((obj) => { %>
+    <tr class="order">
+        <td><%= obj.order_id%></td>
+        <td ><img src="/img/<%=obj.picture %>"></td>
+        <td><%= obj.name %></td>
+        <td><%= obj.phone_number %></td>
+        <td><%= obj.item_name %></td>
+        <td><%= obj.quantity %></td>
+        <td><%= obj.price %></td>
+    </tr>
+  <% }) %>
+
+</table>
+
+<form class="history" action="current" method="GET" >
+  <i class="fa fa-check-square-o" aria-hidden="true"></i>
+  <input type="submit" value="View your current orders">
+
+</form>
 
 
 
-    
+
+
+
   </div><!--/container-->
-          
+
+  <% include partials/_footer %>
   </body>
 </html>

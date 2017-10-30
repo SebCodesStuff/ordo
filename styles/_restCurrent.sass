@@ -1,0 +1,77 @@
+.restaurant-current,
+.restaurant-past,
+#user-current,
+#user-history
+  h2
+    font-size: 200%
+    margin: 1em 0
+    text-align: center
+  input[type="text"]
+    display: none
+  td
+    text-align: center
+    vertical-align: middle
+    padding: .85em .75em
+  .order:nth-child(2n)
+    background: rgba($green, .05)
+  th
+    padding: .5em
+    text-transform: uppercase
+    font-weight: bold
+    font-size: 70%
+    letter-spacing: .5px
+    color: #888
+  img
+    border-radius: 2px
+    width: 70px
+  .completed
+    background: $purple
+    border: 1px solid $purple
+    color: white
+    border-radius: 4px
+    padding: .35em .5em
+    float: right
+    &:hover
+      background: $darkPurple
+      cursor: pointer
+  h3
+    font-weight: bold
+    text-align: center
+    font-size: 140%
+    margin: 1em 0
+    font-style: italic
+  .history input
+    border: transparent
+    background: transparent 
+    font-size: 95%
+    color: $green
+    font-style: italic
+    margin: 3em 0 3em -.25em
+    &:hover
+      color: $purple
+      cursor: pointer
+  .fa
+    color: $green
+    text-align: bottom
+  .fa-check-square-o
+    margin-top: .75em
+
+
+#rest-profile
+  .profile
+    border: 2px solid #eee
+    input
+      border: none
+      text-align: center
+      vertical-align: middle
+      padding: 1em .75em
+    .send
+      background: $purple
+      color: white
+      border-radius: 4px
+      &:hover
+        background: $darkPurple
+        cursor: pointer
+    
+.restaurant-current footer .fa, .restaurant-past footer .fa, #user-current footer .fa, #user-history footer .fa
+  color: white

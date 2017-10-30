@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/_head %>
+    <title>Home Page</title>
+  </head>
+
+  <body>
+      <% include partials/_header %>
+    <div class="container">
+
+
+  <h1 id="logotype">Ordo</h1>
+
+  <h2>CURRENT ORDERS for user </h2>
+
+
+    <!--loop through current orders -->
+    <p><%= results[0].name %></p>
+    <img src="/img/<%=results[0].picture%>">
+    <% results.forEach((restaurant) => { %>
+      <div class=" ">
+        <h2><%=restaurant.item_name%></h2>
+        <p><%=restaurant.item_description%></p>
+        <h3>Price: <%=restaurant.price%></h3>
+        <!-- Ajax is going to do the insert to line item and the order button at the bottom will connect that to the order ajax will also trigger twilio -->
+        <form class="insertLineItem" method="POST" action="/restaurant/new/lineitem">
+          <input type="text" name='quantity' placeholer="0"></input>
+          <input type="text" name='order_id' value='<%=results[0].order_id%>'></input>
+          <input type="text" name='item_id' value='<%=restaurant.item_id%>'></input>
+          <input type="submit" value="Quantity" ></input>
+        </form>
+      </div>
+    <% }) %>
+
+
+
+      <% include partials/_nav %>
+    <div class="menu-page">
+
+    <!--loop through menu items -->
+    <div id="header">
+      <div id="image">
+        <img src="/img/<%=results[0].picture%>">
+        <h2><%= results[0].name %></h2>
+      </div>
+    </div>
+    <h2 class="fixed-name"><%= results[0].name %></h2>
+    <% results.forEach((restaurant) => { %>
+      <div class="info">
+        <div class="left">
+          <p class="item"><%=restaurant.item_name%></p>
+        </div>
+        <div class="right">
+        <p class="description"><%=restaurant.item_description%></p>
+        <div class="amount">
+          <p class="price">$<%=restaurant.price%></p>
+          <!-- Ajax is going to do the insert to line item and the order button at the bottom will connect that to the order ajax will also trigger twilio -->
+          <form name='<%=restaurant.item_name%>' method="POST" action="/restaurant/new/lineitem">
+            <input type="text" name=<%=restaurant.item_name%> placeholder="0"></input>
+            <button type="submit" name=<%=restaurant.item_name%>>Quantity</button>
+          </form>
+        </div>
+      </div>
+      </div>
+    <% }) %>
+    <form class="order" method="POST" action="/firstcall/<%=results[0].name%>">
+    <button type="submit" name="quantity">Place Order</button>
+    </form>
+    <!-- <div class="order">
+      <button type="submit" name="quantity">Place order</button>
+    </div> -->
+
+
+  </div><!--/container-->
+  <% include partials/_footer %>
+  </body>
+</html>

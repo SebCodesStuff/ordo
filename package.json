@@ -8,25 +8,32 @@
     "start": "node server.js",
     "local": "./node_modules/.bin/nodemon --ignore public/",
     "knex": "./node_modules/.bin/knex",
-    "compile-sass": "./node_modules/node-sass/bin/node-sass  --recursive --output public/styles styles"
+    "compile-sass": "./node_modules/node-sass/bin/node-sass  --recursive --watch --output public/styles styles"
   },
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^2.0.0",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
     "knex": "^0.11.10",
     "knex-logger": "^0.1.0",
     "ngrok": "^2.2.23",
+    "method-override": "^2.3.10",
     "morgan": "^1.9.0",
-
+    "ngrok": "^2.2.23",
     "node-sass": "^4.5.3",
-
     "node-sass-middleware": "^0.9.8",
     "nodemon": "^1.12.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "pg": "^6.4.2",
+    "stripe": "^5.2.0",
     "twilio": "^3.9.0"
   },
   "devDependencies": {

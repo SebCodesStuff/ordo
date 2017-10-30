@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/_head %>
+    <title>Past Orders | Ordo</title>
+  </head>
+
+  <body id="user-history">
+      <% include partials/_nav %>
+    <div class="container">
+
+  <h2>Your Past Orders</h2>
+
+
+  <table style="width:100%">
+  <tr>
+    <th>Order Number</th>
+    <th>Dish</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Restaurant Name</th>
+    <th>Restaurant Address</th>
+  </tr>
+
+  <% table.forEach((obj) => { %>
+    <tr class="order">
+
+        <td><%= obj.id %></td>
+        <td><%= obj.item_name %></td>
+        <td><%= obj.quantity %></td>
+        <td><%= obj.price %></td>
+        <td><%= obj.name %></td>
+        <td><%= obj.address %></td>
+    </tr>
+  <% }) %>
+
+
+
+
+</table>
+
+<form class="current history" action="current" method="GET" >
+
+  <input type="submit" value="Current Order">
+
+</form>
+
+  </div><!--/container-->
+  <% include partials/_footer %>
+  </body>
+</html>

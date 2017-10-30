@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login | Ordo</title>
+    <% include partials/_head %>
+  </head>
+
+  <body>
+
+    <div id='nav-header'>
+      <a href="/">
+        <h1 id="logotype">
+          Ordo
+        </h1>
+      </a>
+      <nav>
+        <ul>
+          <li>
+            <a class="selected" href="/login">Login</a>
+          </li>
+          <li>
+            <a href="/register">Register</a>
+          </li>
+        </ul>
+      </nav>
+    </div><!--nav-header-->
+
+    <div id="login-page">
+
+      <div class="container">
+
+        <form class="login-page" action="/user/login" method="POST">
+          <p>Hungry?</p>
+          <p>Login to place your Ordo!</p>
+          <div>
+            <label for="email">Email:</label>
+            <input id="email" type="email" name="email">
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input id="password" type="password" name="password">
+          </div>
+          <input type="submit" value="Submit">
+          <a href="/register">Register here</a>
+        </form>
+
+      </div><!--/container-->
+    </div>
+
+  <% include partials/_footer %>
+
+  </body>
+</html>

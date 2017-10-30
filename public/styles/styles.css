@@ -1,0 +1,874 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain) */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+body {
+  background: white; }
+
+a {
+  text-decoration: none;
+  color: #009970;
+  transition: .5s ease; }
+  a:hover {
+    color: #90146c; }
+
+.show {
+  display: block !important; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-size: 120%;
+  color: #444; }
+
+input {
+  font-family: "Lato", sans-serif; }
+
+h1, h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700; }
+
+.container p {
+  line-height: 1.5; }
+
+.container h1, .container h2, .container h3, .container h4, .container h5 {
+  line-height: 1.2; }
+
+body {
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+
+#nav-header,
+#front-nav {
+  width: 100%;
+  height: 50px;
+  box-shadow: 2px 0px 8px 1px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  background: rgba(255, 255, 255, 0.97);
+  color: #90146c;
+  z-index: 500; }
+  #nav-header h1,
+  #front-nav h1 {
+    font-size: 140%;
+    padding: .4em 1em 0;
+    font-family: "Playfair Display", serif;
+    position: relative;
+    z-index: 100;
+    font-weight: bold;
+    letter-spacing: .5px;
+    float: left; }
+  #nav-header a,
+  #front-nav a {
+    color: #90146c; }
+    #nav-header a:hover,
+    #front-nav a:hover {
+      color: #009970; }
+  #nav-header a.selected,
+  #front-nav a.selected {
+    color: #009970; }
+  #nav-header nav,
+  #front-nav nav {
+    float: right;
+    font-size: 80%;
+    margin: 1.1em; }
+    #nav-header nav li,
+    #front-nav nav li {
+      display: inline-block;
+      margin-left: 1.5em; }
+
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 1em 0;
+  flex: 1 0 auto; }
+
+#resto-current,
+#charge-pg,
+#pay-pg,
+#resto-profile,
+#resto-current,
+#user-current {
+  background: url("/img/bg.jpeg") center 32% no-repeat;
+  background-size: cover;
+  width: 100%; }
+  #resto-current .container,
+  #charge-pg .container,
+  #pay-pg .container,
+  #resto-profile .container,
+  #resto-current .container,
+  #user-current .container {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 0 1em;
+    margin-top: 50px;
+    min-width: 900px; }
+
+#nav-header input {
+  border: transparent;
+  background: transparent;
+  font-size: 100%;
+  color: #90146c; }
+  #nav-header input:hover {
+    color: #009970;
+    cursor: pointer; }
+
+#user-current .history input,
+#user-history .history input {
+  border: transparent;
+  background: transparent;
+  font-size: 100%;
+  color: #90146c;
+  font-style: italic; }
+  #user-current .history input:hover,
+  #user-history .history input:hover {
+    color: #009970;
+    cursor: pointer; }
+
+footer {
+  background: #630d4b;
+  color: white;
+  font-size: 85%;
+  width: 100%;
+  padding: 1.15em 1.5em;
+  overflow: hidden;
+  position: relative;
+  z-index: 6;
+  text-align: center; }
+  footer ul {
+    margin: .8em 0 1.15em; }
+  footer li {
+    display: inline-block;
+    margin: 0.5em 1em;
+    font-style: italic; }
+    footer li:hover {
+      color: #009970;
+      cursor: pointer; }
+  footer p {
+    font-size: 90%; }
+  footer .fa {
+    font-size: 160%;
+    margin: 0 .5em;
+    transform: scale(1);
+    transition: transform 0.5s ease; }
+    footer .fa:hover {
+      transform: scale(1.6);
+      cursor: pointer; }
+
+.login {
+  max-width: 600px;
+  margin: 0 auto; }
+  .login input {
+    width: 100%; }
+
+.login-btn,
+.register-btn {
+  float: right; }
+
+.login-form,
+.registration-form,
+.restaurant-login {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: -7.25em auto;
+  z-index: 100;
+  max-width: 600px;
+  min-height: 320px;
+  background: rgba(88, 12, 67, 0.95);
+  color: white;
+  padding: 1em 2em;
+  border-radius: 6px;
+  box-shadow: 0 0px 20px 4px rgba(0, 0, 0, 0.35); }
+  @media (max-width: 600px) {
+    .login-form,
+    .registration-form,
+    .restaurant-login {
+      padding: 1em; } }
+  .login-form div,
+  .registration-form div,
+  .restaurant-login div {
+    margin: 1em 0; }
+  .login-form input,
+  .registration-form input,
+  .restaurant-login input {
+    width: 100%;
+    border-radius: 3px;
+    padding: .5em;
+    border: #630d4b;
+    margin-top: .5em; }
+  .login-form label,
+  .registration-form label,
+  .restaurant-login label {
+    font-size: 80%; }
+  .login-form input[type="submit"],
+  .registration-form input[type="submit"],
+  .restaurant-login input[type="submit"] {
+    padding: .6em;
+    width: 100px;
+    color: #630d4b;
+    font-weight: bold;
+    cursor: pointer; }
+    .login-form input[type="submit"]:hover,
+    .registration-form input[type="submit"]:hover,
+    .restaurant-login input[type="submit"]:hover {
+      color: white;
+      background: rgba(41, 10, 32, 0.8);
+      background: #009970; }
+  .login-form h3,
+  .registration-form h3,
+  .restaurant-login h3 {
+    font-weight: 400;
+    margin: 0;
+    font-size: 130%;
+    text-align: center; }
+  .login-form .close,
+  .registration-form .close,
+  .restaurant-login .close {
+    top: 0;
+    right: 0;
+    margin: .75em;
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    font-size: 80%;
+    font-family: sans-serif;
+    background: #ddd;
+    color: #580C43;
+    border-radius: 4px;
+    padding: 0 .4em 0.2em; }
+    .login-form .close:hover,
+    .registration-form .close:hover,
+    .restaurant-login .close:hover {
+      color: white;
+      background: #009970; }
+
+.login-page {
+  box-shadow: 0 0px 85px 20px rgba(0, 0, 0, 0.8);
+  margin: 6.15em auto 0;
+  background: #630d4b;
+  background: rgba(99, 13, 75, 0.91);
+  color: white;
+  padding: 1.5em 2em 1.75em;
+  max-width: 600px;
+  border-radius: 6px;
+  box-shadow: 0 0px 20px 4px rgba(0, 0, 0, 0.35); }
+  @media (max-width: 600px) {
+    .login-page {
+      padding: 1em; } }
+  .login-page div {
+    margin: 1em 0; }
+  .login-page input {
+    width: 100%;
+    border-radius: 3px;
+    padding: .75em;
+    border: #630d4b;
+    margin-top: .5em; }
+  .login-page label {
+    font-size: 80%; }
+  .login-page input[type="submit"] {
+    padding: .6em;
+    width: 100px;
+    color: #630d4b;
+    font-weight: bold;
+    cursor: pointer; }
+    .login-page input[type="submit"]:hover {
+      color: white;
+      background: #009970; }
+  .login-page .close {
+    top: 0;
+    right: 0;
+    margin: .75em;
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    font-size: 80%;
+    font-family: sans-serif;
+    background: #ddd;
+    color: #630d4b;
+    border-radius: 4px;
+    padding: 0 .4em 0.2em; }
+    .login-page .close:hover {
+      color: white;
+      background: #009970; }
+  .login-page p {
+    text-align: center;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.75);
+    font-weight: bold; }
+  .login-page a {
+    float: right;
+    font-style: italic;
+    margin: 1em .2em 0 0;
+    font-size: 90%;
+    color: white; }
+  .login-page a:hover {
+    color: #009970; }
+
+.front-header {
+  background: url("/img/splash.jpg") center 32% no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 325px;
+  z-index: 90;
+  color: white;
+  text-align: center; }
+  .front-header:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 325px;
+    background-color: black;
+    opacity: .7; }
+  .front-header h1 {
+    font-size: 500%;
+    padding: .8em 0 0;
+    font-family: "Playfair Display", serif;
+    position: relative;
+    z-index: 100;
+    font-weight: bold;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.85); }
+  .front-header p {
+    position: relative;
+    z-index: 88;
+    font-family: "Playfair Display", serif;
+    margin-top: 1em;
+    font-size: 130%;
+    text-shadow: 0px 1px 0px black; }
+  @media (max-width: 500px) {
+    .front-header h1 {
+      font-size: 400%;
+      padding: 1.25em 0 0.75em; } }
+
+.front-logins {
+  position: absolute;
+  z-index: 200;
+  cursor: pointer;
+  margin: .6em;
+  top: 0;
+  right: 0; }
+  .front-logins input {
+    background: transparent;
+    margin: .15em .5em;
+    color: white;
+    border: transparent;
+    font-size: 90%;
+    cursor: pointer; }
+    .front-logins input:hover {
+      color: #009970; }
+  .front-logins nav {
+    float: right;
+    font-size: 80%;
+    margin: 1.1em; }
+    .front-logins nav li {
+      display: inline-block;
+      margin-left: 1.5em; }
+    .front-logins nav a {
+      color: white; }
+    .front-logins nav a:hover {
+      color: #009970; }
+
+#front-nav {
+  display: none; }
+  #front-nav .front-logins input {
+    margin: .15em .5em;
+    color: #90146c;
+    font-size: 90%; }
+
+.front-container {
+  overflow: hidden;
+  position: relative; }
+
+#rest-list {
+  float: left;
+  width: 60%; }
+
+.restaurant {
+  margin: 0.5em .5em .5em 0;
+  overflow: hidden;
+  position: relative;
+  height: 400px; }
+  .restaurant .image {
+    float: left;
+    z-index: 1;
+    top: 0;
+    position: absolute; }
+    .restaurant .image img {
+      width: 100%;
+      transform: scale(1);
+      transition: transform 0.5s ease; }
+      .restaurant .image img:hover {
+        transform: scale(1.1); }
+  .restaurant .info {
+    float: right;
+    width: 100%;
+    background: rgba(99, 13, 75, 0.85);
+    z-index: 2;
+    position: absolute;
+    line-height: 1.1;
+    color: white;
+    text-shadow: 0px 1px 0px black;
+    padding: .65em .75em;
+    top: 0; }
+  .restaurant .name {
+    font-size: 120%;
+    font-weight: bold;
+    font-family: "Playfair Display", serif; }
+  .restaurant .address {
+    display: none; }
+  .restaurant header p {
+    display: inline-block; }
+  .restaurant form {
+    float: right;
+    margin: -.25em; }
+  .restaurant button {
+    background: transparent;
+    border: transparent;
+    font-family: "Lato", sans-serif;
+    font-style: italic;
+    color: white;
+    text-shadow: 0px 1px 0px black;
+    font-size: 100%;
+    letter-spacing: .5px; }
+    .restaurant button:hover {
+      font-weight: bold;
+      cursor: pointer; }
+  .restaurant .type {
+    font-size: 69%;
+    margin-left: 1.25em;
+    text-transform: uppercase;
+    letter-spacing: 1px; }
+  .restaurant .description {
+    padding-top: .25em; }
+
+#front-map {
+  float: left;
+  width: 40%;
+  margin-top: .5em;
+  position: relative; }
+
+#map {
+  width: 100%;
+  height: 810px; }
+
+.map-padding {
+  top: 50px !important;
+  position: fixed !important; }
+
+.front-logins nav a {
+  font-size: 120%; }
+
+#login-page {
+  background: url("/img/splash2.jpg") 90% 32% no-repeat;
+  background-size: cover;
+  height: 100%;
+  flex: 1 0 auto; }
+  #login-page:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: auto;
+    background-color: black;
+    opacity: .7; }
+  #login-page .registration-form {
+    background: url("/img/splash2.jpg") 90% 32% no-repeat;
+    background-size: cover;
+    height: 100%;
+    flex: 1 0 auto; }
+    #login-page .registration-form:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: auto;
+      background-color: black;
+      opacity: .7; }
+
+#add-item {
+  background: #630d4b;
+  background: rgba(99, 13, 75, 0.91);
+  color: white;
+  padding: 1em;
+  margin: 2em auto;
+  max-width: 600px;
+  border-radius: 4px; }
+  @media (max-width: 600px) {
+    #add-item {
+      padding: 1em; } }
+  #add-item div {
+    margin: 1em 0; }
+  #add-item input {
+    width: 100%;
+    border-radius: 3px;
+    padding: .75em;
+    border: #630d4b;
+    margin-top: .5em; }
+  #add-item label {
+    font-size: 80%; }
+  #add-item input[type="submit"] {
+    padding: .6em;
+    color: #630d4b;
+    font-weight: bold;
+    cursor: pointer; }
+    #add-item input[type="submit"]:hover {
+      color: white;
+      background: #009970; }
+
+.menu-page #image {
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 2.5em; }
+
+.menu-page img {
+  width: 100%;
+  position: relative;
+  z-index: 0;
+  top: 50px; }
+
+.menu-page h2 {
+  font-size: 180%;
+  text-align: center;
+  position: absolute;
+  top: 90px;
+  color: white;
+  left: .8em;
+  z-index: 2; }
+
+.menu-page .left {
+  float: left;
+  width: 30%; }
+
+.menu-page .right {
+  float: right;
+  width: 65%; }
+
+.menu-page .info {
+  overflow: hidden;
+  max-width: 550px;
+  margin: 1em auto;
+  border-bottom: 1px solid #ddd;
+  padding: .5em 0 1.5em; }
+  .menu-page .info .item {
+    font-weight: bold;
+    font-size: 120%;
+    color: #009970; }
+
+.menu-page .description {
+  font-style: italic;
+  margin: 0.2em 0 .5em 0; }
+
+.menu-page .amount {
+  overflow: hidden; }
+
+.menu-page .price {
+  float: left;
+  margin-top: .5em;
+  font-size: 90%; }
+
+.menu-page form {
+  float: right; }
+  .menu-page form input {
+    width: 2.5em;
+    padding: .5em;
+    border: none;
+    color: #555;
+    border-bottom: 2px solid #ddd;
+    text-align: center; }
+  .menu-page form button {
+    border: 1px solid #ddd;
+    color: #777;
+    background: #eee;
+    padding: .5em;
+    border-radius: 4px;
+    font-family: "Lato", sans-serif; }
+    .menu-page form button:hover {
+      cursor: pointer;
+      color: white;
+      background: #009970;
+      border-color: #009970; }
+
+.menu-page .order {
+  max-width: 550px;
+  margin: 1em auto 5em;
+  overflow: hidden;
+  float: none; }
+  .menu-page .order button {
+    background: #90146c;
+    border: 1px solid #90146c;
+    color: white;
+    border-radius: 4px;
+    padding: .6em .8em; }
+    .menu-page .order button:hover {
+      background: #009970;
+      border-color: #009970;
+      cursor: pointer; }
+
+.menu-page .fixed-name {
+  position: fixed;
+  color: black;
+  display: none; }
+
+.menu-page input[name="order_id"],
+.menu-page input[name="item_id"] {
+  display: none; }
+
+.menu-page .container {
+  margin-top: 0;
+  padding-top: 0; }
+
+.restaurant-current h2,
+.restaurant-past h2,
+#user-current h2,
+#user-history h2 {
+  font-size: 200%;
+  margin: 1em 0;
+  text-align: center; }
+
+.restaurant-current input[type="text"],
+.restaurant-past input[type="text"],
+#user-current input[type="text"],
+#user-history input[type="text"] {
+  display: none; }
+
+.restaurant-current td,
+.restaurant-past td,
+#user-current td,
+#user-history td {
+  text-align: center;
+  vertical-align: middle;
+  padding: .85em .75em; }
+
+.restaurant-current .order:nth-child(2n),
+.restaurant-past .order:nth-child(2n),
+#user-current .order:nth-child(2n),
+#user-history .order:nth-child(2n) {
+  background: rgba(0, 153, 112, 0.05); }
+
+.restaurant-current th,
+.restaurant-past th,
+#user-current th,
+#user-history th {
+  padding: .5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 70%;
+  letter-spacing: .5px;
+  color: #888; }
+
+.restaurant-current img,
+.restaurant-past img,
+#user-current img,
+#user-history img {
+  border-radius: 2px;
+  width: 70px; }
+
+.restaurant-current .completed,
+.restaurant-past .completed,
+#user-current .completed,
+#user-history .completed {
+  background: #90146c;
+  border: 1px solid #90146c;
+  color: white;
+  border-radius: 4px;
+  padding: .35em .5em;
+  float: right; }
+  .restaurant-current .completed:hover,
+  .restaurant-past .completed:hover,
+  #user-current .completed:hover,
+  #user-history .completed:hover {
+    background: #630d4b;
+    cursor: pointer; }
+
+.restaurant-current h3,
+.restaurant-past h3,
+#user-current h3,
+#user-history h3 {
+  font-weight: bold;
+  text-align: center;
+  font-size: 140%;
+  margin: 1em 0;
+  font-style: italic; }
+
+.restaurant-current .history input,
+.restaurant-past .history input,
+#user-current .history input,
+#user-history .history input {
+  border: transparent;
+  background: transparent;
+  font-size: 95%;
+  color: #009970;
+  font-style: italic;
+  margin: 3em 0 3em -.25em; }
+  .restaurant-current .history input:hover,
+  .restaurant-past .history input:hover,
+  #user-current .history input:hover,
+  #user-history .history input:hover {
+    color: #90146c;
+    cursor: pointer; }
+
+.restaurant-current .fa,
+.restaurant-past .fa,
+#user-current .fa,
+#user-history .fa {
+  color: #009970;
+  text-align: bottom; }
+
+.restaurant-current .fa-check-square-o,
+.restaurant-past .fa-check-square-o,
+#user-current .fa-check-square-o,
+#user-history .fa-check-square-o {
+  margin-top: .75em; }
+
+#rest-profile .profile {
+  border: 2px solid #eee; }
+  #rest-profile .profile input {
+    border: none;
+    text-align: center;
+    vertical-align: middle;
+    padding: 1em .75em; }
+  #rest-profile .profile .send {
+    background: #90146c;
+    color: white;
+    border-radius: 4px; }
+    #rest-profile .profile .send:hover {
+      background: #630d4b;
+      cursor: pointer; }
+
+.restaurant-current footer .fa, .restaurant-past footer .fa, #user-current footer .fa, #user-history footer .fa {
+  color: white; }
+
+.payment-page em,
+#charge-pg .container em {
+  font-weight: bold; }
+
+.payment-page .stripe-button-el span,
+#charge-pg .container .stripe-button-el span {
+  background: #90146c;
+  border: 1px solid #90146c;
+  color: white;
+  border-radius: 4px;
+  padding: .35em .5em;
+  line-height: 1.4;
+  float: right; }
+  .payment-page .stripe-button-el span:hover,
+  #charge-pg .container .stripe-button-el span:hover {
+    background: #630d4b;
+    cursor: pointer; }
+
+.payment-page h2,
+#charge-pg .container h2 {
+  font-size: 130%;
+  margin-bottom: 2em; }
+
+#charge-pg .container {
+  padding-top: 5em; }
+
+@media (max-width: 900px) {
+  #front-map {
+    float: none;
+    width: 100%;
+    position: static; }
+    #front-map .map-padding {
+      position: static !important; }
+  #map {
+    height: 300px; }
+  #rest-list {
+    float: none;
+    width: 100%; }
+  .front-logins nav {
+    font-size: 100%;
+    margin: .5em; }
+  .restaurant {
+    margin: .5em 0;
+    height: 276px;
+    background-color: #777; }
+    .restaurant .address {
+      display: block;
+      margin: .9em 0 .25em;
+      font-size: 80%; }
+    .restaurant .info {
+      background: rgba(99, 13, 75, 0.9); }
+    .restaurant header p {
+      display: block; }
+    .restaurant form {
+      position: absolute;
+      top: 0;
+      right: 0; }
+    .restaurant button {
+      background: rgba(255, 255, 255, 0.9);
+      color: #90146c;
+      text-shadow: none;
+      padding: .4em .4em .25em .25em;
+      letter-spacing: 0; }
+    .restaurant .type {
+      margin: .75em 0 -.25em; }
+  #nav-header nav, #front-nav nav {
+    margin: 1.15em 1em 0 0; }
+  .menu-page h2 {
+    display: none; }
+  .menu-page .fixed-name {
+    position: static;
+    display: block; }
+  .menu-page #image {
+    height: auto; }
+  .menu-page .info {
+    margin: 1em; }
+  .menu-page .order {
+    margin: 1em 1em 5em; } }

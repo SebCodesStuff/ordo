@@ -2,25 +2,61 @@
 <html lang="en">
   <head>
     <% include partials/_head %>
-    <title>Home Page</title>
+    <title>Current Orders | Ordo</title>
+    <script type="text/javascript" src="/scripts/update.js"></script>
   </head>
 
-  <body>
-    <div class="container">
-        
+  <body id="resto-current">
+      <% include partials/_nav %>
+    <div class="container restaurant-current">
 
-  <h1 id="logotype">Ordo</h1>
-      
-  <h2>CURRENT ORDERS FOR for restaurant </h2>
+    <h2><%= restName %></h2>
+    <h3>Current Open Orders</h3>
+
+  <table style="width:100%">
+  <tr>
+    <th>Order #</th>
+    <th>Customer</th>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Dish</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Status</th>
+  </tr>
 
 
-    <!--loop through current orders -->
-    <div class=" ">
-      <p>Restaurant one info</p>
-    </div>
+  <% table.forEach((obj) => { %>
+    <tr class="order">
+        <td><%= obj.order_id%></td>
+        <td ><img src="/img/<%=obj.picture %>"></td>
+        <td><%= obj.name %></td>
+        <td><%= obj.phone_number %></td>
+        <td><%= obj.item_name %></td>
+        <td><%= obj.quantity %></td>
+        <td><%= obj.price %></td>
+        <td><form class="markFinish" method="POST">
+          <input type="text" name="order_id", value="<%=obj.order_id %>">
+          <input type="text" name="item_id", value="<%=obj.item_id %>">
+          <input class="completed" type="submit" value="Mark as done">
+        </form></td>
+    </tr>
+  <% }) %>
 
-    
+</table>
+
+<form class="history" action="history" method="GET" >
+  <i class="fa fa-history" aria-hidden="true"></i>
+  <input type="submit" value="View your past order history">
+
+</form>
+
+
+
+
+
+
   </div><!--/container-->
-          
+  <% include partials/_footer %>
   </body>
 </html>

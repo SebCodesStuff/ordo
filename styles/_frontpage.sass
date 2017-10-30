@@ -1,0 +1,156 @@
+.front-header
+  background: url("/img/splash.jpg") center 32% no-repeat
+  background-size: cover
+  width: 100%
+  height: 325px
+  z-index: 90
+  color: white
+  text-align: center    
+  // box-shadow: 2px 0px 8px 1px rgba(black, .35)     
+  &:before 
+    content: ''
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    height: 325px
+    background-color: black
+    opacity: .7
+  h1
+    font-size: 500%
+    padding: .8em 0 0
+    font-family: $serif
+    position: relative
+    z-index: 100
+    font-weight: bold
+    text-shadow: 0px 1px 0px rgba(black, .85)
+  p
+    position: relative
+    z-index: 88
+    font-family: $serif
+    margin-top: 1em
+    font-size: 130%
+    text-shadow: 0px 1px 0px rgba(black, 1)
+  @media (max-width: 500px)
+    h1
+      font-size: 400%
+      padding: 1.25em 0 0.75em
+
+.front-logins
+  position: absolute
+  z-index: 200
+  cursor: pointer
+  margin: .6em
+  top: 0
+  right: 0
+  input
+    background: transparent
+    margin: .15em .5em
+    color: white
+    border: transparent
+    font-size: 90%
+    cursor: pointer
+    &:hover
+      color: $green
+  nav
+    float: right
+    font-size: 80%
+    margin: 1.1em
+    li
+      display: inline-block
+      margin-left: 1.5em
+    a
+      color: white
+    a:hover 
+      color: $green
+
+#front-nav
+  display: none
+  .front-logins input
+    margin: .15em .5em
+    color: $purple
+    font-size: 90%
+
+.front-container
+  overflow: hidden
+  position: relative
+
+#rest-list
+  float: left
+  width: 60%
+.restaurant
+  margin: 0.5em .5em .5em 0
+  overflow: hidden
+  position: relative
+  height: 400px
+  .image
+    float: left
+    z-index: 1
+    top: 0
+    position: absolute
+    img
+      width: 100%
+      transform: scale(1)
+      transition: transform 0.5s ease
+      &:hover
+        transform: scale(1.1)
+  .info
+    float: right
+    width: 100%
+    background: rgba($darkPurple, .85)
+    z-index: 2
+    position: absolute
+    line-height: 1.1
+    color: white
+    text-shadow: 0px 1px 0px rgba(black, 1)
+    padding: .65em .75em
+    top: 0
+  .name
+    font-size: 120%
+    font-weight: bold
+    font-family: $serif
+  .address
+    display: none
+  header p
+    display: inline-block
+  form
+    float: right
+    margin: -.25em
+  button
+    background: transparent
+    border: transparent 
+    font-family: $sans-serif
+    font-style: italic
+    color: white
+    text-shadow: 0px 1px 0px rgba(black, 1)
+    font-size: 100%
+    letter-spacing: .5px
+    &:hover
+      font-weight: bold
+      cursor: pointer
+  .type
+    font-size: 69%
+    margin-left: 1.25em
+    text-transform: uppercase
+    letter-spacing: 1px
+  .description
+    padding-top: .25em
+
+
+#front-map    
+  float: left  
+  width: 40%
+  margin-top: .5em
+  position: relative
+
+#map
+  width: 100%
+  height: 810px
+
+.map-padding
+  top: 50px !important
+  position: fixed !important
+
+.front-logins nav a
+  font-size: 120%

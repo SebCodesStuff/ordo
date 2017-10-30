@@ -4,20 +4,128 @@
   input
     width: 100%
 
-
-.login-btn
+.login-btn, 
+.register-btn
   float: right
 
-#login-form
+.login-form,
+.registration-form,
+.restaurant-login
   display: none
-  position: absolute
+  position: fixed
   left: 0
   right: 0
-  margin: 5em auto
+  margin: -7.25em auto
   z-index: 100
-  width: 600px
-  height: auto
-  background: skyblue
+  max-width: 600px
+  min-height: 320px
+  background: rgba(#580C43,.95)
   color: white
-  padding: 2em
-  border-radius: 6px
+  padding: 1em 2em
+  border-radius: 6px  
+  @media (max-width: 600px)
+    padding: 1em
+  div
+    margin: 1em 0
+  input 
+    width: 100%
+    border-radius: 3px
+    padding: .5em
+    border: $darkPurple
+    margin-top: .5em
+  label
+    font-size: 80%
+  input[type="submit"]
+    padding: .6em 
+    width: 100px
+    color: $darkPurple
+    font-weight: bold
+    cursor: pointer
+    &:hover
+      color: white
+      background: rgba(#290a20, .8)
+      background: $green
+  h3
+    font-weight: 400
+    margin: 0
+    font-size: 130%
+    text-align: center
+  box-shadow: 0 0px 20px 4px rgba(black, .35)  
+  .close
+    top: 0
+    right: 0
+    margin: .75em
+    display: block
+    position: absolute
+    cursor: pointer
+    font-size: 80%
+    font-family: sans-serif
+    background: #ddd
+    color: #580C43
+    border-radius: 4px
+    padding: 0 .4em 0.2em
+    &:hover
+      color: white
+      background: $green
+// .login-form h3
+//   margin: 0 0 2em
+
+.login-page
+  box-shadow: 0 0px 85px 20px rgba(0, 0, 0, 0.8)
+  margin: 6.15em auto 0
+  background: $darkPurple
+  background: rgba($darkPurple,.91)
+  color: white
+  padding: 1.5em 2em 1.75em
+  max-width: 600px
+  border-radius: 6px  
+  @media (max-width: 600px)
+    padding: 1em
+  div
+    margin: 1em 0
+  input 
+    width: 100%
+    border-radius: 3px
+    padding: .75em
+    border: $darkPurple
+    margin-top: .5em
+  label
+    font-size: 80%
+  input[type="submit"]
+    padding: .6em 
+    width: 100px
+    color: $darkPurple
+    font-weight: bold
+    cursor: pointer
+    &:hover
+      color: white
+      background: $green
+  box-shadow: 0 0px 20px 4px rgba(black, .35)  
+  .close
+    top: 0
+    right: 0
+    margin: .75em
+    display: block
+    position: absolute
+    cursor: pointer
+    font-size: 80%
+    font-family: sans-serif
+    background: #ddd
+    color: $darkPurple
+    border-radius: 4px
+    padding: 0 .4em 0.2em
+    &:hover
+      color: white
+      background: $green
+  p
+    text-align: center
+    text-shadow: 0px 1px 0px rgba(black, .75)
+    font-weight: bold
+  a
+    float: right
+    font-style: italic
+    margin: 1em .2em 0 0
+    font-size: 90%
+    color: white
+  a:hover
+    color: $green
