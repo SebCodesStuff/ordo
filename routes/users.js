@@ -143,6 +143,9 @@ router.get("/:id/current/payment", (req, res) =>
 return res.render("payment", {keyPublishable})
 });
 
+router.get('/charge', (req, res) => {
+  res.render('charge');
+});
 
 router.post("/charge", (req, res) => {
   let amount = 1500;

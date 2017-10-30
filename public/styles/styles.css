@@ -134,14 +134,21 @@ body {
   padding: 1em 0;
   flex: 1 0 auto; }
 
-#resto-current {
+#resto-history,
+#resto-current,
+#charge-pg,
+#pay-pg {
   background: url("/img/bg.jpeg") center 32% no-repeat;
   background-size: cover;
   width: 100%; }
-  #resto-current .container {
+  #resto-history .container,
+  #resto-current .container,
+  #charge-pg .container,
+  #pay-pg .container {
     background: rgba(255, 255, 255, 0.98);
     padding: 0 1em;
-    margin-top: 50px; }
+    margin-top: 50px;
+    min-width: 500px; }
 
 footer {
   background: #630d4b;
@@ -669,6 +676,32 @@ footer {
 .restaurant-past .fa-check-square-o {
   margin-top: .75em; }
 
+.payment-page em,
+#charge-pg .container em {
+  font-weight: bold; }
+
+.payment-page .stripe-button-el span,
+#charge-pg .container .stripe-button-el span {
+  background: #90146c;
+  border: 1px solid #90146c;
+  color: white;
+  border-radius: 4px;
+  padding: .35em .5em;
+  line-height: 1.4;
+  float: right; }
+  .payment-page .stripe-button-el span:hover,
+  #charge-pg .container .stripe-button-el span:hover {
+    background: #630d4b;
+    cursor: pointer; }
+
+.payment-page h2,
+#charge-pg .container h2 {
+  font-size: 130%;
+  margin-bottom: 2em; }
+
+#charge-pg .container {
+  padding-top: 5em; }
+
 @media (max-width: 900px) {
   #front-map {
     float: none;
@@ -682,7 +715,8 @@ footer {
     float: none;
     width: 100%; }
   .front-logins nav {
-    font-size: 100%; }
+    font-size: 100%;
+    margin: .5em; }
   .restaurant {
     margin: .5em 0;
     height: 276px;

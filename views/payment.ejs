@@ -5,20 +5,18 @@
     <% include partials/_head %>
   </head>
 
-  <body>
+  <body id="pay-pg">
 
       <% include partials/_nav %>
 
     <div class="container">
 
       <div class="payment-page">
+<h2>Payment Page</h2>
 
-
-      <h2>This is the PAYMENT page</h2>
+      <p>Your order amount is: <em>$15.00</em></p>
       <br>
-      <p>Amount: $15.00</p>
-      <br>
-      <p>Pay at the counter or </p>
+      <p>Please pay at the counter or </p>
       
         <form action="/user/charge" method="POST">
           <article>
@@ -32,7 +30,8 @@
             data-locale="auto">
           </script>
         </form>
-      </div><!--/container-->
-      <% include partials/_footer %>        
+      </div>  
+    </div>
+    <% include partials/_footer %>
   </body>
 </html>
