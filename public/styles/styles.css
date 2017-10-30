@@ -137,18 +137,20 @@ body {
 #resto-history,
 #resto-current,
 #charge-pg,
-#pay-pg {
+#pay-pg,
+#resto-profile {
   background: url("/img/bg.jpeg") center 32% no-repeat;
   background-size: cover;
   width: 100%; }
   #resto-history .container,
   #resto-current .container,
   #charge-pg .container,
-  #pay-pg .container {
+  #pay-pg .container,
+  #resto-profile .container {
     background: rgba(255, 255, 255, 0.98);
     padding: 0 1em;
     margin-top: 50px;
-    min-width: 500px; }
+    min-width: 900px; }
 
 footer {
   background: #630d4b;
@@ -499,10 +501,37 @@ footer {
     opacity: .7; }
 
 #add-item {
-  background: skyblue;
-  padding: 1em; }
-  #add-item p {
-    font-style: italic; }
+  background: #630d4b;
+  background: rgba(99, 13, 75, 0.91);
+  color: white;
+  padding: 1em;
+  margin: 2em auto;
+  max-width: 600px;
+  border-radius: 4px; }
+  @media (max-width: 600px) {
+    #add-item {
+      padding: 1em; } }
+  #add-item div {
+    margin: 1em 0; }
+  #add-item input {
+    width: 100%;
+    border-radius: 3px;
+    padding: .75em;
+    border: #630d4b;
+    margin-top: .5em; }
+  #add-item label {
+    font-size: 80%; }
+  #add-item input[type="submit"] {
+    padding: .6em;
+    color: #630d4b;
+    font-weight: bold;
+    cursor: pointer; }
+    #add-item input[type="submit"]:hover {
+      color: white;
+      background: #009970; }
+
+#resto-profile li {
+  list-style: none; }
 
 .menu-page #image {
   height: 500px;

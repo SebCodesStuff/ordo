@@ -1,10 +1,38 @@
 
 // Add menu item
 #add-item
-  background: skyblue
+  background: $darkPurple
+  background: rgba($darkPurple,.91)
+  color: white
   padding: 1em
-  p
-    font-style: italic
+  margin: 2em auto
+  max-width: 600px
+  border-radius: 4px  
+  @media (max-width: 600px)
+    padding: 1em
+  div
+    margin: 1em 0
+  input 
+    width: 100%
+    border-radius: 3px
+    padding: .75em
+    border: $darkPurple
+    margin-top: .5em
+  label
+    font-size: 80%
+  input[type="submit"]
+    padding: .6em 
+    color: $darkPurple
+    font-weight: bold
+    cursor: pointer
+    &:hover
+      color: white
+      background: $green    
+
+// PROFILE
+#resto-profile
+  li
+    list-style: none
 
 
 .menu-page

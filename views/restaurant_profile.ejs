@@ -5,7 +5,7 @@
     <title>Home Page</title>
   </head>
 
-  <body>
+  <body id="resto-profile">
   
       <% include partials/_nav %>
     <div class="container">
@@ -13,7 +13,21 @@
 
   <h2>PROFILE page for restaurant </h2>
 
-    <section id="add-item">
+
+    <!-- loop through the restaurant's menu -->
+
+    <div class="menu-item">
+      <% for (items in results) {%>
+      <p class="name"><%= results[items].item_name %>: <%=results[items].item_description%></p>
+      <p class="price">Price: $<%=results[items].price%></p>
+      <a class="edit-menu" href="">Edit</a>
+      <% } %>
+    </div>
+
+     <!-- Id of res is results[0].id -->
+
+
+     <section id="add-item">
       <p>Add an item to your menu</p>
       <form action="/restaurant/add-item" method="POST">
         <div class="item">
@@ -38,21 +52,7 @@
         </select>
         <input type='submit' value="Save">
       </form>
-    </section>
-
-    <!-- loop through the restaurant's menu -->
-
-    <div class="menu-item">
-      <p>Restaurant one info</p>
-      <% for (items in results) {%>
-      <li><%= results[items].item_name %>: <%=results[items].item_description%></li>
-      <li>Price: $<%=results[items].price%></li>
-      <a class="edit-menu" href="">Edit</a>
-      <% } %>
-    </div>
-
-     <!-- Id of res is results[0].id -->
-
+    </section>     
 
   </div><!--/container-->
   
