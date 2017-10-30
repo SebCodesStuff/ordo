@@ -12,6 +12,7 @@ module.exports = (knex, passport) => {
 
   router.get("/", (req, res) => {
     var cookieID = req.session.passport.user;
+    console.log(cookieID);
 
 // Finds the user
       knex('users')
@@ -27,7 +28,8 @@ module.exports = (knex, passport) => {
          .orderBy("user_id")
          .then((results) => {
            res.render('index', {
-             results: results
+             results: results,
+             status: "customer"
            });
          });
        } else {
@@ -42,8 +44,10 @@ module.exports = (knex, passport) => {
              .innerJoin("menuitem", "restaurant.id", "menuitem.restaurant_id")
              .where('restaurant_id', results[0].id)
              .then((results) => {
+              console.log(results);
                res.render('restaurant_profile', {
-                 results: results
+                 results: results,
+                 status: "restaurant"
                });
              })
          });

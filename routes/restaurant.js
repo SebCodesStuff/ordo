@@ -21,12 +21,13 @@ router.get("/", (req, res) => {
 
   // Restaurant profile page (to see and edit menu items)
 router.get("/profile", (req, res) => {
+  console.log("*********");
   console.log(req.body);
   knex
     .select("*")
     .from("restaurant")
     .innerJoin("menuitem", "restaurant.id", "menuitem.restaurant_id")
-    .where('restaurant_id', req.session.passport.user - 1)
+    .where('restaurant_id', req.session.passport.user-1)
     .then((results) => {
       res.render('restaurant_profile', {
         results: results
@@ -53,12 +54,14 @@ router.post("/add-item", (req, res) => {
   .then((results) => {
     knex
     .select("*")
-    .from("restaurant")
-    .innerJoin("menuitem", "restaurant.id", "menuitem.restaurant_id")
+    .from("menuitem")
     .where('restaurant_id', cookieID)
+    .orderBy("id")
     .then((results) => {
       res.render('restaurant_profile', {
-        results: results
+        results: results,
+        status: "restaurant"
+
       });
     })
   });
@@ -116,6 +119,7 @@ router.post("/new/lineitem", (req, res) => {
       if(!result[0].id){
       res.send("your don't have authority");
       }else{
+        console.log(result[0].id);
 
         knex.select("order_id","picture", 'name', 'phone_number', 'item_name', 'quantity', 'price', "status", "item_id")
         .from("users")
@@ -194,6 +198,40 @@ router.get("/:id/history", (req, res) => {
     })
 
   });
+
+  router.post("/update-item", (req, res) => {
+  const restaurant_id = req.session.passport.user-1;
+  const item_id = req.body.item_id
+  const menuItem = {
+    item_category: req.body.category,
+    item_name: req.body.item_name,
+    item_description: req.body.item_description,
+    price: req.body.price,
+  };
+
+  knex.select("*")
+      .from("menuitem")
+      .where({"restaurant_id": restaurant_id, "id": item_id})
+      .update(menuItem)
+      .then((result)=>{
+
+        knex
+        .select("*")
+        .from("menuitem")
+        .where('restaurant_id', restaurant_id)
+        .orderBy("id")
+        .then((results) => {
+          res.render('restaurant_profile', {
+          results: results,
+          status: "restaurant"
+          });
+          console.log(results);
+        })
+          console.log(result);
+      })
+  });
+
+
 
 
 

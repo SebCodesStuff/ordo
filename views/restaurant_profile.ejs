@@ -10,6 +10,8 @@
   <% include partials/_nav %>
     <div class="container">
 
+      <%=status %>
+
 
   <h2>PROFILE page for restaurant </h2>
 
@@ -45,11 +47,17 @@
     <div class="menu-item">
       <p>Restaurant one info</p>
       <% for (items in results) {%>
-      <li><%= results[items].item_name %>: <%=results[items].item_description%></li>
-      <li>Price: $<%=results[items].price%></li>
-      <a class="edit-menu" href="">Edit</a>
+      <form action="/restaurant/update-item" method="POST">
+        <input type="text" name="item_id" value="<%= results[items].id %>">
+        <input type="text" name="item_category" value="<%= results[items].category %>">
+        <input type="text" name="item_name" value="<%= results[items].item_name %>">
+        <input type="text" name="item_description" value="<%=results[items].item_description%>">
+        <input type="text" name="price" value="<%=results[items].price%>">
+        <input type="submit" value="Edit Submit">
+      </form>
       <% } %>
     </div>
+
 
      <!-- Id of res is results[0].id -->
 

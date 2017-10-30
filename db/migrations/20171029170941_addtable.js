@@ -26,7 +26,7 @@ exports.up = function(knex, Promise) {
       }),
 
       knex.schema.createTable('restaurant', function (table) {
-        table.increments();
+        table.integer('id');
         table.string('address');
         table.integer('user_id');
         table.string('schedule');
