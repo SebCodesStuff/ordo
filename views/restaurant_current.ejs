@@ -12,7 +12,7 @@
     <div class="container restaurant-current">
 
     <h2><%= restName %></h2>
-    <h3>Current Open Orders:</h3>
+    <h3>Current Open Orders</h3>
 
   <table style="width:100%">
   <tr>
@@ -23,7 +23,7 @@
     <th>Dish</th>
     <th>Quantity</th>
     <th>Price</th>
-    <th>Order Status</th>
+    <th>Status</th>
   </tr>
 
 
@@ -46,9 +46,9 @@
 
 </table>
 
-<form class="history", action="history", method="GET" >
-
-  <input type="submit" value="Order History">
+<form class="history" action="history" method="GET" >
+  <i class="fa fa-history" aria-hidden="true"></i>
+  <input type="submit" value="View your past order history">
 
 </form>
 

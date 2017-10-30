@@ -579,7 +579,8 @@ footer {
 
 .restaurant-current h2 {
   font-size: 150%;
-  margin: 2.45em 0 1em; }
+  margin: 2.45em 0 1em;
+  text-align: center; }
 
 .restaurant-current input[type="text"] {
   display: none; }
@@ -620,3 +621,17 @@ footer {
   font-size: 120%;
   margin: 1em 0;
   font-style: italic; }
+
+.restaurant-current .history input {
+  border: transparent;
+  background: transparent;
+  font-size: 95%;
+  color: #009970;
+  font-style: italic;
+  margin: 3em 0 3em -.25em; }
+  .restaurant-current .history input:hover {
+    color: #90146c;
+    cursor: pointer; }
+
+.restaurant-current .fa-history {
+  color: #009970; }
