@@ -11,7 +11,8 @@
       <% include partials/_nav %>
     <div class="container restaurant-current">
 
-    <h2>Current open orders for RESTAURANT NAME</h2>
+    <h2><%= restName %></h2>
+    <h3>Current Open Orders:</h3>
 
   <table style="width:100%">
   <tr>
@@ -29,7 +30,7 @@
   <% table.forEach((obj) => { %>
     <tr class="order">
         <td><%= obj.order_id%></td>
-        <td ><img style="height:30px" src="/img/<%=obj.picture %>"></td>
+        <td ><img src="/img/<%=obj.picture %>"></td>
         <td><%= obj.name %></td>
         <td><%= obj.phone_number %></td>
         <td><%= obj.item_name %></td>
@@ -38,7 +39,7 @@
         <td><form class="markFinish" method="POST">
           <input type="text" name="order_id", value="<%=obj.order_id %>">
           <input type="text" name="item_id", value="<%=obj.item_id %>">
-          <input type="submit" value="Completed">
+          <input class="completed" type="submit" value="Mark as done">
         </form></td>
     </tr>
   <% }) %>

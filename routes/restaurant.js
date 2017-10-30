@@ -114,7 +114,7 @@ res.redirect(303, "/:id");
   router.get("/:id/current", (req, res) => {
     const cookieID = req.session.passport.user;
 
-    knex.select("id")
+    knex.select("id", "name")
     .from("restaurant")
     .where("user_id", cookieID)
     .then((result)=>{
@@ -122,10 +122,10 @@ res.redirect(303, "/:id");
       console.log(result[0].id);
 
       if(!result[0].id){
-      res.send("your don't have authority");
+      res.send("You do not have permission to view this page");
       }else{
 
-        knex.select("order_id","picture", 'name', 'phone_number', 'item_name', 'quantity', 'price', "status", "item_id")
+        knex.select("order_id","picture", 'users.name', 'phone_number', 'item_name', 'quantity', 'price', "status", "item_id")
         .from("users")
         .innerJoin("order", "users.id", "order.user_id")
         .innerJoin("lineitem", "order.id", "lineitem.order_id")
@@ -134,7 +134,8 @@ res.redirect(303, "/:id");
         .then((table)=>{
 
           res.render('restaurant_current', {
-            table:table
+            table:table,
+            restName: result[0].name
           })
 
           console.log(table);
@@ -179,7 +180,7 @@ router.get("/:id/history", (req, res) => {
       console.log(result[0].id);
 
       if(!result[0].id){
-      res.send("your don't have authority");
+      res.send("You do not have permission to view this page");
       }else{
 
         knex.select("order_id","picture", 'name', 'phone_number', 'item_name', 'quantity', 'price', "status", "item_id")
