@@ -53,46 +53,116 @@ html {
   box-sizing: inherit; }
 
 body {
-  background: white;
-  height: 100%;
-  width: 100%; }
+  background: white; }
 
 a {
   text-decoration: none;
-  color: #1ab188;
+  color: #009970;
   transition: .5s ease; }
   a:hover {
-    color: #179b77; }
+    color: #90146c; }
 
 .show {
   display: block !important; }
 
 body {
-  font-family: "Catamaran", sans-serif;
-  font-size: 120%; }
+  font-family: "Lato", sans-serif;
+  font-size: 120%;
+  color: #444; }
 
-h1, h2, h3, h4, h5 {
+input {
+  font-family: "Lato", sans-serif; }
+
+h1, h2 {
   font-family: "Playfair Display", serif;
   font-weight: 700; }
 
+.container p {
+  line-height: 1.5; }
+
+.container h1, .container h2, .container h3, .container h4, .container h5 {
+  line-height: 1.2; }
+
 body {
-  color: #333; }
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
 
-#nav {
-  background: linear-gradient(to right, #ff4e50, #f9d423);
-  background: linear-gradient(to left, #16a085, #f4d03f); }
-
-#logotype {
-  font-family: 'Merriweather', serif;
-  font-size: 3em;
-  font-weight: 900;
-  font-style: italic;
-  color: white; }
+#nav-header,
+#front-nav {
+  width: 100%;
+  height: 50px;
+  box-shadow: 2px 0px 8px 1px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  background: rgba(255, 255, 255, 0.97);
+  color: #90146c;
+  z-index: 500; }
+  #nav-header h1,
+  #front-nav h1 {
+    font-size: 140%;
+    padding: .4em 1em 0;
+    font-family: "Playfair Display", serif;
+    position: relative;
+    z-index: 100;
+    font-weight: bold;
+    letter-spacing: .5px;
+    float: left; }
+  #nav-header a,
+  #front-nav a {
+    color: #90146c; }
+    #nav-header a:hover,
+    #front-nav a:hover {
+      color: #009970; }
+  #nav-header a.selected,
+  #front-nav a.selected {
+    color: #009970; }
+  #nav-header nav,
+  #front-nav nav {
+    float: right;
+    font-size: 80%;
+    margin: 1.1em; }
+    #nav-header nav li,
+    #front-nav nav li {
+      display: inline-block;
+      margin-left: 1.5em; }
 
 .container {
   max-width: 90%;
   margin: 0 auto;
-  padding: 1em; }
+  padding: 1em 0;
+  flex: 1 0 auto; }
+
+footer {
+  background: #630d4b;
+  color: white;
+  font-size: 85%;
+  width: 100%;
+  padding: 1.15em 1.5em;
+  overflow: hidden;
+  position: relative;
+  z-index: 6;
+  text-align: center; }
+  footer ul {
+    margin: .8em 0 1.15em; }
+  footer li {
+    display: inline-block;
+    margin: 0.5em 1em;
+    font-style: italic; }
+    footer li:hover {
+      color: #009970;
+      cursor: pointer; }
+  footer p {
+    font-size: 90%; }
+  footer .fa {
+    font-size: 160%;
+    margin: 0 .5em;
+    transform: scale(1);
+    transition: transform 0.5s ease; }
+    footer .fa:hover {
+      transform: scale(1.6);
+      cursor: pointer; }
 
 .login {
   max-width: 600px;
@@ -105,89 +175,188 @@ body {
   float: right; }
 
 .login-form,
-.registration-form {
+.registration-form,
+.restaurant-login {
   display: none;
   position: fixed;
   left: 0;
   right: 0;
-  margin: -4.5em auto;
+  margin: -7.25em auto;
   z-index: 100;
-  width: 600px;
-  height: 320px;
+  max-width: 600px;
+  min-height: 320px;
   background: rgba(88, 12, 67, 0.95);
   color: white;
-  padding: 2em;
-  border-radius: 6px div;
-    border-radius-margin: 1em 0;
+  padding: 1em 2em;
+  border-radius: 6px;
   box-shadow: 0 0px 20px 4px rgba(0, 0, 0, 0.35); }
+  @media (max-width: 600px) {
+    .login-form,
+    .registration-form,
+    .restaurant-login {
+      padding: 1em; } }
+  .login-form div,
+  .registration-form div,
+  .restaurant-login div {
+    margin: 1em 0; }
   .login-form input,
-  .registration-form input {
-    width: 100%; }
+  .registration-form input,
+  .restaurant-login input {
+    width: 100%;
+    border-radius: 3px;
+    padding: .5em;
+    border: #630d4b;
+    margin-top: .5em; }
+  .login-form label,
+  .registration-form label,
+  .restaurant-login label {
+    font-size: 80%; }
+  .login-form input[type="submit"],
+  .registration-form input[type="submit"],
+  .restaurant-login input[type="submit"] {
+    padding: .6em;
+    width: 100px;
+    color: #630d4b;
+    font-weight: bold;
+    cursor: pointer; }
+    .login-form input[type="submit"]:hover,
+    .registration-form input[type="submit"]:hover,
+    .restaurant-login input[type="submit"]:hover {
+      color: white;
+      background: rgba(41, 10, 32, 0.8);
+      background: #009970; }
   .login-form h3,
-  .registration-form h3 {
+  .registration-form h3,
+  .restaurant-login h3 {
     font-weight: 400;
     margin: 0;
-    font-size: 110%;
+    font-size: 130%;
     text-align: center; }
   .login-form .close,
-  .registration-form .close {
+  .registration-form .close,
+  .restaurant-login .close {
     top: 0;
     right: 0;
-    margin: .5em;
+    margin: .75em;
     display: block;
     position: absolute;
     cursor: pointer;
-    font-size: 115%;
+    font-size: 80%;
     font-family: sans-serif;
-    background: white;
+    background: #ddd;
     color: #580C43;
-    font-weight: bold;
     border-radius: 4px;
-    padding: .1em .25em; }
+    padding: 0 .4em 0.2em; }
+    .login-form .close:hover,
+    .registration-form .close:hover,
+    .restaurant-login .close:hover {
+      color: white;
+      background: #009970; }
 
-.restaurant-preview {
-  background: white;
-  padding: 1em;
-  margin: 1em;
-  background: white; }
+.login-page {
+  box-shadow: 0 0px 85px 20px rgba(0, 0, 0, 0.8);
+  margin: 6.15em auto 0;
+  background: #630d4b;
+  background: rgba(99, 13, 75, 0.91);
+  color: white;
+  padding: 1.5em 2em 1.75em;
+  max-width: 600px;
+  border-radius: 6px;
+  box-shadow: 0 0px 20px 4px rgba(0, 0, 0, 0.35); }
+  @media (max-width: 600px) {
+    .login-page {
+      padding: 1em; } }
+  .login-page div {
+    margin: 1em 0; }
+  .login-page input {
+    width: 100%;
+    border-radius: 3px;
+    padding: .75em;
+    border: #630d4b;
+    margin-top: .5em; }
+  .login-page label {
+    font-size: 80%; }
+  .login-page input[type="submit"] {
+    padding: .6em;
+    width: 100px;
+    color: #630d4b;
+    font-weight: bold;
+    cursor: pointer; }
+    .login-page input[type="submit"]:hover {
+      color: white;
+      background: #009970; }
+  .login-page .close {
+    top: 0;
+    right: 0;
+    margin: .75em;
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    font-size: 80%;
+    font-family: sans-serif;
+    background: #ddd;
+    color: #630d4b;
+    border-radius: 4px;
+    padding: 0 .4em 0.2em; }
+    .login-page .close:hover {
+      color: white;
+      background: #009970; }
+  .login-page p {
+    text-align: center;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.75);
+    font-weight: bold; }
+  .login-page a {
+    float: right;
+    font-style: italic;
+    margin: 1em .2em 0 0;
+    font-size: 90%;
+    color: white; }
+  .login-page a:hover {
+    color: #009970; }
 
-#header {
-  background: url("/img/splash.jpg") center 33% no-repeat;
+.front-header {
+  background: url("/img/splash.jpg") center 32% no-repeat;
   background-size: cover;
   width: 100%;
-  height: 300px;
-  font-family: "Playfair Display", serif;
+  height: 325px;
+  z-index: 90;
   color: white;
   text-align: center; }
-  #header:before {
+  .front-header:before {
     content: '';
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    height: 300px;
+    height: 325px;
     background-color: black;
     opacity: .7; }
-  #header h1 {
+  .front-header h1 {
     font-size: 500%;
-    padding: .75em 0 0;
+    padding: .8em 0 0;
+    font-family: "Playfair Display", serif;
     position: relative;
     z-index: 100;
     font-weight: bold;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.85); }
-  #header p {
+  .front-header p {
     position: relative;
     z-index: 88;
+    font-family: "Playfair Display", serif;
     margin-top: 1em;
-    font-size: 106%;
+    font-size: 130%;
     text-shadow: 0px 1px 0px black; }
+  @media (max-width: 500px) {
+    .front-header h1 {
+      font-size: 400%;
+      padding: 1.25em 0 0.75em; } }
 
 .front-logins {
   position: absolute;
   z-index: 200;
   cursor: pointer;
-  margin: 1em;
+  margin: .6em;
   top: 0;
   right: 0; }
   .front-logins input {
@@ -195,13 +364,273 @@ body {
     margin: .15em .5em;
     color: white;
     border: transparent;
-    font-size: 100%;
-    font-family: "Catamaran", sans-serif;
-    font-weight: 600;
+    font-size: 90%;
     cursor: pointer; }
+    .front-logins input:hover {
+      color: #009970; }
+  .front-logins nav {
+    float: right;
+    font-size: 80%;
+    margin: 1.1em; }
+    .front-logins nav li {
+      display: inline-block;
+      margin-left: 1.5em; }
+    .front-logins nav a {
+      color: white; }
+    .front-logins nav a:hover {
+      color: #009970; }
+
+#front-nav {
+  display: none; }
+  #front-nav .front-logins input {
+    margin: .15em .5em;
+    color: #90146c;
+    font-size: 90%; }
+
+.front-container {
+  overflow: hidden;
+  position: relative; }
+
+#rest-list {
+  float: left;
+  width: 60%; }
+
+.restaurant {
+  margin: 0.5em .5em .5em 0;
+  overflow: hidden;
+  position: relative;
+  height: 400px; }
+  .restaurant .image {
+    float: left;
+    z-index: 1;
+    top: 0;
+    position: absolute; }
+    .restaurant .image img {
+      width: 100%;
+      transform: scale(1);
+      transition: transform 0.5s ease; }
+      .restaurant .image img:hover {
+        transform: scale(1.1); }
+  .restaurant .info {
+    float: right;
+    width: 100%;
+    background: rgba(99, 13, 75, 0.8);
+    z-index: 2;
+    position: absolute;
+    color: white;
+    text-shadow: 0px 1px 0px black;
+    padding: .65em .75em;
+    top: 0; }
+  .restaurant .name {
+    font-size: 120%;
+    font-weight: bold;
+    font-family: "Playfair Display", serif; }
+  .restaurant header p {
+    display: inline-block; }
+  .restaurant form {
+    float: right;
+    margin: -.25em; }
+  .restaurant button {
+    background: transparent;
+    border: transparent;
+    font-family: "Lato", sans-serif;
+    font-style: italic;
+    color: white;
+    text-shadow: 0px 1px 0px black;
+    font-size: 100%;
+    letter-spacing: .5px; }
+    .restaurant button:hover {
+      font-weight: bold;
+      cursor: pointer; }
+  .restaurant .type {
+    font-size: 69%;
+    margin-left: 1.25em;
+    text-transform: uppercase;
+    letter-spacing: 1px; }
+  .restaurant .description {
+    padding-top: .25em; }
+
+#front-map {
+  float: left;
+  width: 40%;
+  margin-top: .5em;
+  position: relative; }
+
+#map {
+  width: 100%;
+  height: 810px; }
+
+.map-padding {
+  top: 50px !important;
+  position: fixed !important; }
+
+#login-page {
+  background: url("/img/splash2.jpg") 90% 32% no-repeat;
+  background-size: cover;
+  height: 100%;
+  flex: 1 0 auto; }
+  #login-page:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: auto;
+    background-color: black;
+    opacity: .7; }
+  #login-page .registration-form {
+    background: url("/img/splash2.jpg") 90% 32% no-repeat;
+    background-size: cover;
+    height: 100%;
+    flex: 1 0 auto; }
+    #login-page .registration-form:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: auto;
+      background-color: black;
+      opacity: .7; }
 
 #add-item {
   background: skyblue;
   padding: 1em; }
   #add-item p {
     font-style: italic; }
+
+.menu-page #image {
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 2.5em; }
+
+.menu-page img {
+  width: 100%;
+  position: relative;
+  z-index: 0;
+  top: 50px; }
+
+.menu-page h2 {
+  font-size: 180%;
+  text-align: center;
+  position: absolute;
+  top: 90px;
+  color: white;
+  left: .8em;
+  z-index: 2; }
+
+.menu-page .left {
+  float: left;
+  width: 30%; }
+
+.menu-page .right {
+  float: right;
+  width: 65%; }
+
+.menu-page .info {
+  overflow: hidden;
+  max-width: 550px;
+  margin: 1em auto;
+  border-bottom: 1px solid #ddd;
+  padding: .5em 0 1.5em; }
+  .menu-page .info .item {
+    font-weight: bold;
+    font-size: 120%;
+    color: #009970; }
+
+.menu-page .description {
+  font-style: italic;
+  margin: 0.2em 0 .5em 0; }
+
+.menu-page .amount {
+  overflow: hidden; }
+
+.menu-page .price {
+  float: left;
+  margin-top: .5em;
+  font-size: 90%; }
+
+.menu-page form {
+  float: right; }
+  .menu-page form input {
+    width: 2.5em;
+    padding: .5em;
+    border: none;
+    color: #555;
+    border-bottom: 2px solid #ddd;
+    text-align: center; }
+  .menu-page form button {
+    border: 1px solid #ddd;
+    color: #777;
+    background: #eee;
+    padding: .5em;
+    border-radius: 4px;
+    font-family: "Lato", sans-serif; }
+    .menu-page form button:hover {
+      cursor: pointer;
+      background: #ddd; }
+
+.menu-page .order {
+  max-width: 550px;
+  margin: 1em auto 5em;
+  overflow: hidden; }
+  .menu-page .order button {
+    background: #90146c;
+    border: 1px solid #90146c;
+    color: white;
+    border-radius: 4px;
+    padding: .6em .8em;
+    float: right; }
+    .menu-page .order button:hover {
+      background: #630d4b;
+      cursor: pointer; }
+
+.menu-page .fixed-name {
+  position: fixed;
+  color: black;
+  display: none; }
+
+.restaurant-current h2 {
+  font-size: 150%;
+  margin: 2.45em 0 1em; }
+
+.restaurant-current input[type="text"] {
+  display: none; }
+
+.restaurant-current td {
+  text-align: center;
+  vertical-align: middle;
+  padding: .85em .75em; }
+
+.restaurant-current .order:nth-child(2n) {
+  background: rgba(0, 153, 112, 0.05); }
+
+.restaurant-current th {
+  padding: .5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 70%;
+  letter-spacing: .5px;
+  color: #888; }
+
+.restaurant-current img {
+  border-radius: 2px;
+  width: 70px; }
+
+.restaurant-current .completed {
+  background: #90146c;
+  border: 1px solid #90146c;
+  color: white;
+  border-radius: 4px;
+  padding: .35em .5em;
+  float: right; }
+  .restaurant-current .completed:hover {
+    background: #630d4b;
+    cursor: pointer; }
+
+.restaurant-current h3 {
+  font-weight: bold;
+  font-size: 120%;
+  margin: 1em 0;
+  font-style: italic; }

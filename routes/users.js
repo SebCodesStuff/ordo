@@ -78,7 +78,7 @@ module.exports = (knex, passport) => {
         .then(() => {
 
 
-          res.send(200);
+          res.render("login");
 
         }).catch((e) => {
           res.status(400);
@@ -101,14 +101,6 @@ module.exports = (knex, passport) => {
 
 
   // Current open orders page
-  router.get("/:id/menu", (req, res) => {
-    const templateVars = {
-      // "current-orders" : restaurant.current
-    };
-    res.render('current', templateVars)
-  });
-
-
   router.get("/:id/current", (req, res) => {
 
     const cookieID = req.session.passport.user;

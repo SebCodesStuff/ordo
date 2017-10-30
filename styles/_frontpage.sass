@@ -1,17 +1,12 @@
-.restaurant-preview
-  background: white
-  padding: 1em
-  margin: 1em
-  background: white
-
-#header
-  background: url("/img/splash.jpg") center 33% no-repeat
+.front-header
+  background: url("/img/splash.jpg") center 32% no-repeat
   background-size: cover
   width: 100%
-  height: 300px
-  font-family: $serif
+  height: 325px
+  z-index: 90
   color: white
   text-align: center    
+  // box-shadow: 2px 0px 8px 1px rgba(black, .35)     
   &:before 
     content: ''
     position: absolute
@@ -19,36 +14,34 @@
     right: 0
     bottom: 0
     left: 0
-    height: 300px
+    height: 325px
     background-color: black
-    // background-image: linear-gradient(to bottom right,#002f4b,#dc4225)
     opacity: .7
-  // position: fixed
-  // box-shadow: -6px -6px 6px 8px rgba(0, 0, 0, 0.25)
-  // z-index: 100
-  // width: 100%
-  // background: rgba(black, .2)
-  // text-align: center
   h1
     font-size: 500%
-    padding: .75em 0 0
+    padding: .8em 0 0
+    font-family: $serif
     position: relative
     z-index: 100
     font-weight: bold
     text-shadow: 0px 1px 0px rgba(black, .85)
-    // text-shadow: 2px 5px 6px rgba(255, 255, 255, .7), 0px -5px 35px rgba(255, 255, 255, 0.9)
   p
     position: relative
     z-index: 88
+    font-family: $serif
     margin-top: 1em
-    font-size: 106%
+    font-size: 130%
     text-shadow: 0px 1px 0px rgba(black, 1)
+  @media (max-width: 500px)
+    h1
+      font-size: 400%
+      padding: 1.25em 0 0.75em
 
 .front-logins
   position: absolute
   z-index: 200
   cursor: pointer
-  margin: 1em
+  margin: .6em
   top: 0
   right: 0
   input
@@ -56,7 +49,102 @@
     margin: .15em .5em
     color: white
     border: transparent
-    font-size: 100%
-    font-family: $sans-serif
-    font-weight: 600
+    font-size: 90%
     cursor: pointer
+    &:hover
+      color: $green
+  nav
+    float: right
+    font-size: 80%
+    margin: 1.1em
+    li
+      display: inline-block
+      margin-left: 1.5em
+    a
+      color: white
+    a:hover 
+      color: $green
+
+#front-nav
+  display: none
+  .front-logins input
+    margin: .15em .5em
+    color: $purple
+    font-size: 90%
+
+.front-container
+  overflow: hidden
+  position: relative
+
+#rest-list
+  float: left
+  width: 60%
+.restaurant
+  margin: 0.5em .5em .5em 0
+  overflow: hidden
+  position: relative
+  height: 400px
+  .image
+    float: left
+    z-index: 1
+    top: 0
+    position: absolute
+    img
+      width: 100%
+      transform: scale(1)
+      transition: transform 0.5s ease
+      &:hover
+        transform: scale(1.1)
+  .info
+    float: right
+    width: 100%
+    background: rgba($darkPurple, .8)
+    z-index: 2
+    position: absolute
+    color: white
+    text-shadow: 0px 1px 0px rgba(black, 1)
+    padding: .65em .75em
+    top: 0
+  .name
+    font-size: 120%
+    font-weight: bold
+    font-family: $serif
+  header p
+    display: inline-block
+  form
+    float: right
+    margin: -.25em
+  button
+    background: transparent
+    border: transparent 
+    font-family: $sans-serif
+    font-style: italic
+    color: white
+    text-shadow: 0px 1px 0px rgba(black, 1)
+    font-size: 100%
+    letter-spacing: .5px
+    &:hover
+      font-weight: bold
+      cursor: pointer
+  .type
+    font-size: 69%
+    margin-left: 1.25em
+    text-transform: uppercase
+    letter-spacing: 1px
+  .description
+    padding-top: .25em
+
+
+#front-map    
+  float: left  
+  width: 40%
+  margin-top: .5em
+  position: relative
+
+#map
+  width: 100%
+  height: 810px
+
+.map-padding
+  top: 50px !important
+  position: fixed !important

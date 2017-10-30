@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/_head %>
+    <title>Update Menu Item | Ordo</title>
+  </head>
+
+  <body>
+  <% include partials/_nav %>
+    <div class="container">
+        
+
+  <h2>UPDATE page for menu item </h2>
+
+    <section id="update-menu">
+      <p>Update this item</p>
+      <!-- action="/restaurant/{:id}/{menuID}?_method=PUT" -->
+      <form action="/restaurant/update" method="post">
+        <div class="item">
+          <label>Name:</label>
+          <input type="text" name="name">
+        </div>
+        <div class="item">
+          <label>Description:</label>
+          <input type="text" name="description">
+        </div>
+        <div class="item">
+          <label>Price:</label>
+          <input type="text" name="price">
+        </div>
+        <label for="dropdown">Category:</label>
+        <select name="category">
+          <option value="Snacks">Snacks</option>
+          <option value="Snacks">Appetizer</option>
+          <option value="Snacks">Main Dish</option>
+          <option value="Snacks">Dessert</option>
+          <option value="Snacks">Drinks</option>
+        </select>
+        <input type='submit' value="Save">
+      </form>
+    </section>
+    
+    <!-- loop through the restaurant's menu -->
+    
+    
+  </div><!--/container-->
+  <% include partials/_footer %>
+  </body>
+</html>
