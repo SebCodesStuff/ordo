@@ -172,7 +172,7 @@ res.redirect(303, "/:id");
 router.get("/:id/history", (req, res) => {
     const cookieID = req.session.passport.user;
 
-    knex.select("id")
+    knex.select("id", "name")
     .from("restaurant")
     .where("user_id", cookieID)
     .then((result)=>{
@@ -192,7 +192,8 @@ router.get("/:id/history", (req, res) => {
         .then((table)=>{
 
           res.render('restaurant_history', {
-            table:table
+            table:table,
+            restName: result[0].name
           })
 
           console.log(table);

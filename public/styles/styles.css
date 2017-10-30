@@ -134,6 +134,15 @@ body {
   padding: 1em 0;
   flex: 1 0 auto; }
 
+#resto-current {
+  background: url("/img/bg.jpeg") center 32% no-repeat;
+  background-size: cover;
+  width: 100%; }
+  #resto-current .container {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 0 1em;
+    margin-top: 50px; }
+
 footer {
   background: #630d4b;
   color: white;
@@ -414,9 +423,10 @@ footer {
   .restaurant .info {
     float: right;
     width: 100%;
-    background: rgba(99, 13, 75, 0.8);
+    background: rgba(99, 13, 75, 0.85);
     z-index: 2;
     position: absolute;
+    line-height: 1.1;
     color: white;
     text-shadow: 0px 1px 0px black;
     padding: .65em .75em;
@@ -425,6 +435,8 @@ footer {
     font-size: 120%;
     font-weight: bold;
     font-family: "Playfair Display", serif; }
+  .restaurant .address {
+    display: none; }
   .restaurant header p {
     display: inline-block; }
   .restaurant form {
@@ -555,7 +567,9 @@ footer {
     font-family: "Lato", sans-serif; }
     .menu-page form button:hover {
       cursor: pointer;
-      background: #ddd; }
+      color: white;
+      background: #009970;
+      border-color: #009970; }
 
 .menu-page .order {
   max-width: 550px;
@@ -569,7 +583,8 @@ footer {
     padding: .6em .8em;
     float: right; }
     .menu-page .order button:hover {
-      background: #630d4b;
+      background: #009970;
+      border-color: #009970;
       cursor: pointer; }
 
 .menu-page .fixed-name {
@@ -577,23 +592,28 @@ footer {
   color: black;
   display: none; }
 
-.restaurant-current h2 {
-  font-size: 150%;
-  margin: 2.45em 0 1em;
+.restaurant-current h2,
+.restaurant-past h2 {
+  font-size: 200%;
+  margin: 1em 0;
   text-align: center; }
 
-.restaurant-current input[type="text"] {
+.restaurant-current input[type="text"],
+.restaurant-past input[type="text"] {
   display: none; }
 
-.restaurant-current td {
+.restaurant-current td,
+.restaurant-past td {
   text-align: center;
   vertical-align: middle;
   padding: .85em .75em; }
 
-.restaurant-current .order:nth-child(2n) {
+.restaurant-current .order:nth-child(2n),
+.restaurant-past .order:nth-child(2n) {
   background: rgba(0, 153, 112, 0.05); }
 
-.restaurant-current th {
+.restaurant-current th,
+.restaurant-past th {
   padding: .5em;
   text-transform: uppercase;
   font-weight: bold;
@@ -601,37 +621,102 @@ footer {
   letter-spacing: .5px;
   color: #888; }
 
-.restaurant-current img {
+.restaurant-current img,
+.restaurant-past img {
   border-radius: 2px;
   width: 70px; }
 
-.restaurant-current .completed {
+.restaurant-current .completed,
+.restaurant-past .completed {
   background: #90146c;
   border: 1px solid #90146c;
   color: white;
   border-radius: 4px;
   padding: .35em .5em;
   float: right; }
-  .restaurant-current .completed:hover {
+  .restaurant-current .completed:hover,
+  .restaurant-past .completed:hover {
     background: #630d4b;
     cursor: pointer; }
 
-.restaurant-current h3 {
+.restaurant-current h3,
+.restaurant-past h3 {
   font-weight: bold;
-  font-size: 120%;
+  text-align: center;
+  font-size: 140%;
   margin: 1em 0;
   font-style: italic; }
 
-.restaurant-current .history input {
+.restaurant-current .history input,
+.restaurant-past .history input {
   border: transparent;
   background: transparent;
   font-size: 95%;
   color: #009970;
   font-style: italic;
   margin: 3em 0 3em -.25em; }
-  .restaurant-current .history input:hover {
+  .restaurant-current .history input:hover,
+  .restaurant-past .history input:hover {
     color: #90146c;
     cursor: pointer; }
 
-.restaurant-current .fa-history {
-  color: #009970; }
+.restaurant-current .fa,
+.restaurant-past .fa {
+  color: #009970;
+  text-align: bottom; }
+
+.restaurant-current .fa-check-square-o,
+.restaurant-past .fa-check-square-o {
+  margin-top: .75em; }
+
+@media (max-width: 900px) {
+  #front-map {
+    float: none;
+    width: 100%;
+    position: static; }
+    #front-map .map-padding {
+      position: static !important; }
+  #map {
+    height: 300px; }
+  #rest-list {
+    float: none;
+    width: 100%; }
+  .front-logins nav {
+    font-size: 100%; }
+  .restaurant {
+    margin: .5em 0;
+    height: 276px;
+    background-color: #777; }
+    .restaurant .address {
+      display: block;
+      margin: .9em 0 .25em;
+      font-size: 80%; }
+    .restaurant .info {
+      background: rgba(99, 13, 75, 0.9); }
+    .restaurant header p {
+      display: block; }
+    .restaurant form {
+      position: absolute;
+      top: 0;
+      right: 0; }
+    .restaurant button {
+      background: rgba(255, 255, 255, 0.9);
+      color: #90146c;
+      text-shadow: none;
+      padding: .4em .4em .25em .25em;
+      letter-spacing: 0; }
+    .restaurant .type {
+      margin: .75em 0 -.25em; }
+  #nav-header nav, #front-nav nav {
+    margin: 1.15em 1em 0 0; }
+  .menu-page h2 {
+    display: none; }
+  .menu-page .fixed-name {
+    position: static;
+    display: block; }
+  .menu-page #image {
+    height: auto; }
+  .menu-page .info {
+    margin: 1em; }
+  .menu-page .order {
+    margin: 1em 1em 5em; } }

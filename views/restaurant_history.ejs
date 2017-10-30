@@ -2,19 +2,17 @@
 <html lang="en">
   <head>
     <% include partials/_head %>
-    <title>Home Page</title>
+    <title>Past Orders | Ordo</title>
     <script type="text/javascript" src="/scripts/update.js"></script>
 
   </head>
 
-  <body>
-      <% include partials/_header %>
-    <div class="container">
+  <body id="resto-history">
+      <% include partials/_nav %>
+    <div class="container restaurant-past">
 
-
-  <h1 id="logotype">Ordo</h1>
-
-  <h2>INDIVIDUAL order page for the restaurant: history </h2>
+      <h2><%= restName %></h2>
+      <h3>Past Orders</h3>
 
   <table style="width:100%">
   <tr>
@@ -31,7 +29,7 @@
   <% table.forEach((obj) => { %>
     <tr class="order">
         <td><%= obj.order_id%></td>
-        <td ><img style="height:30px" src="/img/<%=obj.picture %>"></td>
+        <td ><img src="/img/<%=obj.picture %>"></td>
         <td><%= obj.name %></td>
         <td><%= obj.phone_number %></td>
         <td><%= obj.item_name %></td>
@@ -42,9 +40,9 @@
 
 </table>
 
-<form class="history", action="current", method="GET" >
-
-  <input type="submit" value="Current Order">
+<form class="history" action="current" method="GET" >
+  <i class="fa fa-check-square-o" aria-hidden="true"></i>
+  <input type="submit" value="View your current orders">
 
 </form>
 
@@ -55,5 +53,6 @@
 
   </div><!--/container-->
 
+  <% include partials/_footer %>
   </body>
 </html>
