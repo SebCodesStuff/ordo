@@ -12,6 +12,7 @@ module.exports = (knex, passport) => {
 
   router.get("/", (req, res) => {
     var cookieID = req.session.passport.user;
+    console.log(cookieID);
 
 // Finds the user
       knex('users')
@@ -27,7 +28,8 @@ module.exports = (knex, passport) => {
          .orderBy("user_id")
          .then((results) => {
            res.render('index', {
-             results: results
+             results: results,
+             status: "customer"
            });
          });
        } else {
@@ -42,16 +44,15 @@ module.exports = (knex, passport) => {
              .innerJoin("menuitem", "restaurant.id", "menuitem.restaurant_id")
              .where('restaurant_id', results[0].id)
              .then((results) => {
+              console.log("my rest results",results);
                res.render('restaurant_profile', {
-                 results: results
+                 results: results,
+                 status: "restaurant"
                });
              })
          });
        }
       })
-
-
-
 
 
     // else redirect to their user profile pg
@@ -78,7 +79,7 @@ module.exports = (knex, passport) => {
         .then(() => {
 
 
-          res.send(200);
+          res.render("login");
 
         }).catch((e) => {
           res.status(400);
@@ -197,6 +198,29 @@ router.post("/charge", (req, res) => {
       }
 
   });
+
+
+    router.get("/:id/menu", (req, res) => {
+      var cookieID = req.session.passport.user;
+      knex('order').
+      insert({user_id: cookieID, submit_time: '1990-10-26'})
+      .then((results) => {
+        knex('users')
+        .innerJoin("restaurant", "users.id", "restaurant.user_id")
+        .innerJoin("menuitem", "restaurant.id","menuitem.restaurant_id")
+        .innerJoin("lineitem", "menuitem.id", "lineitem.item_id")
+        .innerJoin("order", "lineitem.order_id", "order.id")
+        .select('*')
+        .where('restaurant_id',req.params.id)
+        .then((results) => {
+          console.log(results);
+          res.render('restaurant_menu', {
+            results : results
+          })
+          // res.render('current', templateVars)
+        });
+      });
+    })
 
 
   return router;

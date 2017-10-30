@@ -26,7 +26,7 @@ $(() => {
     }
     else {
       $("#front-nav").removeClass('show');
-      $("#map").removeClass('map-padding');      
+      $("#map").removeClass('map-padding');
     }
   });
 
@@ -36,11 +36,11 @@ $(() => {
       $(".fixed-name").addClass('show');
     }
     else {
-      $(".fixed-name").removeClass('show');    
+      $(".fixed-name").removeClass('show');
     }
   });
 
-  
+
 // FRONT MAP
   // $(window).scroll(function() {
   //   var scroll = $(window).scrollTop();
@@ -52,21 +52,10 @@ $(() => {
   // });
   // Frontpage effect: shrink lead image after scrolling past its length
 
-
-
-
-  $(".registration-form form").submit(function(event){
+    $('.insertLineItem').submit(function(event){
       event.preventDefault();
-      const regData = $( this ).serialize()
-      $.post("/user/register",regData)
-        .done(()=>{
-          $('.registration-form').removeClass('show');
-          $(".login-form").addClass('show');
-          $(".login-form .close").on('click', function(){
-            $('.login-form').removeClass('show');
-          });
-        })
+      var lineitemData = $(this).serialize()
+      $.post("/restaurant/new/lineitem", lineitemData)
     });
 
 });
-

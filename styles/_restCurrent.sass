@@ -1,5 +1,7 @@
 .restaurant-current,
-.restaurant-past
+.restaurant-past,
+#user-current,
+#user-history
   h2
     font-size: 200%
     margin: 1em 0
@@ -53,3 +55,23 @@
     text-align: bottom
   .fa-check-square-o
     margin-top: .75em
+
+
+#rest-profile
+  .profile
+    border: 2px solid #eee
+    input
+      border: none
+      text-align: center
+      vertical-align: middle
+      padding: 1em .75em
+    .send
+      background: $purple
+      color: white
+      border-radius: 4px
+      &:hover
+        background: $darkPurple
+        cursor: pointer
+    
+.restaurant-current footer .fa, .restaurant-past footer .fa, #user-current footer .fa, #user-history footer .fa
+  color: white

@@ -134,23 +134,46 @@ body {
   padding: 1em 0;
   flex: 1 0 auto; }
 
-#resto-history,
 #resto-current,
 #charge-pg,
 #pay-pg,
-#resto-profile {
+#resto-profile,
+#resto-current,
+#user-current {
   background: url("/img/bg.jpeg") center 32% no-repeat;
   background-size: cover;
   width: 100%; }
-  #resto-history .container,
   #resto-current .container,
   #charge-pg .container,
   #pay-pg .container,
-  #resto-profile .container {
+  #resto-profile .container,
+  #resto-current .container,
+  #user-current .container {
     background: rgba(255, 255, 255, 0.98);
     padding: 0 1em;
     margin-top: 50px;
     min-width: 900px; }
+
+#nav-header input {
+  border: transparent;
+  background: transparent;
+  font-size: 100%;
+  color: #90146c; }
+  #nav-header input:hover {
+    color: #009970;
+    cursor: pointer; }
+
+#user-current .history input,
+#user-history .history input {
+  border: transparent;
+  background: transparent;
+  font-size: 100%;
+  color: #90146c;
+  font-style: italic; }
+  #user-current .history input:hover,
+  #user-history .history input:hover {
+    color: #009970;
+    cursor: pointer; }
 
 footer {
   background: #630d4b;
@@ -485,6 +508,9 @@ footer {
   top: 50px !important;
   position: fixed !important; }
 
+.front-logins nav a {
+  font-size: 120%; }
+
 #login-page {
   background: url("/img/splash2.jpg") 90% 32% no-repeat;
   background-size: cover;
@@ -499,6 +525,20 @@ footer {
     height: auto;
     background-color: black;
     opacity: .7; }
+  #login-page .registration-form {
+    background: url("/img/splash2.jpg") 90% 32% no-repeat;
+    background-size: cover;
+    height: 100%;
+    flex: 1 0 auto; }
+    #login-page .registration-form:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: auto;
+      background-color: black;
+      opacity: .7; }
 
 #add-item {
   background: #630d4b;
@@ -529,9 +569,6 @@ footer {
     #add-item input[type="submit"]:hover {
       color: white;
       background: #009970; }
-
-#resto-profile li {
-  list-style: none; }
 
 .menu-page #image {
   height: 500px;
@@ -610,14 +647,14 @@ footer {
 .menu-page .order {
   max-width: 550px;
   margin: 1em auto 5em;
-  overflow: hidden; }
+  overflow: hidden;
+  float: none; }
   .menu-page .order button {
     background: #90146c;
     border: 1px solid #90146c;
     color: white;
     border-radius: 4px;
-    padding: .6em .8em;
-    float: right; }
+    padding: .6em .8em; }
     .menu-page .order button:hover {
       background: #009970;
       border-color: #009970;
@@ -628,28 +665,46 @@ footer {
   color: black;
   display: none; }
 
+.menu-page input[name="order_id"],
+.menu-page input[name="item_id"] {
+  display: none; }
+
+.menu-page .container {
+  margin-top: 0;
+  padding-top: 0; }
+
 .restaurant-current h2,
-.restaurant-past h2 {
+.restaurant-past h2,
+#user-current h2,
+#user-history h2 {
   font-size: 200%;
   margin: 1em 0;
   text-align: center; }
 
 .restaurant-current input[type="text"],
-.restaurant-past input[type="text"] {
+.restaurant-past input[type="text"],
+#user-current input[type="text"],
+#user-history input[type="text"] {
   display: none; }
 
 .restaurant-current td,
-.restaurant-past td {
+.restaurant-past td,
+#user-current td,
+#user-history td {
   text-align: center;
   vertical-align: middle;
   padding: .85em .75em; }
 
 .restaurant-current .order:nth-child(2n),
-.restaurant-past .order:nth-child(2n) {
+.restaurant-past .order:nth-child(2n),
+#user-current .order:nth-child(2n),
+#user-history .order:nth-child(2n) {
   background: rgba(0, 153, 112, 0.05); }
 
 .restaurant-current th,
-.restaurant-past th {
+.restaurant-past th,
+#user-current th,
+#user-history th {
   padding: .5em;
   text-transform: uppercase;
   font-weight: bold;
@@ -658,12 +713,16 @@ footer {
   color: #888; }
 
 .restaurant-current img,
-.restaurant-past img {
+.restaurant-past img,
+#user-current img,
+#user-history img {
   border-radius: 2px;
   width: 70px; }
 
 .restaurant-current .completed,
-.restaurant-past .completed {
+.restaurant-past .completed,
+#user-current .completed,
+#user-history .completed {
   background: #90146c;
   border: 1px solid #90146c;
   color: white;
@@ -671,12 +730,16 @@ footer {
   padding: .35em .5em;
   float: right; }
   .restaurant-current .completed:hover,
-  .restaurant-past .completed:hover {
+  .restaurant-past .completed:hover,
+  #user-current .completed:hover,
+  #user-history .completed:hover {
     background: #630d4b;
     cursor: pointer; }
 
 .restaurant-current h3,
-.restaurant-past h3 {
+.restaurant-past h3,
+#user-current h3,
+#user-history h3 {
   font-weight: bold;
   text-align: center;
   font-size: 140%;
@@ -684,7 +747,9 @@ footer {
   font-style: italic; }
 
 .restaurant-current .history input,
-.restaurant-past .history input {
+.restaurant-past .history input,
+#user-current .history input,
+#user-history .history input {
   border: transparent;
   background: transparent;
   font-size: 95%;
@@ -692,18 +757,42 @@ footer {
   font-style: italic;
   margin: 3em 0 3em -.25em; }
   .restaurant-current .history input:hover,
-  .restaurant-past .history input:hover {
+  .restaurant-past .history input:hover,
+  #user-current .history input:hover,
+  #user-history .history input:hover {
     color: #90146c;
     cursor: pointer; }
 
 .restaurant-current .fa,
-.restaurant-past .fa {
+.restaurant-past .fa,
+#user-current .fa,
+#user-history .fa {
   color: #009970;
   text-align: bottom; }
 
 .restaurant-current .fa-check-square-o,
-.restaurant-past .fa-check-square-o {
+.restaurant-past .fa-check-square-o,
+#user-current .fa-check-square-o,
+#user-history .fa-check-square-o {
   margin-top: .75em; }
+
+#rest-profile .profile {
+  border: 2px solid #eee; }
+  #rest-profile .profile input {
+    border: none;
+    text-align: center;
+    vertical-align: middle;
+    padding: 1em .75em; }
+  #rest-profile .profile .send {
+    background: #90146c;
+    color: white;
+    border-radius: 4px; }
+    #rest-profile .profile .send:hover {
+      background: #630d4b;
+      cursor: pointer; }
+
+.restaurant-current footer .fa, .restaurant-past footer .fa, #user-current footer .fa, #user-history footer .fa {
+  color: white; }
 
 .payment-page em,
 #charge-pg .container em {

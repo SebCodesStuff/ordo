@@ -31,8 +31,7 @@
 
 // PROFILE
 #resto-profile
-  li
-    list-style: none
+  
 
 
 .menu-page
@@ -104,13 +103,13 @@
     max-width: 550px
     margin: 1em auto 5em
     overflow: hidden
+    float: none
     button
       background: $purple
       border: 1px solid $purple
       color: white
       border-radius: 4px
       padding: .6em .8em
-      float: right
       &:hover
         background: $green
         border-color: $green
@@ -119,5 +118,11 @@
     position: fixed
     color: black
     display: none
+  input[name="order_id"],
+  input[name="item_id"]
+    display: none
+  .container 
+    margin-top: 0
+    padding-top: 0
 
 

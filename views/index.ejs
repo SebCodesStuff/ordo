@@ -116,7 +116,7 @@
             <header>
             <p class="name"><%= restaurant.name %></p>
             <p class="type"><%= restaurant.type %></p>
-            <form method="GET" action="/restaurant/<%=restaurant.id%>/menu">
+            <form method="GET" action="/user/<%=restaurant.id%>/menu">
               <button type="submit">View menu</button>
             </form>
             </header>
@@ -129,7 +129,7 @@
       <% }) %>
   </section>
 
-  <section id="front-map"> 
+  <section id="front-map">
     <div id="map"></div>
 
     <script type="text/javascript" src="/scripts/map.js"></script>

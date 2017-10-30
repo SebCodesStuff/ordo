@@ -29,8 +29,6 @@ const knexLogger  = require('knex-logger');
 const userRoutes = require("./routes/users");
 const restRoutes = require("./routes/restaurant");
 const googlemapRoutes = require("./routes/googlemap");
-// const dataInput = require("./routes/data");
-
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -68,7 +66,7 @@ app.use(methodOverride('_method'));
 app.use("/user", userRoutes(knex));
 app.use("/restaurant", restRoutes(knex));
 app.use("/api/map", googlemapRoutes(knex));
-// app.use("/data", dataInput(knex));
+
 
 
 // Mount routes with the userID
@@ -98,7 +96,7 @@ app.get("/", (req, res) => {
 
 // Login form on the homepage
 app.post("/register", (req, res) => {
-  
+
   // if restaurant, ejs show link to their resto pg
   // use cookie to get their name to greet them
   res.redirect('/');
@@ -115,7 +113,37 @@ app.get("/register", (req, res) => {
 
 
 // Twilio Routes
+// If ngrok goes down you need to change the url below and you need to
+// change it on twilio
 
+app.post("/firstcall/:name", (req,res) => {
+  var cookieID = req.session.passport.user;
+  var url = '/user/'+cookieID+'/current'
+  client.calls.create({
+    url: "https://1657e7c6.ngrok.io/voice",
+    to: "+16132659416",
+    from: "+16137776522"
+  }, function(err, call) {
+    process.stdout.write(call.sid);
+  });
+  res.redirect(url);
+})
+
+app.post("/voice", (req,res) => {
+  const twiml = new VoiceResponse();
+  const gather = twiml.gather({
+    timeout: 3,
+    numDigits: 2,
+    action: '/text',
+    method: 'POST'
+  });
+
+  gather.say('Hello Red Lobster, a customer had made an order of 1 Seafood Soup and 2 Garlic Grilled Shrimp. Please provide the time they can expect the order to be ready');
+  console.log(twiml.toString());
+  res.writeHead(200, {'Content-Type':'text/xml'});
+  res.end(twiml.toString())
+
+})
 
 app.post("/text", (req, res) => {
   var time = req.body.Digits;
@@ -127,23 +155,6 @@ app.post("/text", (req, res) => {
   })
   .then((message) => console.log(message.sid));
 });
-
-app.post("/voice", (req,res) => {
-
-  const twiml = new VoiceResponse();
-  const gather = twiml.gather({
-    timeout: 3,
-    numDigits: 2,
-    action: '/text',
-    method: 'POST'
-  });
-
-  gather.say('Hello restaurant, a customer had made an order. Please provide the time they can expect the order to be ready');
-  console.log(twiml.toString());
-  res.writeHead(200, {'Content-Type':'text/xml'});
-  res.end(twiml.toString())
-
-})
 
 // For user login
 

@@ -11,6 +11,15 @@ $(() => {
        .done()
     });
 
+  $("#haha").submit(function(event){
+      event.preventDefault();
+      console.log("work")
+      const Data = $( this ).serialize()
+
+      console.log(Data)
+
+    });
+
 
 
 

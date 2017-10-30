@@ -2,27 +2,44 @@
 <html lang="en">
   <head>
     <% include partials/_head %>
-    <title>Home Page</title>
+    <title>Restaurant Profile | Ordo</title>
   </head>
 
-  <body id="resto-profile">
-  
-      <% include partials/_nav %>
-    <div class="container">
+  <body id="rest-profile">
+    <div id='nav-header'>
+      <a href="/">
+        <h1 id="logotype">
+          Ordo
+        </h1>
+      </a>
+      <!-- if user is logged in -->
+      <nav>
+        <ul>
+          <li>
+              <form action="/restaurant/<%=results[0].restaurant_id+1%>/current" method="GET">
+                  <input type="submit" value="Current Order">
+              </form>
+            </form>
+          </li>
+          <li>
+            <a href="/">Profile</a>
+          </li>
+          <li>
+            <a href="/logout">Logout</a>
+          </li>
+        </ul>
+      </nav>
 
+
+    </div>
+
+    <div class="container">
 
   <h2>PROFILE page for restaurant </h2>
 
 
     <!-- loop through the restaurant's menu -->
 
-    <div class="menu-item">
-      <% for (items in results) {%>
-      <p class="name"><%= results[items].item_name %>: <%=results[items].item_description%></p>
-      <p class="price">Price: $<%=results[items].price%></p>
-      <a class="edit-menu" href="">Edit</a>
-      <% } %>
-    </div>
 
      <!-- Id of res is results[0].id -->
 
@@ -52,10 +69,28 @@
         </select>
         <input type='submit' value="Save">
       </form>
-    </section>     
+    </section>
+
+    <!-- loop through the restaurant's menu -->
+
+    <div class="menu-item">
+      <% for (items in results) {%>
+      <form class="profile" action="/restaurant/update-item" method="POST">
+        <input type="text" name="item_id" value="<%= results[items].id %>">
+        <input type="text" name="item_category" value="<%= results[items].category %>">
+        <input type="text" name="item_name" value="<%= results[items].item_name %>">
+        <input type="text" name="item_description" value="<%=results[items].item_description%>">
+        <input type="text" name="price" value="<%=results[items].price%>">
+        <input class="send" type="submit" value="Submit Edit">
+      </form>
+      <% } %>
+    </div>
+
+     <!-- Id of res is results[0].id -->
+
 
   </div><!--/container-->
-  
+
   <% include partials/_footer %>
 
   </body>

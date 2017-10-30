@@ -5,14 +5,13 @@
     <title>Home Page</title>
   </head>
 
-  <body>
-      <% include partials/_header %>
+  <body id="user-current">
+      
+    <% include partials/_nav %>
     <div class="container">
 
 
-  <h1 id="logotype">Ordo</h1>
-
-  <h2>CURRENT ORDERS for user </h2>
+  <h2>Your Current Orders</h2>
 
 
   <table style="width:100%">
@@ -42,13 +41,13 @@
 
 </table>
 
-<form class="history", action="history", method="GET" >
+<form class="history" action="history" method="GET" >
 
-  <input type="submit" value="History Order">
+  <input type="submit" value="Your Order History">
 
 </form>
 
   </div><!--/container-->
-
+  <% include partials/_footer %>
   </body>
 </html>

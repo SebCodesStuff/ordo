@@ -46,11 +46,13 @@ body
   flex: 1 0 auto
 
 
-#resto-history,
+
 #resto-current,
 #charge-pg,
 #pay-pg,
-#resto-profile
+#resto-profile,
+#resto-current,
+#user-current 
   background: url("/img/bg.jpeg") center 32% no-repeat
   background-size: cover
   width: 100%
@@ -59,4 +61,27 @@ body
     padding: 0 1em
     margin-top: 50px
     min-width: 900px
+
+#nav-header
+  input
+    border: transparent 
+    background: transparent 
+    font-size: 100%
+    color: $purple
+    &:hover
+      color: $green
+      cursor: pointer
+
+#user-current,
+#user-history    
+  .history
+    input
+      border: transparent 
+      background: transparent 
+      font-size: 100%
+      color: $purple
+      font-style: italic
+      &:hover
+        color: $green
+        cursor: pointer
 

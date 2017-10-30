@@ -2,17 +2,14 @@
 <html lang="en">
   <head>
     <% include partials/_head %>
-    <title>Home Page</title>
+    <title>Past Orders | Ordo</title>
   </head>
 
-  <body>
-      <% include partials/_header %>
+  <body id="user-history">
+      <% include partials/_nav %>
     <div class="container">
 
-
-  <h1 id="logotype">Ordo</h1>
-
-  <h2>History ORDERS for user </h2>
+  <h2>Your Past Orders</h2>
 
 
   <table style="width:100%">
@@ -42,13 +39,13 @@
 
 </table>
 
-<form class="current", action="current", method="GET" >
+<form class="current history" action="current" method="GET" >
 
   <input type="submit" value="Current Order">
 
 </form>
 
   </div><!--/container-->
-
+  <% include partials/_footer %>
   </body>
 </html>
