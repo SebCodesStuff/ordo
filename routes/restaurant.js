@@ -21,12 +21,13 @@ router.get("/", (req, res) => {
 
   // Restaurant profile page (to see and edit menu items)
 router.get("/profile", (req, res) => {
+  console.log("*********");
   console.log(req.body);
   knex
     .select("*")
     .from("restaurant")
     .innerJoin("menuitem", "restaurant.id", "menuitem.restaurant_id")
-    .where('restaurant_id', req.session.passport.user - 1)
+    .where('restaurant_id', req.session.passport.user-1)
     .then((results) => {
       res.render('restaurant_profile', {
         results: results
@@ -53,12 +54,14 @@ router.post("/add-item", (req, res) => {
   .then((results) => {
     knex
     .select("*")
-    .from("restaurant")
-    .innerJoin("menuitem", "restaurant.id", "menuitem.restaurant_id")
+    .from("menuitem")
     .where('restaurant_id', cookieID)
+    .orderBy("id")
     .then((results) => {
       res.render('restaurant_profile', {
-        results: results
+        results: results,
+        status: "restaurant"
+
       });
     })
   });
@@ -103,27 +106,7 @@ res.redirect(303, "/:id");
 
   // Current open orders page
   // formerly router.get("/:id/current", (req,res) => {
-  router.get("/:id/menu", (req, res) => {
-    var cookieID = req.session.passport.user;
-    knex('order').
-    insert({user_id: cookieID, submit_time: '1990-10-26'})
-    .then((results) => {
-      knex('users')
-      .innerJoin("restaurant", "users.id", "restaurant.user_id")
-      .innerJoin("menuitem", "restaurant.id","menuitem.restaurant_id")
-      .innerJoin("lineitem", "menuitem.id", "lineitem.item_id")
-      .innerJoin("order", "lineitem.order_id", "order.id")
-      .select('*')
-      .where('restaurant_id',req.params.id)
-      .then((results) => {
-        console.log(results);
-        res.render('restaurant_menu', {
-          results : results
-        })
-        // res.render('current', templateVars)
-      });
-    });
-  })
+
   router.get("/:id/current", (req, res) => {
     const cookieID = req.session.passport.user;
 
@@ -137,6 +120,7 @@ res.redirect(303, "/:id");
       if(!result[0].id){
       res.send("You do not have permission to view this page");
       }else{
+        console.log(result[0].id);
 
         knex.select("order_id","picture", 'users.name', 'phone_number', 'item_name', 'quantity', 'price', "status", "item_id")
         .from("users")
@@ -160,6 +144,28 @@ res.redirect(303, "/:id");
 
   });
 
+
+  router.get("/:id/menu", (req, res) => {
+    var cookieID = req.session.passport.user;
+    knex('order').
+    insert({user_id: cookieID, submit_time: '1990-10-26'})
+    .then((results) => {
+      knex('users')
+      .innerJoin("restaurant", "users.id", "restaurant.user_id")
+      .innerJoin("menuitem", "restaurant.id","menuitem.restaurant_id")
+      .innerJoin("lineitem", "menuitem.id", "lineitem.item_id")
+      .innerJoin("order", "lineitem.order_id", "order.id")
+      .select('*')
+      .where('restaurant_id',req.params.id)
+      .then((results) => {
+        console.log(results);
+        res.render('restaurant_menu', {
+          results : results
+        })
+        // res.render('current', templateVars)
+      });
+    });
+  })
 
   router.post("/:id/current", (req, res)=>{
 
@@ -216,6 +222,40 @@ router.get("/:id/history", (req, res) => {
     })
 
   });
+
+  router.post("/update-item", (req, res) => {
+  const restaurant_id = req.session.passport.user-1;
+  const item_id = req.body.item_id
+  const menuItem = {
+    item_category: req.body.category,
+    item_name: req.body.item_name,
+    item_description: req.body.item_description,
+    price: req.body.price,
+  };
+
+  knex.select("*")
+      .from("menuitem")
+      .where({"restaurant_id": restaurant_id, "id": item_id})
+      .update(menuItem)
+      .then((result)=>{
+
+        knex
+        .select("*")
+        .from("menuitem")
+        .where('restaurant_id', restaurant_id)
+        .orderBy("id")
+        .then((results) => {
+          res.render('restaurant_profile', {
+          results: results,
+          status: "restaurant"
+          });
+          console.log(results);
+        })
+          console.log(result);
+      })
+  });
+
+
 
 
 
