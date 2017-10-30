@@ -18,11 +18,10 @@
       <nav>
         <ul>
           <li>
-              <form action="current" method="GET">
+              <form action="/restaurant/<%=results[0].restaurant_id+1%>/current" method="GET">
                   <input type="submit" value="Current Order">
               </form>
             </form>
-            <a href="/">Current Order</a>
           </li>
           <li>
             <a href="/">Profile</a>
@@ -37,7 +36,6 @@
     </div>
 
     <div class="container">
-
 
   <h2>PROFILE page for restaurant </h2>
 
