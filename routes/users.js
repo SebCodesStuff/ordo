@@ -131,15 +131,38 @@ module.exports = (knex, passport) => {
       }
   });
 
+// STRIPES
+
+const keyPublishable = process.env.PUBLISHABLE_KEY;
+const keySecret = process.env.SECRET_KEY;
+
+const stripe = require("stripe")(keySecret);
+router.get("/:id/current/payment", (req, res) =>
+{ 
+
+return res.render("payment", {keyPublishable})
+});
 
 
-// Stripe validation checkout page
-  router.get("/:id/current/payment", (req, res) => {
-    // only users see stripe page
-    res.render("payment")
-  });
+router.post("/charge", (req, res) => {
+  let amount = 1500;
 
+  
+  stripe.customers.create({
+    email: req.body.stripeEmail,
+    source: req.body.stripeToken
+  })
+  .then(customer =>
+    stripe.charges.create({
+      amount,
+      description: "Ordo Charge",
+        currency: "cad",
+        customer: customer.id
+    }))
+  .then(charge => res.render("charge"));
+});
 
+  
 
   // Past orders page
   router.get("/:id/history", (req, res) => {
