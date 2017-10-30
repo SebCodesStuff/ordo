@@ -71,7 +71,7 @@ router.post("/new/lineitem", (req, res) => {
   var results = req.body
   console.log(results);
   knex('lineitem')
-  .insert({order_id: results.order_id, item_id: results.item_id, quantity: results.quantity , status: 1})
+  .insert({order_id: results.order_id, item_id: results.item_id, quantity: results.quantity , status: 0})
   .then((results) => {
   })
 })

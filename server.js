@@ -120,7 +120,7 @@ app.post("/firstcall/:name", (req,res) => {
   var cookieID = req.session.passport.user;
   var url = '/user/'+cookieID+'/current'
   client.calls.create({
-    url: "https://1657e7c6.ngrok.io/voice",
+    url: "https://8bc760c3.ngrok.io/voice",
     to: "+16132659416",
     from: "+16137776522"
   }, function(err, call) {
@@ -149,7 +149,7 @@ app.post("/text", (req, res) => {
   var time = req.body.Digits;
   client.messages
   .create({
-    to: '+16132659416',
+    to: '+16138764252',
     from: '+16137776522',
     body: 'Your order will be ready in '+time+ ' minutes',
   })
