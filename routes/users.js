@@ -38,14 +38,13 @@ module.exports = (knex, passport) => {
          .innerJoin("restaurant", "users.id", "restaurant.user_id")
          .where('user_id', cookieID)
          .then((results) => {
-           console.log(cookieID);
            knex
              .select("*")
              .from("restaurant")
              .innerJoin("menuitem", "restaurant.id", "menuitem.restaurant_id")
              .where('restaurant_id', results[0].id)
              .then((results) => {
-              console.log(results);
+              console.log("my rest results",results);
                res.render('restaurant_profile', {
                  results: results,
                  status: "restaurant"
@@ -53,29 +52,6 @@ module.exports = (knex, passport) => {
              })
          });
        }
-      })
-
-
-      router.get("/:id/menu", (req, res) => {
-        var cookieID = req.session.passport.user;
-        knex('order').
-        insert({user_id: cookieID, submit_time: '1990-10-26'})
-        .then((results) => {
-          knex('users')
-          .innerJoin("restaurant", "users.id", "restaurant.user_id")
-          .innerJoin("menuitem", "restaurant.id","menuitem.restaurant_id")
-          .innerJoin("lineitem", "menuitem.id", "lineitem.item_id")
-          .innerJoin("order", "lineitem.order_id", "order.id")
-          .select('*')
-          .where('restaurant_id',req.params.id)
-          .then((results) => {
-            console.log(results);
-            res.render('restaurant_menu', {
-              results : results
-            })
-            // res.render('current', templateVars)
-          });
-        });
       })
 
 

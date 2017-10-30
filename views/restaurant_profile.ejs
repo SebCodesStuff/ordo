@@ -6,8 +6,36 @@
   </head>
 
   <body>
+    <div id='nav-header'>
+      <a href="/">
+        <h1 id="logotype">
+          Ordo
+        </h1>
+      </a>
 
-      <% include partials/_nav %>
+
+      <!-- if user is logged in -->
+      <nav>
+        <ul>
+          <li>
+              <form action="current" method="GET">
+                  <input type="submit" value="Current Order">
+              </form>
+            </form>
+            <a href="/">Current Order</a>
+          </li>
+          <li>
+            <a href="/">Profile</a>
+          </li>
+          <li>
+            <a href="/logout">Logout</a>
+          </li>
+        </ul>
+      </nav>
+
+
+    </div>
+
     <div class="container">
 
 
