@@ -34,4 +34,5 @@ $(() => {
       var lineitemData = $(this).serialize()
       $.post("/restaurant/new/lineitem", lineitemData)
     });
-  });
+
+});
