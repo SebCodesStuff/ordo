@@ -1,15 +1,3 @@
-# Node Skeleton
-
-## Project Setup
-
-1. Create your own empty repo on GitHub
-2. Clone this repository (do not fork)
-  - Suggestion: When cloning, specify a different folder name that is relevant to your project
-3. Remove the git remote: `git remote rm origin`
-4. Add a remote for your origin: `git remote add origin <your github repo URL>`
-5. Push to the new origin: `git push -u origin master`
-6. Verify that the skeleton code now shows up in your repo on GitHub
-
 ## Getting Started
 1. In order for the twilio in call features to work ngrok needs to be running. The url that ngrok produces needs to then be updated within twilio's website:  
 https://www.twilio.com/console/phone-numbers/incoming
@@ -23,6 +11,14 @@ https://www.twilio.com/console/phone-numbers/incoming
   - Check the seeds file to see what gets seeded in the DB
 8. Run the server: `npm run local`
 9. Visit `http://localhost:8080/`
+
+## Login information
+1. To login as a customer use:
+  email:      haha@gmail.com
+  password:   000000
+2. To login as a restaurant use:
+  email:      RedLobster.com
+  password:   000001
 
 ## Dependencies
 
