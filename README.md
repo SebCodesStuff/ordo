@@ -1,8 +1,8 @@
 # Ordo
 Ordo is a site for users to browse menus from a list of restaurants. They can select one or more dishes and place an order for pick-up. They will receive a notification via Twilio when their order is ready. Restaurant owners can add and edit their menu items. Both clients and restaurant owners can view their current and past order histories. 
 
-!["Front page"](https://github.com/SebCodesStuff/ordo/blob/master/documents/ordo.png)
-!["Login"](https://github.com/SebCodesStuff/ordo/blob/master/documents/ordo-login.png)
+!["Front Page"](https://github.com/SebCodesStuff/ordo/blob/master/documents/ordo-frontpage.png)
+!["Login"](https://github.com/SebCodesStuff/ordo/blob/master/documents/ordo.png)
 !["Add item"](https://github.com/SebCodesStuff/ordo/blob/master/documents/ordo-add-item.png)
 !["Order page"](https://github.com/SebCodesStuff/ordo/blob/master/documents/ordo-order-page.png)
 !["Current Orders"](https://github.com/SebCodesStuff/ordo/blob/master/documents/ordo-current.png)
