@@ -11,7 +11,7 @@ const Twilio = require('twilio');
 const client = new Twilio(accountSid, authToken);
 
 const PORT        = process.env.PORT || 8080;
-const ENV         = process.env.ENV || "development";
+const ENV         = process.env.ENV || "production";
 const express     = require("express");
 const bodyParser  = require("body-parser");
 const methodOverride = require('method-override')
