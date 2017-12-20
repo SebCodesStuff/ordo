@@ -139,7 +139,7 @@ const keySecret = process.env.SECRET_KEY;
 
 const stripe = require("stripe")(keySecret);
 router.get("/:id/current/payment", (req, res) =>
-{ 
+{
 
 return res.render("payment", {keyPublishable})
 });
@@ -151,7 +151,7 @@ router.get('/charge', (req, res) => {
 router.post("/charge", (req, res) => {
   let amount = 1500;
 
-  
+
   stripe.customers.create({
     email: req.body.stripeEmail,
     source: req.body.stripeToken
@@ -166,7 +166,7 @@ router.post("/charge", (req, res) => {
   .then(charge => res.render("charge"));
 });
 
-  
+
 
   // Past orders page
   router.get("/:id/history", (req, res) => {
@@ -201,9 +201,9 @@ router.post("/charge", (req, res) => {
 
 
     router.get("/:id/menu", (req, res) => {
-      var cookieID = req.session.passport.user;
-      knex('order').
-      insert({user_id: cookieID, submit_time: '1990-10-26'})
+      // var cookieID = req.session.passport.user;
+      knex('order')
+      // .insert({user_id: cookieID, submit_time: '1990-10-26'})
       .then((results) => {
         knex('users')
         .innerJoin("restaurant", "users.id", "restaurant.user_id")
@@ -217,7 +217,6 @@ router.post("/charge", (req, res) => {
           res.render('restaurant_menu', {
             results : results
           })
-          // res.render('current', templateVars)
         });
       });
     })
